@@ -1,0 +1,67 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /mall
+
+spring:
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 50MB
+  application:
+    name: ekin
+  profiles:
+    include: web, mysql
+    active: local
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+cartisan:
+  jwt:
+    key: cartisan-jwt
+    ttl: 1800000
+  info:
+    title: Cartisan mall
+    serviceUrl: http://www.cartisan.com
+    version: 1.0
+    contact:
+      name: colin
+      url: zhang_colin.github.com
+      email: zhang_colin@163.com
+  security:
+    ignored:
+      urls: # 安全路由白名单
+        - /
+        - /*.html
+        - /**/*.html
+        - /**/*.css
+        - /**/*.js
+        - /**/v2/api-docs/**
+        - /**/v2/api-docs-ext/**
+        - /**/*.png
+        - /**/*.ico
+        - /swagger-ui.html
+        - /swagger-resources/**
+        - /swagger/**
+        - /webjars/springfox-swagger-ui/**
+        - /actuator/**
+        - /druid/**
+        - /system/login
+        - /interface-ui/**
+        - /api/**
+#        - /admin/register
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+
+
