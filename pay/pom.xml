@@ -25,6 +25,17 @@
     </dependency>
 
     <dependency>
+      <groupId>cn.springboot</groupId>
+      <artifactId>best-pay-sdk</artifactId>
+      <version>1.3.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-freemarker</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.cartisan</groupId>
       <artifactId>cartisan-persistence</artifactId>
       <version>1.0-SNAPSHOT</version>
