@@ -1,8 +1,9 @@
 package com.cartisan.mall.domains.shipping;
 
-import com.cartisan.domains.AbstractEntity;
-import com.cartisan.domains.AggregateRoot;
-import lombok.Getter;
+import com.cartisan.domain.AbstractEntity;
+import com.cartisan.domain.AggregateRoot;
+import lombok.Data;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "mall_shipping")
-@Getter
+@Data
 @ToString
 public class Shipping extends AbstractEntity implements AggregateRoot {
     @Id
@@ -24,7 +25,8 @@ public class Shipping extends AbstractEntity implements AggregateRoot {
      * 用户 Id
      */
     @Column(name = "user_id")
-    private Integer userId;
+    @Setter
+    private Long userId;
 
     /**
      * 收货姓名

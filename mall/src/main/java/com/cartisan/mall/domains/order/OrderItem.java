@@ -1,20 +1,19 @@
 package com.cartisan.mall.domains.order;
 
-import com.cartisan.domains.AbstractEntity;
-import com.cartisan.domains.AggregateRoot;
-import lombok.Getter;
+import com.cartisan.domain.AbstractEntity;
+import com.cartisan.domain.AggregateRoot;
+import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * @author colin
  */
 @Entity
 @Table(name = "mall_order_item")
-@Getter
+@Data
 @ToString
 public class OrderItem extends AbstractEntity implements AggregateRoot {
     /**
@@ -72,16 +71,4 @@ public class OrderItem extends AbstractEntity implements AggregateRoot {
      */
     @Column(name = "total_price")
     private BigDecimal totalPrice;
-
-    /**
-     * 创建时间
-     */
-    @Column(name = "create_time")
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    @Column(name = "update_time")
-    private LocalDateTime updateTime;
 }

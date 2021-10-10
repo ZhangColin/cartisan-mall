@@ -1,9 +1,8 @@
 package com.cartisan.pay.controller;
 
-import com.cartisan.pay.domains.payinfo.PayInfo;
-import com.cartisan.pay.service.PayService;
-import com.lly835.bestpay.enums.BestPayTypeEnum;
-import com.lly835.bestpay.model.PayResponse;
+import com.cartisan.pay.application.PayService;
+import com.cartisan.pay.domain.PaymentOrder;
+import com.cartisan.pay.domain.primitive.PaymentType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,23 +26,24 @@ public class PayController {
     }
 
     @GetMapping("/create")
-    public ModelAndView create(@RequestParam("orderId") String orderId,
+    public ModelAndView create(@RequestParam("orderId") Long orderId,
+                               @RequestParam("userId") Long userId,
                                @RequestParam("orderAmount") BigDecimal orderAmount,
-                               @RequestParam("payType") BestPayTypeEnum bestPayTypeEnum) {
-        if (bestPayTypeEnum != BestPayTypeEnum.WXPAY_NATIVE
-                && bestPayTypeEnum != BestPayTypeEnum.ALIPAY_PC) {
-            throw new RuntimeException("暂不支付的支付类型。");
-        }
+                               @RequestParam("payType") PaymentType paymentType) {
+//        if (paymentType != PaymentType.WXPAY_NATIVE
+//                && paymentType != PaymentType.ALIPAY_PC) {
+//            throw new RuntimeException("暂不支付的支付类型。");
+//        }
 
-        final PayResponse payResponse = payService.create(orderId, orderAmount, bestPayTypeEnum);
+        final String response = payService.prePay(orderId, userId, orderAmount, paymentType);
 
         // 支付方式不同，渲染就不同，WXPAY_NATIVE使用codeUrl，ALIPay_PC使用body
-        final Map map = new HashMap<>();
-        if (bestPayTypeEnum == BestPayTypeEnum.WXPAY_NATIVE) {
-            map.put("codeUrl", payResponse.getCodeUrl());
+        final Map<String, String> map = new HashMap<>();
+        if (paymentType == PaymentType.WXPAY_NATIVE) {
+            map.put("codeUrl", response);
             return new ModelAndView("createForWxNative", map);
         } else {
-            map.put("body", payResponse.getBody());
+            map.put("body", response);
             return new ModelAndView("createForAlipayPc", map);
         }
     }
@@ -58,7 +58,7 @@ public class PayController {
 
     @GetMapping("/queryByOrderId")
     @ResponseBody
-    public PayInfo queryByOrderId(@RequestParam String orderId) {
+    public PaymentOrder queryByOrderId(@RequestParam String orderId) {
         return payService.queryByOrderId(orderId);
     }
 }

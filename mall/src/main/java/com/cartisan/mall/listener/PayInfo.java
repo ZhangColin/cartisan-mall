@@ -1,6 +1,6 @@
-package com.cartisan.pay.domains.payinfo;
+package com.cartisan.mall.listener;
 
-import com.cartisan.domains.AggregateRoot;
+import com.cartisan.domain.AggregateRoot;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -1,8 +1,8 @@
 package com.cartisan.mall.domains.product;
 
-import com.cartisan.domains.AbstractEntity;
-import com.cartisan.domains.AggregateRoot;
-import lombok.Getter;
+import com.cartisan.domain.AbstractEntity;
+import com.cartisan.domain.AggregateRoot;
+import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "mall_product")
-@Getter
+@Data
 @ToString
 public class Product extends AbstractEntity implements AggregateRoot {
     /**

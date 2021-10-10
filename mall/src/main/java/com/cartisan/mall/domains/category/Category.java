@@ -1,7 +1,7 @@
 package com.cartisan.mall.domains.category;
 
-import com.cartisan.domains.AbstractEntity;
-import com.cartisan.domains.AggregateRoot;
+import com.cartisan.domain.AbstractEntity;
+import com.cartisan.domain.AggregateRoot;
 import lombok.Getter;
 import lombok.ToString;
 

@@ -1,8 +1,8 @@
 package com.cartisan.mall.domains.order;
 
-import com.cartisan.domains.AbstractEntity;
-import com.cartisan.domains.AggregateRoot;
-import lombok.Getter;
+import com.cartisan.domain.AbstractEntity;
+import com.cartisan.domain.AggregateRoot;
+import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "mall_order")
-@Getter
+@Data
 @ToString
 public class Order extends AbstractEntity implements AggregateRoot {
     /**
@@ -97,16 +97,4 @@ public class Order extends AbstractEntity implements AggregateRoot {
      */
     @Column(name = "close_time")
     private LocalDateTime closeTime;
-
-    /**
-     * 创建时间
-     */
-    @Column(name = "create_time")
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    @Column(name = "update_time")
-    private LocalDateTime updateTime;
 }
