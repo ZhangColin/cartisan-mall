@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.shipping;
 
-import com.cartisan.dtos.PageResult;
+import com.cartisan.dto.PageResult;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

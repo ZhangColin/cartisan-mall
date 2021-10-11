@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.order;
 
-import com.cartisan.dtos.PageResult;
+import com.cartisan.dto.PageResult;
 import com.cartisan.mall.domains.product.Product;
 import com.cartisan.mall.domains.product.ProductRepository;
 import com.cartisan.mall.domains.shipping.Shipping;

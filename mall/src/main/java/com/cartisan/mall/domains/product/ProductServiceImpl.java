@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.product;
 
-import com.cartisan.dtos.PageResult;
+import com.cartisan.dto.PageResult;
 import com.cartisan.mall.domains.category.CategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.order;
 
-import com.cartisan.dtos.PageResult;
+import com.cartisan.dto.PageResult;
 import com.cartisan.mall.domains.consts.MallConst;
 import com.cartisan.mall.domains.user.User;
 import org.springframework.data.domain.Pageable;

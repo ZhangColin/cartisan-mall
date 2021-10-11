@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.product;
 
-import com.cartisan.dtos.PageResult;
+import com.cartisan.dto.PageResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

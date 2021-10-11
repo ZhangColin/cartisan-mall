@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.product;
 
-import com.cartisan.dtos.PageResult;
+import com.cartisan.dto.PageResult;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
