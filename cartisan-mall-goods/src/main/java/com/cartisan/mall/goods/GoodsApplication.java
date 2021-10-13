@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
  * @author colin
  */
 @SpringBootApplication(scanBasePackages = {"com.cartisan", "com.cartisan.mall"})
+//@EnableEurekaClient
 @MapperScan("com.cartisan.mall.**.mapper")
 @Slf4j
 public class GoodsApplication {

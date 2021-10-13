@@ -1,0 +1,39 @@
+server:
+  port: 8001
+
+spring:
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  application:
+    name: cartisan-mall-file
+  profiles:
+    include: web
+    active: local
+
+cartisan:
+  jwt:
+    key: cartisan-jwt
+    ttl: 1800000
+  info:
+    title: Cartisan mall
+    serviceUrl: http://www.cartisan.com
+    version: 1.0
+    contact:
+      name: colin
+      url: zhang_colin.github.com
+      email: zhang_colin@163.com
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+
+
