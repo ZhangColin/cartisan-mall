@@ -1,0 +1,49 @@
+### 搜索商品分类
+GET http://{{host}}:{{port}}/categories/search?name=&status=&page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取商品分类
+GET http://{{host}}:{{port}}/categories/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加商品分类
+POST http://{{host}}:{{port}}/categories
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "parentId": "",
+  "templateId": "",
+  "name": "",
+  "isShow": "",
+  "isMenu": "",
+  "sequence": ""
+}
+
+### 编辑商品分类
+PUT http://{{host}}:{{port}}/categories/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "parentId": "",
+  "templateId": "",
+  "name": "",
+  "isShow": "",
+  "isMenu": "",
+  "sequence": ""
+}
+
+### 删除商品分类
+DELETE http://{{host}}:{{port}}/categories/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

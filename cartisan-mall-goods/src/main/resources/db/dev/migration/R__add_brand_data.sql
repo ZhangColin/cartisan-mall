@@ -1,179 +1,187 @@
 -- 品牌表
-truncate `gds_brands`;
-insert into `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`)
-values (1115,'HTC','','H',0),
-       (1528,'LG','','L',0),
-       (1912,'NEC','','N',0),
-       (2032,'OPPO','http://img10.360buyimg.com/popshop/jfs/t2119/133/2264148064/4303/b8ab3755/56b2f385N8e4eb051.jpg','O',0),
-       (2505,'TCL','','T',0),
-       (3177,'爱贝多','','A',0),
-       (3539,'安桥','','A',0),
-       (3941,'白金','','B',0),
-       (4986,'波导','','B',0),
-       (6522,'朵唯','','D',0),
-       (6742,'飞利浦','http://img12.360buyimg.com/popshop/jfs/t18361/122/1318410299/1870/36fe70c9/5ac43a4dNa44a0ce0.jpg','F',0),
-       (7174,'富可视','','F',0),
-       (7203,'富士通','','F',0),
-       (7420,'格力','','G',0),
-       (7817,'海尔','http://image.leyou.com/group1/M00/00/00/wKg4ZVrYZcyAVOzoAAB846UcmLg013.png','H',0),
-       (7888,'海信','','H',0),
-       (8214,'黑莓','','H',0),
-       (8551,'华硕','','H',0),
-       (8557,'华为','http://img10.360buyimg.com/popshop/jfs/t5662/36/8888655583/7806/1c629c01/598033b4Nd6055897.jpg','H',0),
-       (8740,'惠普','','H',0),
-       (9420,'金立','','J',0),
-       (9637,'京瓷','','J',0),
-       (10317,'康佳','','K',0),
-       (10640,'酷派','http://img10.360buyimg.com/popshop/jfs/t2521/347/883897149/3732/91c917ec/5670cf96Ncffa2ae6.jpg','K',0),
-       (11516,'联想','http://img11.360buyimg.com/popshop/jfs/t6799/74/1348425607/15774/bc286188/59804c98N1944175e.jpg','L',0),
-       (12286,'漫步者','','M',0),
-       (12669,'魅族','http://img13.360buyimg.com/popshop/jfs/t3511/131/31887105/4943/48f83fa9/57fdf4b8N6e95624d.jpg','M',0),
-       (13066,'摩托罗拉','','M',0),
-       (13539,'诺基亚','http://img11.360buyimg.com/popshop/jfs/t2572/102/189476501/7717/16cc5814/563b33d4N6c59780c.jpg','N',0),
-       (14026,'Apple','http://img12.360buyimg.com/popshop/jfs/t2989/240/151377693/3895/30ad9044/574d36dbN262ef26d.jpg','A',0),
-       (14478,'青橙','','Q',0),
-       (15127,'三星','http://img14.360buyimg.com/popshop/jfs/t2701/34/484677369/7439/ee13e8fa/5716e2c4Nc925baf3.jpg','S',0),
-       (15539,'神舟','','S',0),
-       (16506,'索爱','','S',0),
-       (16538,'索尼','','S',0),
-       (16975,'天语','','T',0),
-       (17193,'外星人','','W',0),
-       (17424,'威图','','W',0),
-       (17440,'微软','','W',0),
-       (18078,'NAMO','','N',0),
-       (18362,'小辣椒','http://img14.360buyimg.com/popshop/g14/M00/09/10/rBEhV1K6uOwIAAAAAAAGxx0kTvQAAHWYwPIloIAAAbf434.png','X',0),
-       (18374,'小米','http://img10.360buyimg.com/popshop/jfs/t7084/169/439244907/4647/724c7958/598042c9N6e4e79e5.jpg','X',0),
-       (20130,'优思','','Y',0),
-       (20710,'长虹','','C',0),
-       (21011,'中兴','http://img13.360buyimg.com/popshop/jfs/t2551/271/1317227522/3284/7419745e/56a855a3Ne38ee719.jpg','Z',0),
-       (21360,'beats','','b',0),
-       (21553,'本易','','B',0),
-       (22261,'tonino lamborghini','','T',0),
-       (22575,'布鲁雅尔','','B',0),
-       (23049,'广信','','G',0),
-       (23130,'夏普','http://img12.360buyimg.com/popshop/jfs/t2458/315/2153417538/12751/2ff4e617/56b15fe9Naae1551d.jpg','X',0),
-       (25376,'马歇尔','','M',0),
-       (25591,'vivo','http://img13.360buyimg.com/popshop/jfs/t2458/318/1092287831/5774/b7b4ff89/563b3484N9ba68e13.jpg','V',0),
-       (27094,'努比亚','http://img14.360buyimg.com/popshop/jfs/t2101/155/882410684/3730/b24b14db/5631cd12N7548352d.jpg','N',0),
-       (27306,'360','http://img10.360buyimg.com/popshop/jfs/t5182/149/2437584670/15334/2e1ebf3/591aa1abN602ebecf.jpg','S',0),
-       (32315,'其他','','Q',0),
-       (36404,'金圣达','','J',0),
-       (36652,'贝尔丰','','B',0),
-       (36654,'大显（DaXian）','','D',0),
-       (36657,'朗界（RugGear）','','L',0),
-       (38125,'SUGAR','','S',0),
-       (38126,'美图（meitu）','http://img14.360buyimg.com/popshop/jfs/t3553/225/1930378991/5787/c2ebdd72/5836e479N88a98abb.jpg','M',0),
-       (38605,'MANN','','M',0),
-       (43644,'21KE','','E',0),
-       (45227,'易百年','','Y',0),
-       (45693,'威途（vertu）','','V',0),
-       (45757,'欧奇（ouki）','','o',0),
-       (49144,'SPIGEN','','S',0),
-       (50450,'亿和源（YHYON）','','Y',0),
-       (51040,'BIHEE','','B',0),
-       (52302,'优购（UooGou）','','Y',0),
-       (53317,'迪美（DIM）','','D',0),
-       (54347,'尼凯恩（neken）','','N',0),
-       (55524,'B&O PLAY','','B',0),
-       (56411,'誉品（YEPEN）','','Y',0),
-       (59110,'诺亚信（NOAIN）','','N',0),
-       (60106,'奥乐迪奥（AoleDior）','','A',0),
-       (63032,'一加','http://img14.360buyimg.com/popshop/jfs/t2398/233/975959106/6263/a786f5b8/563b33ffN9c288c6c.jpg','Y',0),
-       (63833,'雷蛇（Razer）','','L',0),
-       (68927,'詹姆士（GERMY）','','G',0),
-       (89010,'纽曼（Newman）','','N',0),
-       (91515,'锤子（smartisan）','http://img13.360buyimg.com/popshop/jfs/t1954/102/907711365/5487/9f26868f/5631ccdeNe8df5efb.jpg','C',0),
-       (102501,'赛博宇华（SOP）','','S',0),
-       (104490,'谷歌（Google）','','G',0),
-       (109150,'爱贝多（Babyfit）','','A',0),
-       (110303,'万利达（Malata）','','W',0),
-       (113718,'优它（YOTAPHONE）','','Y',0),
-       (114119,'TETC','','T',0),
-       (123856,'炫华（xuanhua）','','X',0),
-       (128080,'托尼洛·兰博基尼（Tonino Lamborghini）','','T',0),
-       (129098,'木糖醇（MuTuCu）','','M',0),
-       (130455,'爱玛（EMMA）','','A',0),
-       (131546,'硕尼姆（Sonim）','','S',0),
-       (133747,'CAT','','C',0),
-       (134922,'ZUK','','Z',0),
-       (135967,'sungee','','S',0),
-       (149070,'AGM','','A',0),
-       (151370,'SOYES','','S',0),
-       (151844,'KODAK','','K',0),
-       (155608,'施耐德（schneider）','','S',0),
-       (159313,'MOQI','','M',0),
-       (174275,'Essentials','','E',0),
-       (178969,'SAMWEI','','S',0),
-       (179105,'小霸王（SUBOR）','','X',0),
-       (179528,'VETAS','','V',0),
-       (179624,'优学派','','Y',0),
-       (180213,'纽曼（Newman）','','N',0),
-       (194213,'DEVIALET','','D',0),
-       (196065,'SHANGPREE','','S',0),
-       (197126,'IMOO','','I',0),
-       (203084,'FNNI','','F',0),
-       (204089,'小格雷','','X',0),
-       (205278,'COTTEE','','C',0),
-       (209178,'YAAO','','Y',0),
-       (214915,'纽曼','','N',0),
-       (219484,'CONQUEST','','C',0),
-       (221149,'铂爵（BIOJUET）','','B',0),
-       (222294,'荣耀','','R',0),
-       (223023,'保千里（PROTRULY）','','B',0),
-       (223199,'Blu','','B',0),
-       (223316,'unruly','','U',0),
-       (225085,'Tonino Lamborghini','','T',0),
-       (228280,'守护宝','','S',0),
-       (233984,'8848','','B',0),
-       (234746,'Gold Elite','','G',0),
-       (238798,'HONOR','','H',0),
-       (240112,'BIXING','','B',0),
-       (246053,'锐族','','R',0),
-       (247149,'国美（GOME）','','G',0),
-       (247652,'中兴健康（ZTE Health）','','Z',0),
-       (248132,'YOSTAR','','Y',0),
-       (249404,'创星','','C',0),
-       (253520,'VERTU','','V',0),
-       (261196,'LBER','','L',0),
-       (261480,'滝风（ION MEDIC）','','L',0),
-       (262180,'梦幻门（MENG HUAN MEN）','','M',0),
-       (262334,'意龍（E&L）','','Y',0),
-       (264451,'艾尼卡（Anica）','','A',0),
-       (265247,'DMZ DAMUZHI','','D',0),
-       (267981,'UNNO','','U',0),
-       (271696,'红鸟','','H',0),
-       (276102,'紐萬（Niuwan）','','N',0),
-       (276381,'Podor','','B',0),
-       (276780,'海语（HAIYU）','','H',0),
-       (278268,'YISON','','Y',0),
-       (278755,'SOAP','','S',0),
-       (279173,'renebelle','','R',0),
-       (280120,'AKESR','','A',0),
-       (280152,'YOTA','','Y',0),
-       (284571,'HOOLFINE','','H',0),
-       (285331,'金柏利','','J',0),
-       (286273,'BLACKPOULO','','B',0),
-       (287292,'SIMPLEWAY','','S',0),
-       (290104,'KaiDC','','K',0),
-       (290682,'奥缇斯（autrise）','','A',0),
-       (302250,'橄榄树（Olive tree）','','G',0),
-       (304654,'HIGE','','H',0),
-       (314866,'360手机','','S',0),
-       (316578,'克里特（kreta）','','k',0),
-       (316596,'HOOLFINE','','H',0),
-       (316618,'RONXS','','R',0),
-       (325396,'飞利浦（PHILIPS）','','P',0),
-       (325398,'比亚兹（ESK）','','B',0),
-       (325399,'亿色(ESR)','','Y',0),
-       (325400,'阿里斯顿',NULL,'A',0),
-       (325402,'ABC',NULL,'A',0),
-       (325403,'ABC',NULL,'A',0),
-       (325404,'黑马','http://www.itheima.com/','H',0),
-       (325405,'传智','http://www.baidu.com','C',0),
-       (325406,'黑马','11','H',0),
-       (325411,'迷你','http://localhost:9101/img/12.jpg','M',0),
-       (325412,'新立','http://localhost:9101/img/11.jpg','X',0),
-       (325413,'我',NULL,'1',0);
+TRUNCATE `gds_brands`;
+
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (1115, 'HTC', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (1528, 'LG', '', 'L', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (1912, 'NEC', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (2032, 'OPPO', 'http://img10.360buyimg.com/popshop/jfs/t2119/133/2264148064/4303/b8ab3755/56b2f385N8e4eb051.jpg', 'O', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (2505, 'TCL', '', 'T', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (3177, '爱贝多', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (3539, '安桥', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (3941, '白金', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (4986, '波导A', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (6522, '朵唯', '', 'D', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (6742, '飞利浦', 'http://img12.360buyimg.com/popshop/jfs/t18361/122/1318410299/1870/36fe70c9/5ac43a4dNa44a0ce0.jpg', 'F', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (7174, '富可视', '', 'F', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (7203, '富士通', '', 'F', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (7420, '格力', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (7817, '海尔', 'http://image.leyou.com/group1/M00/00/00/wKg4ZVrYZcyAVOzoAAB846UcmLg013.png', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (7888, '海信', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (8214, '黑莓', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (8551, '华硕', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (8557, '华为', 'http://img10.360buyimg.com/popshop/jfs/t5662/36/8888655583/7806/1c629c01/598033b4Nd6055897.jpg', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (8740, '惠普', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (9420, '金立', '', 'J', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (9637, '京瓷', '', 'J', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (10317, '康佳', '', 'K', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (10640, '酷派', 'http://img10.360buyimg.com/popshop/jfs/t2521/347/883897149/3732/91c917ec/5670cf96Ncffa2ae6.jpg', 'K', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (11516, '联想', 'http://img11.360buyimg.com/popshop/jfs/t6799/74/1348425607/15774/bc286188/59804c98N1944175e.jpg', 'L', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (12286, '漫步者', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (12669, '魅族', 'http://img13.360buyimg.com/popshop/jfs/t3511/131/31887105/4943/48f83fa9/57fdf4b8N6e95624d.jpg', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (13066, '摩托罗拉', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (13539, '诺基亚', 'http://img11.360buyimg.com/popshop/jfs/t2572/102/189476501/7717/16cc5814/563b33d4N6c59780c.jpg', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (14026, 'Apple', 'http://img12.360buyimg.com/popshop/jfs/t2989/240/151377693/3895/30ad9044/574d36dbN262ef26d.jpg', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (14478, '青橙', '', 'Q', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (15127, '三星', 'http://img14.360buyimg.com/popshop/jfs/t2701/34/484677369/7439/ee13e8fa/5716e2c4Nc925baf3.jpg', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (15539, '神舟', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (16506, '索爱', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (16538, '索尼', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (16975, '天语', '', 'T', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (17193, '外星人', '', 'W', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (17424, '威图', '', 'W', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (17440, '微软', '', 'W', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (18078, 'NAMO', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (18362, '小辣椒', 'http://img14.360buyimg.com/popshop/g14/M00/09/10/rBEhV1K6uOwIAAAAAAAGxx0kTvQAAHWYwPIloIAAAbf434.png', 'X', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (18374, '小米', 'http://img10.360buyimg.com/popshop/jfs/t7084/169/439244907/4647/724c7958/598042c9N6e4e79e5.jpg', 'X', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (20130, '优思', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (20710, '长虹', '', 'C', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (21011, '中兴', 'http://img13.360buyimg.com/popshop/jfs/t2551/271/1317227522/3284/7419745e/56a855a3Ne38ee719.jpg', 'Z', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (21360, 'beats', '', 'b', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (21553, '本易', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (22261, 'tonino lamborghini', '', 'T', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (22575, '布鲁雅尔', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (23049, '广信', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (23130, '夏普', 'http://img12.360buyimg.com/popshop/jfs/t2458/315/2153417538/12751/2ff4e617/56b15fe9Naae1551d.jpg', 'X', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (25376, '马歇尔', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (25591, 'vivo', 'http://img13.360buyimg.com/popshop/jfs/t2458/318/1092287831/5774/b7b4ff89/563b3484N9ba68e13.jpg', 'V', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (27094, '努比亚', 'http://img14.360buyimg.com/popshop/jfs/t2101/155/882410684/3730/b24b14db/5631cd12N7548352d.jpg', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (27306, '360', 'http://img10.360buyimg.com/popshop/jfs/t5182/149/2437584670/15334/2e1ebf3/591aa1abN602ebecf.jpg', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (32315, '其他', '', 'Q', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (36404, '金圣达', '', 'J', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (36652, '贝尔丰', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (36654, '大显（DaXian）', '', 'D', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (36657, '朗界（RugGear）', '', 'L', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (38125, 'SUGAR', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (38126, '美图（meitu）', 'http://img14.360buyimg.com/popshop/jfs/t3553/225/1930378991/5787/c2ebdd72/5836e479N88a98abb.jpg', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (38605, 'MANN', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (43644, '21KE', '', 'E', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (45227, '易百年', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (45693, '威途（vertu）', '', 'V', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (45757, '欧奇（ouki）', '', 'o', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (49144, 'SPIGEN', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (50450, '亿和源（YHYON）', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (51040, 'BIHEE', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (52302, '优购（UooGou）', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (53317, '迪美（DIM）', '', 'D', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (54347, '尼凯恩（neken）', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (55524, 'B&O PLAY', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (56411, '誉品（YEPEN）', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (59110, '诺亚信（NOAIN）', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (60106, '奥乐迪奥（AoleDior）', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (63032, '一加', 'http://img14.360buyimg.com/popshop/jfs/t2398/233/975959106/6263/a786f5b8/563b33ffN9c288c6c.jpg', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (63833, '雷蛇（Razer）', '', 'L', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (68927, '詹姆士（GERMY）', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (89010, '纽曼（Newman）', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (91515, '锤子（smartisan）', 'http://img13.360buyimg.com/popshop/jfs/t1954/102/907711365/5487/9f26868f/5631ccdeNe8df5efb.jpg', 'C', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (102501, '赛博宇华（SOP）', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (104490, '谷歌（Google）', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (109150, '爱贝多（Babyfit）', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (110303, '万利达（Malata）', '', 'W', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (113718, '优它（YOTAPHONE）', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (114119, 'TETC', '', 'T', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (123856, '炫华（xuanhua）', '', 'X', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (128080, '托尼洛·兰博基尼（Tonino Lamborghini）', '', 'T', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (129098, '木糖醇（MuTuCu）', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (130455, '爱玛（EMMA）', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (131546, '硕尼姆（Sonim）', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (133747, 'CAT', '', 'C', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (134922, 'ZUK', '', 'Z', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (135967, 'sungee', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (149070, 'AGM', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (151370, 'SOYES', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (151844, 'KODAK', '', 'K', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (155608, '施耐德（schneider）', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (159313, 'MOQI', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (174275, 'Essentials', '', 'E', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (178969, 'SAMWEI', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (179105, '小霸王（SUBOR）', '', 'X', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (179528, 'VETAS', '', 'V', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (179624, '优学派', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (180213, '纽曼（Newman）', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (194213, 'DEVIALET', '', 'D', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (196065, 'SHANGPREE', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (197126, 'IMOO', '', 'I', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (203084, 'FNNI', '', 'F', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (204089, '小格雷', '', 'X', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (205278, 'COTTEE', '', 'C', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (209178, 'YAAO', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (214915, '纽曼', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (219484, 'CONQUEST', '', 'C', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (221149, '铂爵（BIOJUET）', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (222294, '荣耀', '', 'R', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (223023, '保千里（PROTRULY）', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (223199, 'Blu', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (223316, 'unruly', '', 'U', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (225085, 'Tonino Lamborghini', '', 'T', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (228280, '守护宝', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (233984, '8848', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (234746, 'Gold Elite', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (238798, 'HONOR', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (240112, 'BIXING', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (246053, '锐族', '', 'R', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (247149, '国美（GOME）', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (247652, '中兴健康（ZTE Health）', '', 'Z', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (248132, 'YOSTAR', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (249404, '创星', '', 'C', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (253520, 'VERTU', '', 'V', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (261196, 'LBER', '', 'L', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (261480, '滝风（ION MEDIC）', '', 'L', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (262180, '梦幻门（MENG HUAN MEN）', '', 'M', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (262334, '意龍（E&L）', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (264451, '艾尼卡（Anica）', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (265247, 'DMZ DAMUZHI', '', 'D', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (267981, 'UNNO', '', 'U', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (271696, '红鸟', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (276102, '紐萬（Niuwan）', '', 'N', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (276381, 'Podor', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (276780, '海语（HAIYU）', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (278268, 'YISON', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (278755, 'SOAP', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (279173, 'renebelle', '', 'R', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (280120, 'AKESR', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (280152, 'YOTA', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (284571, 'HOOLFINE', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (285331, '金柏利', '', 'J', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (286273, 'BLACKPOULO', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (287292, 'SIMPLEWAY', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (290104, 'KaiDC', '', 'K', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (290682, '奥缇斯（autrise）', '', 'A', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (302250, '橄榄树（Olive tree）', '', 'G', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (304654, 'HIGE', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (314866, '360手机', '', 'S', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (316578, '克里特（kreta）', '', 'k', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (316596, 'HOOLFINE', '', 'H', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (316618, 'RONXS', '', 'R', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (325396, '飞利浦（PHILIPS）', '', 'P', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (325398, '比亚兹（ESK）', '', 'B', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (325399, '亿色(ESR)', '', 'Y', 0);
+INSERT INTO `gds_brands`(`id`,`name`,`image`,`letter`,`sequence`) VALUES (325400, '阿里斯顿', NULL, 'A', 0);
 
 
+-- 品牌表
+TRUNCATE `gds_brand_categories`;
 
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (76, 2505);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (76, 7817);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (76, 11516);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (142, 7420);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (163, 8557);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (558, 1115);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (558, 2032);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (558, 8557);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (558, 18374);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (1108, 228280);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (1192, 8557);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (1192, 18374);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (11156, 18374);
+INSERT INTO `gds_brand_categories`(`brand_id`,`category_id`) VALUES (11156, 325414);

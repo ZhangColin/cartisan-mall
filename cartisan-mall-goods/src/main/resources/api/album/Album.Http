@@ -1,0 +1,43 @@
+### 搜索相册
+GET http://{{host}}:{{port}}/albums/search?name=&status=&page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取相册
+GET http://{{host}}:{{port}}/albums/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加相册
+POST http://{{host}}:{{port}}/albums
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "title": "",
+  "image": "",
+  "imageItems": ""
+}
+
+### 编辑相册
+PUT http://{{host}}:{{port}}/albums/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "title": "",
+  "image": "",
+  "imageItems": ""
+}
+
+### 删除相册
+DELETE http://{{host}}:{{port}}/albums/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

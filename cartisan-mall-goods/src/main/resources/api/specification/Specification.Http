@@ -1,0 +1,45 @@
+### 搜索规格
+GET http://{{host}}:{{port}}/specifications/search?name=&status=&page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取规格
+GET http://{{host}}:{{port}}/specifications/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加规格
+POST http://{{host}}:{{port}}/specifications
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "templateId": "",
+  "name": "",
+  "options": "",
+  "sequence": ""
+}
+
+### 编辑规格
+PUT http://{{host}}:{{port}}/specifications/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "templateId": "",
+  "name": "",
+  "options": "",
+  "sequence": ""
+}
+
+### 删除规格
+DELETE http://{{host}}:{{port}}/specifications/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
