@@ -1,0 +1,81 @@
+### 搜索SPU
+GET http://{{host}}:{{port}}/spus/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取SPU
+GET http://{{host}}:{{port}}/spus/1146722014917144576
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加SPU
+POST http://{{host}}:{{port}}/spus
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  "sn": "",
+  "name": "",
+  "caption": "",
+  "brandId": "",
+  "category1Id": "",
+  "category2Id": "",
+  "category3Id": "",
+  "templateId": "",
+  "image": "",
+  "images": "",
+  "saleService": "",
+  "introduction": "",
+  "specificationItems": "",
+  "parameterItems": "",
+  "isMarketable": "",
+  "enableSpecification": "",
+  "auditStatus": ""
+}
+
+### 编辑SPU
+PUT http://{{host}}:{{port}}/spus/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  "sn": "",
+  "name": "",
+  "caption": "",
+  "brandId": "",
+  "category1Id": "",
+  "category2Id": "",
+  "category3Id": "",
+  "templateId": "",
+  "image": "",
+  "images": "",
+  "saleService": "",
+  "introduction": "",
+  "specificationItems": "",
+  "parameterItems": "",
+  "isMarketable": "",
+  "enableSpecification": "",
+  "auditStatus": ""
+}
+
+### 审核SPU
+PUT http://{{host}}:{{port}}/spus/1146722014917144576/audit
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 上架SPU
+PUT http://{{host}}:{{port}}/spus/1146722014917144576/onSale
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 下架SPU
+PUT http://{{host}}:{{port}}/spus/1146722014917144576/outSale
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

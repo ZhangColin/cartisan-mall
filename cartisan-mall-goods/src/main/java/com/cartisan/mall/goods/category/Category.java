@@ -2,20 +2,9 @@ package com.cartisan.mall.goods.category;
 
 import com.cartisan.domain.AbstractEntity;
 import com.cartisan.domain.AggregateRoot;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import java.lang.Long;
-import java.lang.String;
-import java.lang.Integer;
-
-import static java.util.stream.Collectors.toList;
 
 @Entity
 @Table(name = "gds_categories")
@@ -36,18 +25,18 @@ public class Category extends AbstractEntity implements AggregateRoot {
     private String name;
 
     @Column(name = "is_show")
-    private String isShow;
+    private Boolean isShow;
 
     @Column(name = "is_menu")
-    private String isMenu;
+    private Boolean isMenu;
 
     @Column(name = "sequence")
     private Integer sequence;
 
     protected Category() {}
 
-    public Category(Long parentId, Long templateId, String name, String isShow, String isMenu, Integer sequence) {
-        
+    public Category(Long parentId, Long templateId, String name, Boolean isShow, Boolean isMenu, Integer sequence) {
+
         this.parentId = parentId;
         this.templateId = templateId;
         this.name = name;
@@ -56,7 +45,7 @@ public class Category extends AbstractEntity implements AggregateRoot {
         this.sequence = sequence;
     }
 
-    public void describe(Long parentId, Long templateId, String name, String isShow, String isMenu, Integer sequence) {
+    public void describe(Long parentId, Long templateId, String name, Boolean isShow, Boolean isMenu, Integer sequence) {
         this.parentId = parentId;
         this.templateId = templateId;
         this.name = name;

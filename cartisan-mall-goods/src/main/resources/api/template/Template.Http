@@ -1,11 +1,11 @@
 ### 搜索模板
-GET http://{{host}}:{{port}}/templates/search?name=&status=&page=0&size=10
+GET http://{{host}}:{{port}}/templates/search?page=0&size=10
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 ### 获取模板
-GET http://{{host}}:{{port}}/templates/1
+GET http://{{host}}:{{port}}/templates/44
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -17,19 +17,17 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
-  "name": ""
+  "name": "图书"
 }
 
 ### 编辑模板
-PUT http://{{host}}:{{port}}/templates/1
+PUT http://{{host}}:{{port}}/templates/44
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
-  "name": ""
+  "name": "音像图书"
 }
 
 ### 删除模板

@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.lang.Long;
+import java.lang.Boolean;
 import java.lang.String;
 import java.lang.Integer;
 
@@ -22,10 +23,10 @@ public class CategoryDto {
     private String name;
 
     @ApiModelProperty(value = "是否显示")
-    private String isShow;
+    private Boolean isShow;
 
     @ApiModelProperty(value = "是否导航")
-    private String isMenu;
+    private Boolean isMenu;
 
     @ApiModelProperty(value = "排序")
     private Integer sequence;

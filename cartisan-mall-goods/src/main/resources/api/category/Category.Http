@@ -1,5 +1,5 @@
 ### 搜索商品分类
-GET http://{{host}}:{{port}}/categories/search?name=&status=&page=0&size=10
+GET http://{{host}}:{{port}}/categories/search?page=0&size=10
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -17,33 +17,31 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
-  "parentId": "",
-  "templateId": "",
-  "name": "",
-  "isShow": "",
-  "isMenu": "",
-  "sequence": ""
+  "parentId": "7",
+  "templateId": "42",
+  "name": "教育音像1",
+  "isShow": true,
+  "isMenu": false,
+  "sequence": 1
 }
 
 ### 编辑商品分类
-PUT http://{{host}}:{{port}}/categories/1
+PUT http://{{host}}:{{port}}/categories/1183
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
-  "parentId": "",
-  "templateId": "",
-  "name": "",
-  "isShow": "",
-  "isMenu": "",
-  "sequence": ""
+  "parentId": "7",
+  "templateId": "42",
+  "name": "教育音像",
+  "isShow": true,
+  "isMenu": false,
+  "sequence": 1
 }
 
 ### 删除商品分类
-DELETE http://{{host}}:{{port}}/categories/1
+DELETE http://{{host}}:{{port}}/categories/1183
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

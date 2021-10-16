@@ -23,27 +23,27 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "name": "",
-  "image": "",
-  "letter": "",
-  "sequence": ""
+  "name": "Cartisan",
+  "image": "Cartisan",
+  "letter": "C",
+  "sequence": 10
 }
 
 ### 编辑品牌
-PUT http://{{host}}:{{port}}/brands/1
+PUT http://{{host}}:{{port}}/brands/325401
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "name": "",
-  "image": "",
-  "letter": "",
-  "sequence": ""
+  "name": "Cartisan1",
+  "image": "Cartisan1",
+  "letter": "C",
+  "sequence": 20
 }
 
 ### 删除品牌
-DELETE http://{{host}}:{{port}}/brands/325413
+DELETE http://{{host}}:{{port}}/brands/325401
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

@@ -1,21 +1,16 @@
 package com.cartisan.mall.goods.category;
 
-import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.exception.CartisanException;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 import javax.transaction.Transactional;
-import java.util.List;
 
 import static com.cartisan.repository.ConditionSpecifications.querySpecification;
 import static com.cartisan.util.AssertionUtil.requirePresent;
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class CategoryAppService {
