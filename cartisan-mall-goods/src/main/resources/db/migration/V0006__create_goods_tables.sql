@@ -11,7 +11,6 @@ CREATE TABLE `gds_spus` (
     `category2_id` bigint NULL COMMENT '二级分类Id',
     `category3_id` bigint NULL COMMENT '三级分类Id',
     `template_id` bigint NULL COMMENT '模板Id',
-    `freight_id` bigint NULL COMMENT '运费模板Id',
     `image` varchar(256) DEFAULT '' COMMENT '图片',
     `images` varchar(1000) DEFAULT '' COMMENT '图片列表',
     `sale_service` varchar(50) DEFAULT '' COMMENT '售后服务',
