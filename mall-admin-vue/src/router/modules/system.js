@@ -47,24 +47,6 @@ const system = {
     name: 'menu',
     component: () => import('@/views/system/menu/menu'),
     meta: { title: '菜单管理', icon: 'nested' }
-  }, {
-    path: 'dictionary',
-    name: 'dictionary',
-    component: nested,
-    redirect: '/system/dictionary/dictionary-list',
-    meta: { title: '字典管理', icon: 'nested' },
-    children: [{
-      path: 'dictionary-list',
-      component: () => import('@/views/system/dictionary/dictionary'),
-      meta: { title: '字典管理', breadcrumb: false },
-      hidden: false
-    }, {
-      path: 'dictionary-item',
-      name: 'dictionary-item',
-      component: () => import('@/views/system/dictionary/dictionary-item'),
-      meta: { title: '字典项' },
-      hidden: true
-    }]
   }]
 }
 

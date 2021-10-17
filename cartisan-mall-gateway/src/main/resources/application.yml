@@ -11,11 +11,8 @@ spring:
         corsConfigurations:
           '[/**]': # 匹配所有请求
             allowedOrigins: "*" #跨域处理 允许所有的域
-            allowedMethods: # 支持的方法
-              - GET
-              - POST
-              - PUT
-              - DELETE
+            allowedHeaders: "*"
+            allowedMethods: "*"
       routes:
         - id: cartisan_mall_goods_route
           uri: lb://cartisan-mall-goods
