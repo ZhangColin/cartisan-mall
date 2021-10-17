@@ -4,7 +4,7 @@ package com.cartisan.mall;
  * @author colin
  */
 
-import com.cartisan.utils.SnowflakeIdWorker;
+import com.cartisan.util.SnowflakeIdWorker;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

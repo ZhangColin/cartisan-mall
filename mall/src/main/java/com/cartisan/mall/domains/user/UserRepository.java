@@ -1,6 +1,6 @@
 package com.cartisan.mall.domains.user;
 
-import com.cartisan.repositories.BaseRepository;
+import com.cartisan.repository.BaseRepository;
 
 import java.util.Optional;
 

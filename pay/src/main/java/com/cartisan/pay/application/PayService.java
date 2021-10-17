@@ -7,7 +7,7 @@ import com.cartisan.pay.domain.PaymentResponse;
 import com.cartisan.pay.domain.primitive.PaymentPlatform;
 import com.cartisan.pay.domain.primitive.PaymentStatus;
 import com.cartisan.pay.domain.primitive.PaymentType;
-import com.cartisan.utils.SnowflakeIdWorker;
+import com.cartisan.util.SnowflakeIdWorker;
 import com.google.gson.Gson;
 import com.lly835.bestpay.enums.OrderStatusEnum;
 import lombok.extern.slf4j.Slf4j;

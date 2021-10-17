@@ -5,7 +5,7 @@ import com.cartisan.mall.domains.product.Product;
 import com.cartisan.mall.domains.product.ProductRepository;
 import com.cartisan.mall.domains.shipping.Shipping;
 import com.cartisan.mall.domains.shipping.ShippingRepository;
-import com.cartisan.utils.SnowflakeIdWorker;
+import com.cartisan.util.SnowflakeIdWorker;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

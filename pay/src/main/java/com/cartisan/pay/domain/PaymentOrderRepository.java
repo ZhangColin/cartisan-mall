@@ -1,6 +1,6 @@
 package com.cartisan.pay.domain;
 
-import com.cartisan.repositories.BaseRepository;
+import com.cartisan.repository.BaseRepository;
 
 import java.util.Optional;
 
