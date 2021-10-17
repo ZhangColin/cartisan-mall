@@ -1,7 +1,12 @@
 <template>
   <div class="app-container">
     <el-row :gutter="24" class="filter-container">
-      <el-col :span="6" />
+      <el-col :span="6">
+        <el-input v-model="queryParam.name" class="filter-item" placeholder="请输入名称" clearable />
+      </el-col>
+      <el-col :span="6">
+        <el-input v-model="queryParam.letter" maxlength="1" class="filter-item" placeholder="请输入首字母" clearable />
+      </el-col>
       <el-col :span="12">
         <el-button class="filter-item" type="primary" @click="handleSearch">查询</el-button>
         <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
@@ -20,8 +25,22 @@
     >
       <el-table-column align="center" label="品牌id" prop="id" />
       <el-table-column align="center" label="名称" prop="name" />
-      <el-table-column align="center" label="图片地址" prop="image" />
       <el-table-column align="center" label="首字母" prop="letter" />
+      <el-table-column align="center" label="LOGO" prop="image">
+        <template slot-scope="scope">
+          <el-image
+            style="width: 50px; height: 50px"
+            :src="scope.row.image"
+            :fit="fit"
+          />
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="相关">
+        <template>
+          商品：<el-link type="primary">100</el-link>
+          评价：<el-link type="primary">1000</el-link>
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="排序" prop="sequence" />
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
@@ -58,14 +77,14 @@
           <el-form-item label="名称" prop="name">
             <el-input v-model="entityData.name" />
           </el-form-item>
-          <el-form-item label="图片地址" prop="image">
-            <el-input v-model="entityData.image" />
-          </el-form-item>
           <el-form-item label="首字母" prop="letter">
             <el-input v-model="entityData.letter" />
           </el-form-item>
+          <el-form-item label="LOGO" prop="image">
+            <el-input v-model="entityData.image" />
+          </el-form-item>
           <el-form-item label="排序" prop="sequence">
-            <el-input v-model="entityData.sequence" />
+            <el-input-number v-model="entityData.sequence" />
           </el-form-item>
         </el-form>
         <div class="drawer__footer">
