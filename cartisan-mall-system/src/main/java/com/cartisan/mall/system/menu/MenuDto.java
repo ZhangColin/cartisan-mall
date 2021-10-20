@@ -5,7 +5,6 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.Setter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,21 +35,20 @@ public class MenuDto {
     @ApiModelProperty(value = "菜单排序")
     private Integer sort;
 
-    @Setter
     @JsonProperty("children")
     private List<MenuDto> childMenus;
 
-    public static List<MenuDto> buildMenuTreeList(List<MenuDto> menus) {
+    public static List<MenuDto> buildMenuTree(List<MenuDto> menus) {
         Multimap<String, MenuDto> menuMap = ArrayListMultimap.create();
         menus.forEach(menu -> menuMap.put(menu.getParentId(), menu));
 
-        return buildMenuTreeList("0", menuMap);
+        return buildMenuTree("0", menuMap);
     }
 
-    private static List<MenuDto> buildMenuTreeList(String parentId, Multimap<String, MenuDto> menuMap) {
+    private static List<MenuDto> buildMenuTree(String parentId, Multimap<String, MenuDto> menuMap) {
         return menuMap.get(parentId).stream()
                 .peek(menu -> {
-                    final List<MenuDto> childMenus = buildMenuTreeList(menu.getId(), menuMap);
+                    final List<MenuDto> childMenus = buildMenuTree(menu.getId(), menuMap);
                     if (childMenus.size() > 0) {
                         menu.setChildMenus(childMenus);
                     }

@@ -1,10 +1,13 @@
 package com.cartisan.mall.goods.category;
 
-import com.cartisan.repository.Condition;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
+/**
+ * @author colin
+ */
 @Data
 public class CategoryQuery {
+    @ApiModelProperty(value = "上级分类")
+    private Long parentId = 0L;
 }

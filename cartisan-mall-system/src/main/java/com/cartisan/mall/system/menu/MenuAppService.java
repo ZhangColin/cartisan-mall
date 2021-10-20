@@ -20,11 +20,11 @@ public class MenuAppService {
         this.repository = repository;
     }
 
-    public List<MenuDto> getMenuTreeList() {
+    public List<MenuDto> getMenuTree() {
         final List<MenuDto> menuDtos = converter.convert(
                 repository.findAll(Sort.by(Sort.Direction.ASC, "sort")));
 
-        return MenuDto.buildMenuTreeList(menuDtos);
+        return MenuDto.buildMenuTree(menuDtos);
     }
 
 

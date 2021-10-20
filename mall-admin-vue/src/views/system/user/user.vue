@@ -99,7 +99,7 @@
     </el-table>
     <el-pagination
       :current-page.sync="page.currentPage"
-      :page-sizes="[5, 10, 20]"
+      :page-sizes="[5, 10, 20, 50, 100]"
       :page-size="page.pageSize"
       :total="page.total"
       class="pagination-container"
@@ -202,7 +202,7 @@
 <script>
 import { PaginationMixin } from '@/mixins/pagination-mixin'
 import { getUser, createUser, disableUser, enableUser, resetPassword, assignRoles, assignOrganization }
-  from '@/api/system/user-api'
+from '@/api/system/user-api'
 import { getAllRoles } from '@/api/system/role-api'
 import { getOrganizationList } from '@/api/system/organization-api'
 

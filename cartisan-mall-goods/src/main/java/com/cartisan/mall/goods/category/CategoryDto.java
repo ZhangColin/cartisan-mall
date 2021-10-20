@@ -8,6 +8,9 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.lang.Integer;
 
+/**
+ * @author colin
+ */
 @Data
 public class CategoryDto {
     @ApiModelProperty(value = "分类id")
@@ -15,9 +18,6 @@ public class CategoryDto {
 
     @ApiModelProperty(value = "上级分类Id")
     private Long parentId;
-
-    @ApiModelProperty(value = "模板Id")
-    private Long templateId;
 
     @ApiModelProperty(value = "名称")
     private String name;
@@ -27,6 +27,12 @@ public class CategoryDto {
 
     @ApiModelProperty(value = "是否导航")
     private Boolean isMenu;
+
+    @ApiModelProperty(value = "模板Id")
+    private Long templateId;
+
+    @ApiModelProperty(value = "模板名称")
+    private String templateName;
 
     @ApiModelProperty(value = "排序")
     private Integer sequence;

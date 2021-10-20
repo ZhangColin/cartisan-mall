@@ -6,6 +6,9 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
+/**
+ * @author colin
+ */
 @Entity
 @Table(name = "gds_categories")
 @Getter

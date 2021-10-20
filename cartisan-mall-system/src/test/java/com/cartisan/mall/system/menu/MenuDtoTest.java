@@ -19,7 +19,7 @@ public class MenuDtoTest {
         chileMenu.setParentId(menuDto.getId());
 
         // when
-        final List<MenuDto> menuTreeList = MenuDto.buildMenuTreeList(asList(menuDto, chileMenu));
+        final List<MenuDto> menuTreeList = MenuDto.buildMenuTree(asList(menuDto, chileMenu));
 
         // then
         assertThat(menuTreeList.size()).isEqualTo(1);

@@ -3,6 +3,9 @@ package com.cartisan.mall.goods.category;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * @author colin
+ */
 @Data
 public class CategoryParam {
     @ApiModelProperty(value = "上级分类Id")

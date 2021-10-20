@@ -49,7 +49,7 @@
     </el-table>
     <el-pagination
       :current-page.sync="page.currentPage"
-      :page-sizes="[5, 10, 20]"
+      :page-sizes="[5, 10, 20, 50, 100]"
       :page-size="page.pageSize"
       :total="page.total"
       class="pagination-container"

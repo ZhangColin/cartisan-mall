@@ -35,7 +35,7 @@ public class MenuAppServiceTest {
         when(repository.findAll(any(Sort.class))).thenReturn(singletonList(menu));
 
         // when
-        final List<MenuDto> menuDtos = service.getMenuTreeList();
+        final List<MenuDto> menuDtos = service.getMenuTree();
 
         // then
         assertThat(menuDtos.size()).isEqualTo(1);

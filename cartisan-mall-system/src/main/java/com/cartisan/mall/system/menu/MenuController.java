@@ -29,8 +29,8 @@ public class MenuController {
 
     @ApiOperation(value = "获取所有菜单")
     @GetMapping
-    public ResponseEntity<List<MenuDto>> getMenuTreeList() {
-        return success(service.getMenuTreeList());
+    public ResponseEntity<List<MenuDto>> getMenuTree() {
+        return success(service.getMenuTree());
     }
 
     @ApiOperation(value = "添加菜单")
