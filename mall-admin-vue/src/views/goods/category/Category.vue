@@ -3,7 +3,10 @@
     <el-row :gutter="24" class="filter-container">
       <el-col :span="12">
         <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item v-for="pc in parentCategories" :key="pc.id"><a @click="handleShowBreadcrumbSubCategories(pc)">{{ pc.name }}</a></el-breadcrumb-item>
+          <el-breadcrumb-item v-for="(pc, index) in parentCategoryStack" :key="pc.id">
+            <a v-if="(index+1)<parentCategoryStack.length" @click="handleShowSubCategories(pc, index+1)">{{ pc.name }}</a>
+            <span v-else>{{ pc.name }}</span>
+          </el-breadcrumb-item>
         </el-breadcrumb>
       </el-col>
       <el-col :span="12" align="right">
@@ -21,21 +24,20 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="分类ID" prop="id" />
+      <el-table-column align="center" label="分类ID" prop="id" width="60" />
       <el-table-column align="center" label="名称" prop="name">
         <template slot-scope="scope">
-          <el-button v-if="parentCategories.length<3" type="text" @click="handleShowSubCategories(scope.row)">{{ scope.row.name }}</el-button>
-          <span v-if="parentCategories.length===3">{{ scope.row.name }}</span>
+          <el-button v-if="parentCategoryStack.length<3" type="text" @click="handleShowSubCategories(scope.row, parentCategoryStack.length)">{{ scope.row.name }}</el-button>
+          <span v-if="parentCategoryStack.length===3">{{ scope.row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="级别">
+      <el-table-column align="center" label="级别" width="60">
         <template>
-          <span>{{ parentCategories.length }}</span>
+          <span>{{ parentCategoryStack.length }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="商品数量" />
       <el-table-column align="center" label="数量单位" />
-      <el-table-column align="center" label="上级分类Id" prop="parentId" />
       <el-table-column align="center" label="是否显示" prop="isShow">
         <template slot-scope="scope">
           <el-switch
@@ -57,12 +59,13 @@
         </template>
       </el-table-column>
       <el-table-column align="center" label="模板" prop="templateName" />
-      <el-table-column align="center" label="排序" prop="sequence" />
+      <el-table-column align="center" label="排序" prop="sequence" width="60" />
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
           <el-dropdown split-button @click="handleEdit(scope.$index, scope.row)">
             编辑
             <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>转移商品</el-dropdown-item>
               <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -90,23 +93,31 @@
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
 
-          <el-form-item label="上级分类Id" prop="parentId">
-            <el-input v-model="entityData.parentId" />
-          </el-form-item>
-          <el-form-item label="模板Id" prop="templateId">
-            <el-input v-model="entityData.templateId" />
+          <el-form-item label="上级分类" prop="parentId">
+            <el-input readonly :value="parentCategoryStack[parentCategoryStack.length-1].name" />
           </el-form-item>
           <el-form-item label="名称" prop="name">
             <el-input v-model="entityData.name" />
           </el-form-item>
           <el-form-item label="是否显示" prop="isShow">
-            <el-input v-model="entityData.isShow" />
+            <el-switch
+              v-model="entityData.isShow"
+              :active-value="true"
+              :inactive-value="false"
+            />
           </el-form-item>
           <el-form-item label="是否导航" prop="isMenu">
-            <el-input v-model="entityData.isMenu" />
+            <el-switch
+              v-model="entityData.isMenu"
+              :active-value="true"
+              :inactive-value="false"
+            />
+          </el-form-item>
+          <el-form-item label="模板" prop="templateId">
+            <el-input v-model="entityData.templateId" />
           </el-form-item>
           <el-form-item label="排序" prop="sequence">
-            <el-input v-model="entityData.sequence" />
+            <el-input-number v-model="entityData.sequence" />
           </el-form-item>
         </el-form>
         <div class="drawer__footer">
@@ -128,14 +139,14 @@ export default {
   data() {
     return {
       apiBaseUrl: '/goods/categories',
-      parentCategories: [{ id: 0, name: '顶级分类' }],
+      parentCategoryStack: [{ id: 0, name: '顶级分类' }],
       defaultData: {
-        parentId: '',
+        parentId: 0,
         templateId: '',
         name: '',
-        isShow: '',
-        isMenu: '',
-        sequence: ''
+        isShow: true,
+        isMenu: false,
+        sequence: 0
       },
       title: '商品分类',
       rules: {
@@ -147,24 +158,15 @@ export default {
   created() {
   },
   methods: {
-    handleShowSubCategories(category) {
+    handleShowSubCategories(category, categoryLevel) {
       this.page.currentPage = 1
       this.queryParam.parentId = category.id
-      this.parentCategories = [...this.parentCategories, { id: category.id, name: category.name }]
-      this.fetchData()
-    },
-    handleShowBreadcrumbSubCategories(category) {
-      this.page.currentPage = 1
-      this.queryParam.parentId = category.id
-
-      const categories = []
-
-      for (const index in this.parentCategories) {
-        const pc = this.parentCategories[index]
-        categories.push(pc)
-        if (pc.id === category.id) break
+      if (this.parentCategoryStack.length === categoryLevel) {
+        this.parentCategoryStack = [...this.parentCategoryStack, { id: category.id, name: category.name }]
+      } else {
+        this.parentCategoryStack = this.parentCategoryStack.slice(0, categoryLevel)
       }
-      this.parentCategories = categories
+      this.defaultData.parentId = this.parentCategoryStack[this.parentCategoryStack.length - 1].id
       this.fetchData()
     }
   }
