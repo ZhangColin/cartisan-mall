@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `gds_spus`;
 
 CREATE TABLE `gds_spus` (
-    `id` bigint NOT NULL COMMENT 'SPUid',
+    `id` bigint NOT NULL COMMENT 'SPUId',
     `sn` varchar(60) NOT NULL COMMENT '货号',
     `name` varchar(100) NOT NULL COMMENT '名称',
     `caption` varchar(100) NOT NULL COMMENT '副标题',
@@ -31,7 +31,7 @@ CREATE TABLE `gds_spus` (
 DROP TABLE IF EXISTS `gds_skus`;
 
 CREATE TABLE `gds_skus` (
-    `id` bigint NOT NULL COMMENT 'SKUid',
+    `id` bigint NOT NULL COMMENT 'SKUId',
     `spu_id` bigint NULL COMMENT 'SPUId',
     `sn` varchar(60) NOT NULL COMMENT '商品条码',
     `name` varchar(100) NOT NULL COMMENT '名称',

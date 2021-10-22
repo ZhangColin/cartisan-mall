@@ -9,7 +9,7 @@ INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (2505, 'TCL', 
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (3177, '爱贝多', '', 'A', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (3539, '安桥', '', 'A', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (3941, '白金', '', 'B', 1);
-INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (4986, '波导A', '', 'B', 1);
+INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (4986, '波导', '', 'B', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (6522, '朵唯', '', 'D', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (6742, '飞利浦', 'http://img12.360buyimg.com/popshop/jfs/t18361/122/1318410299/1870/36fe70c9/5ac43a4dNa44a0ce0.jpg', 'F', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (7174, '富可视', '', 'F', 1);
@@ -165,21 +165,19 @@ INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (316618, 'RONX
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (325396, '飞利浦（PHILIPS）', '', 'P', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (325398, '比亚兹（ESK）', '', 'B', 1);
 INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (325399, '亿色(ESR)', '', 'Y', 1);
-INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (325400, '阿里斯顿', null, 'A', 1);
-
+INSERT INTO gds_brands (id, name, image, letter, sequence) VALUES (325400, '阿里斯顿', '', 'A', 1);
 -- 品牌表
 TRUNCATE `gds_brand_categories`;
 
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (1528, 76);
 INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (2505, 76);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (7817, 76);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (11516, 76);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (7420, 142);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (8557, 163);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (1115, 558);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (10317, 76);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (15127, 76);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (20710, 76);
 INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (2032, 558);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (6522, 558);
 INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (8557, 558);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (9420, 558);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (12669, 558);
+INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (15127, 558);
 INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (18374, 558);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (228280, 1108);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (8557, 1192);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (18374, 1192);
-INSERT INTO gds_brand_categories (brand_id, category_id) VALUES (18374, 11156);

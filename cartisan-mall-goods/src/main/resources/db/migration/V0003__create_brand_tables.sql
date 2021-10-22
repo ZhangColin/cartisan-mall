@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `gds_brands`;
 
 CREATE TABLE `gds_brands` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '品牌id',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '品牌Id',
     `name` varchar(100) NOT NULL COMMENT '名称',
     `image` varchar(1000) DEFAULT '' COMMENT '图片地址',
     `letter` char(1) DEFAULT '' COMMENT '首字母',

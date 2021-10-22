@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `gds_categories`;
 
 CREATE TABLE `gds_categories` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '分类id',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '分类Id',
     `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '上级分类Id',
     `template_id` bigint NOT NULL DEFAULT 0 COMMENT '模板Id',
     `name` varchar(50) NOT NULL COMMENT '名称',
