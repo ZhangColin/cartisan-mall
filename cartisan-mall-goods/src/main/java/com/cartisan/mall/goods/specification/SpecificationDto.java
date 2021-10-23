@@ -9,7 +9,7 @@ import java.lang.Integer;
 
 @Data
 public class SpecificationDto {
-    @ApiModelProperty(value = "规格id")
+    @ApiModelProperty(value = "规格Id")
     private Long id;
 
     @ApiModelProperty(value = "模板Id")

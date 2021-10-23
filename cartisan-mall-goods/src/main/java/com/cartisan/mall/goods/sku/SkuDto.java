@@ -9,7 +9,7 @@ import java.lang.Integer;
 
 @Data
 public class SkuDto {
-    @ApiModelProperty(value = "SKUid")
+    @ApiModelProperty(value = "SKUId")
     private Long id;
 
     @ApiModelProperty(value = "SPUId")

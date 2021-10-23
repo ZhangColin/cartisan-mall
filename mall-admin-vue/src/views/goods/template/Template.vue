@@ -18,7 +18,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="模板id" prop="id" />
+      <el-table-column align="center" label="模板Id" prop="id" />
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
@@ -77,7 +77,6 @@ export default {
       apiBaseUrl: '/goods/templates',
 
       defaultData: {
-
         name: ''
       },
       title: '模板',

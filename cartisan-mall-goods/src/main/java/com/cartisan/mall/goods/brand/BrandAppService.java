@@ -5,6 +5,7 @@ import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,7 +29,8 @@ public class BrandAppService {
 
     public PageResult<BrandDto> searchBrands(@NonNull BrandQuery brandQuery, @NonNull Pageable pageable) {
         final Page<Brand> searchResult = repository.findAll(querySpecification(brandQuery),
-                PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
+                PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                        Sort.by(Sort.Direction.ASC, "sequence")));
 
         return new PageResult<>(searchResult.getTotalElements(), searchResult.getTotalPages(),
                 converter.convert(searchResult.getContent()));

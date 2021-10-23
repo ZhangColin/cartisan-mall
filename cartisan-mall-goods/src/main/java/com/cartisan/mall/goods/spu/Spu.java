@@ -1,9 +1,8 @@
 package com.cartisan.mall.goods.spu;
 
+import com.cartisan.domain.AbstractEntity;
 import com.cartisan.domain.AggregateRoot;
-import com.cartisan.domain.SoftDeleteEntity;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "gds_spus")
 @Getter
-public class Spu extends SoftDeleteEntity implements AggregateRoot {
+public class Spu extends AbstractEntity implements AggregateRoot {
     @Id
     @Column(name = "id")
     private Long id;
@@ -61,14 +60,12 @@ public class Spu extends SoftDeleteEntity implements AggregateRoot {
     private String parameterItems;
 
     @Column(name = "is_marketable")
-    @Setter
     private Boolean isMarketable;
 
     @Column(name = "enable_specification")
     private Boolean enableSpecification;
 
     @Column(name = "audit_status")
-    @Setter
     private Integer auditStatus;
 
     protected Spu() {}

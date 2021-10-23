@@ -17,6 +17,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
+  
   "spuId": "",
   "sn": "",
   "name": "",
@@ -36,6 +37,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
+  
   "spuId": "",
   "sn": "",
   "name": "",

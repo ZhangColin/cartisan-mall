@@ -3,21 +3,18 @@ package com.cartisan.mall.goods.album;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.lang.Long;
-import java.lang.String;
-
+/**
+ * @author colin
+ */
 @Data
 public class AlbumDto {
-    @ApiModelProperty(value = "相册id")
+    @ApiModelProperty(value = "相册Id")
     private Long id;
 
-    @ApiModelProperty(value = "名称")
+    @ApiModelProperty(value = "标题")
     private String title;
 
     @ApiModelProperty(value = "封面")
-    private String image;
-
-    @ApiModelProperty(value = "图片列表")
-    private String imageItems;
+    private String coverImage;
 
 }

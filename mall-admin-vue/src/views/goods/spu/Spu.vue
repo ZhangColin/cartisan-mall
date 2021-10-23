@@ -18,7 +18,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="SPUid" prop="id" />
+      <el-table-column align="center" label="SPUId" prop="id" />
       <el-table-column align="center" label="货号" prop="sn" />
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column align="center" label="副标题" prop="caption" />

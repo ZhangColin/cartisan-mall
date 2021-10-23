@@ -31,7 +31,7 @@
           <el-image
             style="width: 100px; height: 40px"
             :src="scope.row.image"
-            :fit="fit"
+            fit="contain"
           />
         </template>
       </el-table-column>
@@ -81,15 +81,14 @@
             <el-input v-model="entityData.letter" />
           </el-form-item>
           <el-form-item label="LOGO" prop="image">
-            <!--            <el-input v-model="entityData.image" />-->
             <el-upload
               class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
+              action="http://localhost:7001/file/upload"
               :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload"
+              :on-success="handleUploadSuccess"
+              :before-upload="beforeUpload"
             >
-              <img v-if="entityData.image" :src="entityData.image" class="avatar">
+              <el-image v-if="entityData.image" :src="entityData.image" class="avatar" fit="contain" />
               <i v-else class="el-icon-plus avatar-uploader-icon" />
             </el-upload>
           </el-form-item>
@@ -121,7 +120,7 @@ export default {
         name: '',
         image: '',
         letter: '',
-        sequence: ''
+        sequence: 0
       },
       title: '品牌',
       rules: {
@@ -132,10 +131,10 @@ export default {
   created() {
   },
   methods: {
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
+    handleUploadSuccess(res, file) {
+      this.entityData.image = res.url
     },
-    beforeAvatarUpload(file) {
+    beforeUpload(file) {
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
 

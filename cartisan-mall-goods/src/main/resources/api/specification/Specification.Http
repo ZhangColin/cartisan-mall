@@ -5,7 +5,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 ### 获取规格
-GET http://{{host}}:{{port}}/specifications/39
+GET http://{{host}}:{{port}}/specifications/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -17,27 +17,29 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "templateId": "42",
-  "name": "型号",
-  "options": "A,B,C",
-  "sequence": "10"
+  
+  "templateId": "",
+  "name": "",
+  "options": "",
+  "sequence": ""
 }
 
 ### 编辑规格
-PUT http://{{host}}:{{port}}/specifications/40
+PUT http://{{host}}:{{port}}/specifications/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "templateId": "42",
-  "name": "型号",
-  "options": "A,B,C",
-  "sequence": "20"
+  
+  "templateId": "",
+  "name": "",
+  "options": "",
+  "sequence": ""
 }
 
 ### 删除规格
-DELETE http://{{host}}:{{port}}/specifications/40
+DELETE http://{{host}}:{{port}}/specifications/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

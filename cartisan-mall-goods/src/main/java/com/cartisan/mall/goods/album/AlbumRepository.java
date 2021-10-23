@@ -1,9 +1,10 @@
 package com.cartisan.mall.goods.album;
 
 import com.cartisan.repository.BaseRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
+/**
+ * @author colin
+ */
 public interface AlbumRepository extends BaseRepository<Album, Long> {
 
 }

@@ -10,6 +10,12 @@ Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
+### 获取相册图片
+GET http://{{host}}:{{port}}/albums/1/images
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
 ### 添加相册
 POST http://{{host}}:{{port}}/albums
 Accept: application/json
@@ -17,9 +23,8 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "title": "Cartisan",
-  "image": "http://localhost/cartisan.jpg",
-  "imageItems": "[{}]"
+  "title": "生鲜",
+  "coverImage": ""
 }
 
 ### 编辑相册
@@ -29,10 +34,22 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "title": "Cartisan",
-  "image": "http://localhost/cartisan.jpg",
-  "imageItems": "[{url: \"http://localhost/image.jpg\"}]"
+  "title": "",
+  "coverImage": ""
 }
+
+### 添加相册图片
+PUT http://{{host}}:{{port}}/albums/1/addImage?imageUrl=http://localhost:9000/cartisan-mall/1594960287235047424/WechatIMG497.jpeg
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+
+### 删除相册图片
+PUT http://{{host}}:{{port}}/albums/1/removeImage?imageUrl=http://localhost:9000/cartisan-mall/1594960287235047424/WechatIMG497.jpeg
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
 
 ### 删除相册
 DELETE http://{{host}}:{{port}}/albums/1

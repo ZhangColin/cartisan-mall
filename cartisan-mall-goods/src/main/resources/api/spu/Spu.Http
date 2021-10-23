@@ -5,7 +5,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 ### 获取SPU
-GET http://{{host}}:{{port}}/spus/1146722014917144576
+GET http://{{host}}:{{port}}/spus/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -17,6 +17,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
+  
   "sn": "",
   "name": "",
   "caption": "",
@@ -43,6 +44,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
+  
   "sn": "",
   "name": "",
   "caption": "",
@@ -62,20 +64,8 @@ Authorization: {{auth_token}}
   "auditStatus": ""
 }
 
-### 审核SPU
-PUT http://{{host}}:{{port}}/spus/1146722014917144576/audit
-Accept: application/json
-Content-Type: application/json;charset=UTF-8
-Authorization: {{auth_token}}
-
-### 上架SPU
-PUT http://{{host}}:{{port}}/spus/1146722014917144576/onSale
-Accept: application/json
-Content-Type: application/json;charset=UTF-8
-Authorization: {{auth_token}}
-
-### 下架SPU
-PUT http://{{host}}:{{port}}/spus/1146722014917144576/outSale
+### 删除SPU
+DELETE http://{{host}}:{{port}}/spus/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

@@ -9,7 +9,7 @@ import java.lang.Integer;
 
 @Data
 public class ParameterDto {
-    @ApiModelProperty(value = "参数id")
+    @ApiModelProperty(value = "参数Id")
     private Long id;
 
     @ApiModelProperty(value = "模板Id")

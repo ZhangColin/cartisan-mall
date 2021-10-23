@@ -1,7 +1,5 @@
-/** When your routing table is too long, you can split it into small modules**/
-
 import Layout from '@/layout'
-// import nested from '@/layout/nested'
+import nested from '@/layout/nested'
 
 export default {
   path: '/goods',
@@ -27,8 +25,21 @@ export default {
   }, {
     path: 'album',
     // name: 'album',
-    component: () => import('@/views/goods/album/Album'),
-    meta: { title: '图片库', icon: 'nested' }
+    component: nested,
+    redirect: '/goods/album/album-list',
+    meta: { title: '图片库', icon: 'nested' },
+    children: [{
+      path: 'album-list',
+      component: () => import('@/views/goods/album/Album'),
+      meta: { title: '图片库', breadcrumb: false },
+      hidden: false
+    }, {
+      path: 'albumImages',
+      name: 'albumImages',
+      component: () => import('@/views/goods/album/AlbumImages'),
+      meta: { title: '相册图片' },
+      hidden: true
+    }]
   }]
 }
 

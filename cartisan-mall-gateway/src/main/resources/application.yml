@@ -28,6 +28,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: cartisan-mall-file_route
+          uri: lb://cartisan-mall-file
+          predicates:
+            - Path=/file/**
+          filters:
+            - StripPrefix=1
+
 
 eureka:
   client:

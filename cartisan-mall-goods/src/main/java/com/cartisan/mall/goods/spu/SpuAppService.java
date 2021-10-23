@@ -1,17 +1,22 @@
 package com.cartisan.mall.goods.spu;
 
+import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.util.SnowflakeIdWorker;
+import com.cartisan.exception.CartisanException;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.cartisan.util.SnowflakeIdWorker;
+
 import javax.transaction.Transactional;
+import java.util.List;
 
 import static com.cartisan.repository.ConditionSpecifications.querySpecification;
 import static com.cartisan.util.AssertionUtil.requirePresent;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class SpuAppService {
@@ -89,29 +94,5 @@ public class SpuAppService {
     @Transactional(rollbackOn = Exception.class)
     public void removeSpu(long id) {
         repository.deleteById(id);
-    }
-
-    @Transactional(rollbackOn = Exception.class)
-    public void audit(Long spuId) {
-        final Spu spu = requirePresent(repository.findById(spuId));
-        spu.setAuditStatus(1);
-
-        repository.save(spu);
-    }
-
-    @Transactional(rollbackOn = Exception.class)
-    public void onSale(Long spuId) {
-        final Spu spu = requirePresent(repository.findById(spuId));
-        spu.setIsMarketable(true);
-
-        repository.save(spu);
-    }
-
-    @Transactional(rollbackOn = Exception.class)
-    public void outSale(Long spuId) {
-        final Spu spu = requirePresent(repository.findById(spuId));
-        spu.setIsMarketable(false);
-
-        repository.save(spu);
     }
 }

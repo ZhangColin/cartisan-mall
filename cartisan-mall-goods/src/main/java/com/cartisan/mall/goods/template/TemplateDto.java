@@ -8,7 +8,7 @@ import java.lang.String;
 
 @Data
 public class TemplateDto {
-    @ApiModelProperty(value = "模板id")
+    @ApiModelProperty(value = "模板Id")
     private Long id;
 
     @ApiModelProperty(value = "名称")

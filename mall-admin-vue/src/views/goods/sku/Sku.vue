@@ -18,7 +18,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="SKUid" prop="id" />
+      <el-table-column align="center" label="SKUId" prop="id" />
       <el-table-column align="center" label="SPUId" prop="spuId" />
       <el-table-column align="center" label="商品条码" prop="sn" />
       <el-table-column align="center" label="名称" prop="name" />
@@ -113,7 +113,6 @@ export default {
       apiBaseUrl: '/goods/skus',
 
       defaultData: {
-
         spuId: '',
         sn: '',
         name: '',
