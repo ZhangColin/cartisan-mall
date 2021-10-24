@@ -1,10 +1,6 @@
 package com.cartisan.mall.goods.album;
 
-import com.cartisan.dto.PageResult;
 import lombok.NonNull;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,12 +22,8 @@ public class AlbumAppService {
         this.repository = repository;
     }
 
-    public PageResult<AlbumDto> searchAlbums(@NonNull AlbumQuery albumQuery, @NonNull Pageable pageable) {
-        final Page<Album> searchResult = repository.findAll(querySpecification(albumQuery),
-                PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
-
-        return new PageResult<>(searchResult.getTotalElements(), searchResult.getTotalPages(),
-                converter.convert(searchResult.getContent()));
+    public List<AlbumDto> searchAlbums(@NonNull AlbumQuery albumQuery) {
+        return converter.convert(repository.findAll(querySpecification(albumQuery)));
     }
 
     public AlbumDto getAlbum(Long id) {

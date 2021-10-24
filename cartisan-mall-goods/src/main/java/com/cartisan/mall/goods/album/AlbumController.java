@@ -33,10 +33,9 @@ public class AlbumController {
 
     @ApiOperation(value = "搜索相册")
     @GetMapping("/search")
-    public ResponseEntity<PageResult<AlbumDto>> searchAlbums(
-            @ApiParam(value = "查询参数") AlbumQuery albumQuery,
-            @PageableDefault Pageable pageable) {
-        return success(service.searchAlbums(albumQuery, pageable));
+    public ResponseEntity<List<AlbumDto>> searchAlbums(
+            @ApiParam(value = "查询参数") AlbumQuery albumQuery) {
+        return success(service.searchAlbums(albumQuery));
     }
 
     @ApiOperation(value = "获取相册")

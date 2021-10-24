@@ -9,55 +9,25 @@
         <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
       </el-col>
     </el-row>
-    <el-table
-      v-loading="loading"
-      :data="dataSource"
-      row-key="id"
-      class="table-container"
-      element-loading-text="加载中..."
-      stripe
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="相册Id" prop="id" />
-      <el-table-column align="center" label="标题" prop="title">
-        <template slot-scope="scope">
-          <el-button type="text" @click="showImages(scope.row)">{{ scope.row.title }}</el-button>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="封面" prop="coverImage">
-        <template slot-scope="scope">
+    <el-row :gutter="20">
+      <el-col v-for="(album, index) in dataSource" :key="album.id" :span="6" :style="{marginBottom:'20px'}">
+        <el-card :body-style="{ padding: '0px'}">
           <el-image
-            style="width: 100px; height: 100px"
-            :src="scope.row.coverImage"
-            fit="contain"
+            :style="{width:'100%', height: windowWidth /4+'px'}"
+            :src="album.coverImage"
+            fit="cover"
+            @click="showImages(album)"
           />
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="操作" width="120">
-        <template slot-scope="scope">
-          <el-dropdown split-button @click="handleEdit(scope.$index, scope.row)">
-            编辑
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-pagination
-      :current-page.sync="page.currentPage"
-      :page-sizes="[5, 10, 20, 50, 100]"
-      :page-size="page.pageSize"
-      :total="page.total"
-      class="pagination-container"
-      background
-      align="right"
-      layout="total, sizes, prev, pager, next, jumper"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+          <div style="padding: 14px;">
+            <span>{{ album.title }}</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button" @click="handleDelete(index, album)">删除</el-button>
+              <el-button type="text" class="button" style="margin-right: 5px" @click="handleEdit(index, album)">编辑</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
     <el-drawer
       :title="drawerTitle"
       :visible.sync="drawerVisible"
@@ -92,12 +62,12 @@
 </template>
 
 <script>
-import { PaginationMixin } from '@/mixins/pagination-mixin'
+import { ListMixin } from '@/mixins/list-mixin'
 import { CudMixin } from '@/mixins/cud-mixin'
 
 export default {
   name: 'Album',
-  mixins: [PaginationMixin, CudMixin],
+  mixins: [ListMixin, CudMixin],
   data() {
     return {
       apiBaseUrl: '/goods/albums',
@@ -109,14 +79,24 @@ export default {
       title: '相册',
       rules: {
         title: [{ required: true, message: '请输入相册标题', trigger: 'blur' }]
-      }
+      },
+      windowWidth: document.documentElement.clientWidth
     }
+  },
+  mounted() {
+    const that = this
+    window.onresize = () => {
+      that.windowWidth = document.documentElement.clientWidth
+    }
+  },
+  destroyed() {
+    window.onresize = null
   },
   created() {
   },
   methods: {
-    showImages(row) {
-      this.$router.push({ path: `/goods/album/albumImages?albumId=${row.id}&albumTitle=${row.title}` })
+    showImages(album) {
+      this.$router.push({ path: `/goods/album/albumImages?albumId=${album.id}&albumTitle=${album.title}` })
     },
     handleUploadSuccess(res, file) {
       this.entityData.coverImage = res.url
@@ -138,6 +118,46 @@ export default {
 </script>
 
 <style>
+/*.el-row {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*.el-card{*/
+/*    min-width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
+.time {
+    font-size: 13px;
+    color: #999;
+}
+
+.bottom {
+    margin-top: 13px;
+    line-height: 12px;
+}
+
+.button {
+    padding: 0;
+    float: right;
+}
+
+.image {
+    width: 100%;
+    display: block;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both
+}
+
 .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;

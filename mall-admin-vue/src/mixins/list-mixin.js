@@ -28,6 +28,9 @@ export const ListMixin = {
           this.loading = false
         })
       }
+    },
+    handleSearch() {
+      this.fetchData()
     }
   }
 }
