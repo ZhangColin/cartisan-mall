@@ -4,8 +4,8 @@ export function search(baseUrl, params) {
   return request.get(`${baseUrl}/search`, { params })
 }
 
-export function getAll(baseUrl) {
-  return request.get(baseUrl)
+export function getAll(baseUrl, params) {
+  return request.get(baseUrl, { params })
 }
 
 export function add(baseUrl, params) {

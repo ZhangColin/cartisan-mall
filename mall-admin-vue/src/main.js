@@ -24,6 +24,9 @@ Vue.use(Element, {
   size: Cookies.get('size') || 'mini' // set element-ui default size
 })
 
+import ElInputTag from 'el-input-tag'
+Vue.use(ElInputTag)
+
 // register global utility filters
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])

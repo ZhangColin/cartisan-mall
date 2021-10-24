@@ -1,32 +1,39 @@
-### 搜索模板
-GET http://{{host}}:{{port}}/templates/search?page=0&size=10
+### 获取模板下所有的参数
+GET http://{{host}}:{{port}}/parameters?templateId=42
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
-
-### 添加模板
-POST http://{{host}}:{{port}}/templates
-Accept: application/json
-Content-Type: application/json;charset=UTF-8
-Authorization: {{auth_token}}
-
-{
-  "name": ""
-}
-
-### 编辑模板
-PUT http://{{host}}:{{port}}/templates/1
+### 添加参数
+POST http://{{host}}:{{port}}/parameters
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "name": ""
+
+  "templateId": "",
+  "name": "",
+  "options": "",
+  "sequence": ""
 }
 
-### 删除模板
-DELETE http://{{host}}:{{port}}/templates/1
+### 编辑参数
+PUT http://{{host}}:{{port}}/parameters/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+
+  "templateId": "",
+  "name": "",
+  "options": "",
+  "sequence": ""
+}
+
+### 删除参数
+DELETE http://{{host}}:{{port}}/parameters/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

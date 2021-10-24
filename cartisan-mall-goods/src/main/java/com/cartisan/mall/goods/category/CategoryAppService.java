@@ -29,7 +29,7 @@ public class CategoryAppService {
     }
 
     public PageResult<CategoryDto> searchCategories(@NonNull CategoryQuery categoryQuery, @NonNull Pageable pageable) {
-        PageHelper.startPage(pageable.getPageNumber()+1, pageable.getPageSize());
+        PageHelper.startPage(pageable.getPageNumber() + 1, pageable.getPageSize());
         final List<CategoryDto> categories = categoryMapper.searchCategories(categoryQuery.getParentId());
 
         PageInfo<CategoryDto> pageCategories = new PageInfo<>(categories);
@@ -44,11 +44,11 @@ public class CategoryAppService {
     @Transactional(rollbackOn = Exception.class)
     public CategoryDto addCategory(CategoryParam categoryParam) {
         final Category category = new Category(categoryParam.getParentId(),
-        categoryParam.getTemplateId(),
-        categoryParam.getName(),
-        categoryParam.getIsShow(),
-        categoryParam.getIsMenu(),
-        categoryParam.getSequence());
+                categoryParam.getTemplateId(),
+                categoryParam.getName(),
+                categoryParam.getIsShow(),
+                categoryParam.getIsMenu(),
+                categoryParam.getSequence());
 
         return converter.convert(repository.save(category));
     }
@@ -58,11 +58,11 @@ public class CategoryAppService {
         final Category category = requirePresent(repository.findById(id));
 
         category.describe(categoryParam.getParentId(),
-        categoryParam.getTemplateId(),
-        categoryParam.getName(),
-        categoryParam.getIsShow(),
-        categoryParam.getIsMenu(),
-        categoryParam.getSequence());
+                categoryParam.getTemplateId(),
+                categoryParam.getName(),
+                categoryParam.getIsShow(),
+                categoryParam.getIsMenu(),
+                categoryParam.getSequence());
 
         return converter.convert(repository.save(category));
     }

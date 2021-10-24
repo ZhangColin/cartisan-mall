@@ -23,7 +23,7 @@ export const ListMixin = {
           this.loading = false
         })
       } else {
-        getAll(this.apiBaseUrl).then(response => {
+        getAll(this.apiBaseUrl, this.queryParam).then(response => {
           this.dataSource = response.data
           this.loading = false
         })
