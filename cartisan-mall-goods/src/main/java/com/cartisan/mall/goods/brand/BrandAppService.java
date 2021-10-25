@@ -67,6 +67,24 @@ public class BrandAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
+    public BrandDto addCategory(Long id, Long categoryId) {
+        final Brand brand = requirePresent(repository.findById(id));
+
+        brand.addCategory(categoryId);
+
+        return converter.convert(repository.save(brand));
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    public BrandDto removeCategory(Long id, Long categoryId) {
+        final Brand brand = requirePresent(repository.findById(id));
+
+        brand.removeCategory(categoryId);
+
+        return converter.convert(repository.save(brand));
+    }
+
+    @Transactional(rollbackOn = Exception.class)
     public void removeBrand(long id) {
         repository.deleteById(id);
     }

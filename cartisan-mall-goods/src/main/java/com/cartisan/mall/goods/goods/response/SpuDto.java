@@ -1,4 +1,4 @@
-package com.cartisan.mall.goods.spu;
+package com.cartisan.mall.goods.goods.response;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -8,6 +8,9 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.lang.Integer;
 
+/**
+ * @author colin
+ */
 @Data
 public class SpuDto {
     @ApiModelProperty(value = "SPUId")

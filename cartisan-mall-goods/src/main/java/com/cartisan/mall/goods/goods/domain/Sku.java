@@ -1,22 +1,18 @@
-package com.cartisan.mall.goods.sku;
+package com.cartisan.mall.goods.goods.domain;
 
 import com.cartisan.domain.AbstractEntity;
 import com.cartisan.domain.AggregateRoot;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import java.lang.Long;
 import java.lang.String;
 import java.lang.Integer;
 
-import static java.util.stream.Collectors.toList;
-
+/**
+ * @author colin
+ */
 @Entity
 @Table(name = "gds_skus")
 @Getter

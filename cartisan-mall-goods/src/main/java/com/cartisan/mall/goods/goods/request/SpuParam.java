@@ -1,18 +1,16 @@
-package com.cartisan.mall.goods.spu;
+package com.cartisan.mall.goods.goods.request;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import java.lang.Long;
 import java.lang.Boolean;
 import java.lang.String;
 import java.lang.Integer;
 
+/**
+ * @author colin
+ */
 @Data
 public class SpuParam {
     @ApiModelProperty(value = "货号")

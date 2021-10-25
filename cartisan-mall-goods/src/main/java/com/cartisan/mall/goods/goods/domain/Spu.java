@@ -1,17 +1,23 @@
-package com.cartisan.mall.goods.spu;
+package com.cartisan.mall.goods.goods.domain;
 
 import com.cartisan.domain.AbstractEntity;
 import com.cartisan.domain.AggregateRoot;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author colin
+ */
 @Entity
 @Table(name = "gds_spus")
+//@DynamicUpdate(value=true)
 @Getter
+//public class Spu extends SoftDeleteEntity implements AggregateRoot {
 public class Spu extends AbstractEntity implements AggregateRoot {
     @Id
     @Column(name = "id")
@@ -60,12 +66,14 @@ public class Spu extends AbstractEntity implements AggregateRoot {
     private String parameterItems;
 
     @Column(name = "is_marketable")
+    @Setter
     private Boolean isMarketable;
 
     @Column(name = "enable_specification")
     private Boolean enableSpecification;
 
     @Column(name = "audit_status")
+    @Setter
     private Integer auditStatus;
 
     protected Spu() {}

@@ -1,5 +1,5 @@
 ### 搜索商品分类
-GET http://{{host}}:{{port}}/categories/search?page=0&size=10
+GET http://{{host}}:{{port}}/categories/search?page=0&size=10&parentId=2
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

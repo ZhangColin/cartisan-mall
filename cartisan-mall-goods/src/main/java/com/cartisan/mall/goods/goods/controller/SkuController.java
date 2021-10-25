@@ -1,8 +1,10 @@
-package com.cartisan.mall.goods.sku;
+package com.cartisan.mall.goods.goods.controller;
 
-import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.exception.CartisanException;
+import com.cartisan.mall.goods.goods.application.SkuAppService;
+import com.cartisan.mall.goods.goods.request.SkuParam;
+import com.cartisan.mall.goods.goods.request.SkuQuery;
+import com.cartisan.mall.goods.goods.response.SkuDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,10 +15,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import static com.cartisan.response.ResponseUtil.success;
 
+/**
+ * @author colin
+ */
 @Api(tags = "商品服务：SKU")
 @RestController
 @RequestMapping("/skus")

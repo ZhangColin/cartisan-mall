@@ -5,6 +5,8 @@ import com.cartisan.domain.AggregateRoot;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author colin
@@ -30,6 +32,11 @@ public class Brand extends AbstractEntity implements AggregateRoot {
     @Column(name = "sequence")
     private Integer sequence;
 
+    @ElementCollection
+    @CollectionTable(name = "gds_brand_categories", joinColumns = @JoinColumn(name = "brand_id", referencedColumnName = "id"))
+    @Column(name = "category_id")
+    private List<Long> categoryIds = new ArrayList<>();
+
     protected Brand() {
     }
 
@@ -46,5 +53,15 @@ public class Brand extends AbstractEntity implements AggregateRoot {
         this.image = image;
         this.letter = letter;
         this.sequence = sequence;
+    }
+
+    public void addCategory(Long categoryId) {
+        if (!this.categoryIds.contains(categoryId)) {
+            this.categoryIds.add(categoryId);
+        }
+    }
+
+    public void removeCategory(Long categoryId) {
+        this.categoryIds.remove(categoryId);
     }
 }

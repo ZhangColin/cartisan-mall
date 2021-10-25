@@ -1,4 +1,4 @@
-package com.cartisan.mall.goods.sku;
+package com.cartisan.mall.goods.goods.response;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,6 +7,9 @@ import java.lang.Long;
 import java.lang.String;
 import java.lang.Integer;
 
+/**
+ * @author colin
+ */
 @Data
 public class SkuDto {
     @ApiModelProperty(value = "SKUId")
@@ -20,6 +23,12 @@ public class SkuDto {
 
     @ApiModelProperty(value = "名称")
     private String name;
+
+    @ApiModelProperty(value = "分类Id")
+    private String categoryId;
+
+    @ApiModelProperty(value = "分类名称")
+    private String categoryName;
 
     @ApiModelProperty(value = "规格")
     private String specification;

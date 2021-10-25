@@ -11,7 +11,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 ### 获取品牌
-GET http://{{host}}:{{port}}/brands/1
+GET http://{{host}}:{{port}}/brands/1115
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -41,6 +41,18 @@ Authorization: {{auth_token}}
   "letter": "C",
   "sequence": 20
 }
+
+### 添加分类
+PUT http://{{host}}:{{port}}/brands/1115/addCategory?categoryId=3
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 移除分类
+PUT http://{{host}}:{{port}}/brands/1115/removeCategory?categoryId=3
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
 
 ### 删除品牌
 DELETE http://{{host}}:{{port}}/brands/325401

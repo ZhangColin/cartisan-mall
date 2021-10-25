@@ -1,8 +1,10 @@
-package com.cartisan.mall.goods.spu;
+package com.cartisan.mall.goods.goods.controller;
 
-import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.exception.CartisanException;
+import com.cartisan.mall.goods.goods.application.SpuAppService;
+import com.cartisan.mall.goods.goods.request.SpuParam;
+import com.cartisan.mall.goods.goods.request.SpuQuery;
+import com.cartisan.mall.goods.goods.response.SpuDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,10 +15,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import static com.cartisan.response.ResponseUtil.success;
 
+/**
+ * @author colin
+ */
 @Api(tags = "商品服务：SPU")
 @RestController
 @RequestMapping("/spus")

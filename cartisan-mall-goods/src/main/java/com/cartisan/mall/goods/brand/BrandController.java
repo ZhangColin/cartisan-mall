@@ -66,6 +66,22 @@ public class BrandController {
         return success(service.editBrand(id, brandParam));
     }
 
+    @ApiOperation(value = "添加分类")
+    @PutMapping("/{id}/addCategory")
+    public ResponseEntity<BrandDto> addCategory(
+            @ApiParam(value = "品牌Id", required = true) @PathVariable Long id,
+            @ApiParam(value = "分类Id", required = true) @Validated @RequestParam Long categoryId) {
+        return success(service.addCategory(id, categoryId));
+    }
+
+    @ApiOperation(value = "移除分类")
+    @PutMapping("/{id}/removeCategory")
+    public ResponseEntity<BrandDto> removeCategory(
+            @ApiParam(value = "品牌Id", required = true) @PathVariable Long id,
+            @ApiParam(value = "分类Id", required = true) @Validated @RequestParam Long categoryId) {
+        return success(service.removeCategory(id, categoryId));
+    }
+
     @ApiOperation(value = "删除品牌")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removeBrand(
