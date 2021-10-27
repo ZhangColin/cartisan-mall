@@ -2,21 +2,22 @@ package com.cartisan.mall.goods.goods.application;
 
 import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.goods.domain.Spu;
+import com.cartisan.mall.goods.goods.mapper.SpuMapper;
 import com.cartisan.mall.goods.goods.repository.SpuRepository;
 import com.cartisan.mall.goods.goods.request.SpuParam;
 import com.cartisan.mall.goods.goods.request.SpuQuery;
 import com.cartisan.mall.goods.goods.response.SpuConverter;
 import com.cartisan.mall.goods.goods.response.SpuDto;
 import com.cartisan.util.SnowflakeIdWorker;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.NonNull;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
-import static com.cartisan.repository.ConditionSpecifications.querySpecification;
 import static com.cartisan.util.AssertionUtil.requirePresent;
 
 /**
@@ -26,20 +27,23 @@ import static com.cartisan.util.AssertionUtil.requirePresent;
 public class SpuAppService {
     private final SpuRepository repository;
     private final SnowflakeIdWorker idWorker;
+    private final SpuMapper mapper;
 
     private final SpuConverter converter = SpuConverter.CONVERTER;
 
-    public SpuAppService(SpuRepository repository, SnowflakeIdWorker idWorker) {
+    public SpuAppService(SpuRepository repository, SnowflakeIdWorker idWorker, SpuMapper mapper) {
         this.repository = repository;
         this.idWorker = idWorker;
+        this.mapper = mapper;
     }
 
     public PageResult<SpuDto> searchSpus(@NonNull SpuQuery spuQuery, @NonNull Pageable pageable) {
-        final Page<Spu> searchResult = repository.findAll(querySpecification(spuQuery),
-                PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
+        PageHelper.startPage(pageable.getPageNumber() + 1, pageable.getPageSize());
+        final List<SpuDto> spus = mapper.searchSpus(spuQuery);
 
-        return new PageResult<>(searchResult.getTotalElements(), searchResult.getTotalPages(),
-                converter.convert(searchResult.getContent()));
+        PageInfo<SpuDto> pageSpus = new PageInfo<>(spus);
+
+        return new PageResult<>(pageSpus.getTotal(), pageSpus.getPages(), pageSpus.getList());
     }
 
     public SpuDto getSpu(Long id) {

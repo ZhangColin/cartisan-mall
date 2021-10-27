@@ -1,5 +1,6 @@
 package com.cartisan.mall.goods.template.controller;
 
+import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.template.application.TemplateAppService;
 import com.cartisan.mall.goods.template.request.TemplateParam;
@@ -14,6 +15,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static com.cartisan.response.ResponseUtil.success;
 
@@ -39,6 +42,14 @@ public class TemplateController {
             @PageableDefault Pageable pageable) {
         return success(service.searchTemplates(templateQuery, pageable));
     }
+
+    @ApiOperation(value = "获取所有模板")
+    @GetMapping
+    public ResponseEntity<List<IdName<Long, String>>> getTemplates() {
+        return success(service.getTemplates());
+    }
+
+
 
     @ApiOperation(value = "添加模板")
     @PostMapping

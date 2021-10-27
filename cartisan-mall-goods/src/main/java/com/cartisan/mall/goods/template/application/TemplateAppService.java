@@ -1,5 +1,6 @@
 package com.cartisan.mall.goods.template.application;
 
+import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.template.domain.Template;
 import com.cartisan.mall.goods.template.mapper.TemplateMapper;
@@ -39,7 +40,10 @@ public class TemplateAppService {
         PageInfo<TemplateDto> pageTemplates = new PageInfo<>(templates);
 
         return new PageResult<>(pageTemplates.getTotal(), pageTemplates.getPages(), pageTemplates.getList());
+    }
 
+    public List<IdName<Long, String>> getTemplates() {
+        return templateMapper.getTemplates();
     }
 
     @Transactional(rollbackOn = Exception.class)

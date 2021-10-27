@@ -7,4 +7,9 @@ import lombok.Data;
  */
 @Data
 public class SpuQuery {
+    private String nameOrSn;
+    private Long category1Id;
+    private Long category2Id;
+    private Long category3Id;
+    private Long brandId;
 }

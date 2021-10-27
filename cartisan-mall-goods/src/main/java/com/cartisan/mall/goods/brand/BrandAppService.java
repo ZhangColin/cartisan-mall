@@ -1,5 +1,6 @@
 package com.cartisan.mall.goods.brand;
 
+import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static com.cartisan.repository.ConditionSpecifications.querySpecification;
 import static com.cartisan.util.AssertionUtil.requirePresent;
+import static java.util.stream.Collectors.toList;
 
 /**
  * @author colin
@@ -36,8 +38,9 @@ public class BrandAppService {
                 converter.convert(searchResult.getContent()));
     }
 
-    public List<BrandDto> getBrands(@NonNull BrandQuery brandQuery) {
-        return converter.convert(repository.findAll(querySpecification(brandQuery)));
+    public List<IdName<Long, String>> getBrands(@NonNull BrandQuery brandQuery) {
+        return repository.findAll(querySpecification(brandQuery)).stream()
+                .map(brand -> new IdName<>(brand.getId(), brand.getName())).collect(toList());
     }
 
     public BrandDto getBrand(Long id) {

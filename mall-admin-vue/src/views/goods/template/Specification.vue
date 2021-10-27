@@ -50,7 +50,7 @@
             <el-input-tag v-model="entityData.options" />
           </el-form-item>
           <el-form-item label="排序" prop="sequence">
-            <el-input v-model="entityData.sequence" />
+            <el-input-number v-model="entityData.sequence" />
           </el-form-item>
         </el-form>
         <div class="drawer__footer">

@@ -1,11 +1,11 @@
 ### 搜索商品分类
-GET http://{{host}}:{{port}}/categories/search?page=0&size=10&parentId=2
+GET http://{{host}}:{{port}}/categories/search?page=0&size=10
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
-### 获取商品分类
-GET http://{{host}}:{{port}}/categories/1
+### 不分页获取商品分类（用于分类显示、选择）
+GET http://{{host}}:{{port}}/categories?parentId=0
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

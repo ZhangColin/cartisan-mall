@@ -1,5 +1,6 @@
 package com.cartisan.mall.goods.brand;
 
+import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,7 +41,7 @@ public class BrandController {
 
     @ApiOperation(value = "获取所有品牌")
     @GetMapping
-    public ResponseEntity<List<BrandDto>> getBrands(
+    public ResponseEntity<List<IdName<Long, String>>> getBrands(
             @ApiParam(value = "查询参数") BrandQuery brandQuery) {
         return success(service.getBrands(brandQuery));
     }

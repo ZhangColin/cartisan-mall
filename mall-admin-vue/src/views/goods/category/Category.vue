@@ -114,7 +114,14 @@
             />
           </el-form-item>
           <el-form-item label="模板" prop="templateId">
-            <el-input v-model="entityData.templateId" />
+            <el-select v-model="entityData.templateId" placeholder="请选择" style="width: 100%">
+              <el-option
+                v-for="template in templates"
+                :key="template.id"
+                :label="template.name"
+                :value="template.id"
+              />
+            </el-select>
           </el-form-item>
           <el-form-item label="排序" prop="sequence">
             <el-input-number v-model="entityData.sequence" />
@@ -132,6 +139,7 @@
 <script>
 import { PaginationMixin } from '@/mixins/pagination-mixin'
 import { CudMixin } from '@/mixins/cud-mixin'
+import { getAll } from '@/api/common-api'
 
 export default {
   name: 'Category',
@@ -150,12 +158,14 @@ export default {
       },
       title: '商品分类',
       rules: {
-        name: [
-        ]
-      }
+        name: [{ required: true, message: '请输入商品分类名称', trigger: 'blur' }],
+        templateId: [{ required: true, message: '请选择模板', trigger: 'blur' }]
+      },
+      templates: []
     }
   },
   created() {
+    getAll('/goods/templates').then(response => { this.templates = response.data })
   },
   methods: {
     handleShowSubCategories(category, categoryLevel) {

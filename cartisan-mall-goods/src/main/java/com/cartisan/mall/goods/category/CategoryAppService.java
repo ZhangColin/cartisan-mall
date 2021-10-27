@@ -1,5 +1,6 @@
 package com.cartisan.mall.goods.category;
 
+import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.category.mapper.CategoryMapper;
 import com.github.pagehelper.PageHelper;
@@ -21,28 +22,27 @@ public class CategoryAppService {
     private final CategoryRepository repository;
     private final CategoryMapper categoryMapper;
 
-    private final CategoryConverter converter = CategoryConverter.CONVERTER;
 
     public CategoryAppService(CategoryRepository repository, CategoryMapper categoryMapper) {
         this.repository = repository;
         this.categoryMapper = categoryMapper;
     }
 
-    public PageResult<CategoryDto> searchCategories(@NonNull CategoryQuery categoryQuery, @NonNull Pageable pageable) {
+    public PageResult<CategoryDto> searchCategories(@NonNull Long parentId, @NonNull Pageable pageable) {
         PageHelper.startPage(pageable.getPageNumber() + 1, pageable.getPageSize());
-        final List<CategoryDto> categories = categoryMapper.searchCategories(categoryQuery.getParentId());
+        final List<CategoryDto> categories = categoryMapper.searchCategories(parentId);
 
         PageInfo<CategoryDto> pageCategories = new PageInfo<>(categories);
 
         return new PageResult<>(pageCategories.getTotal(), pageCategories.getPages(), pageCategories.getList());
     }
 
-    public CategoryDto getCategory(Long id) {
-        return converter.convert(requirePresent(repository.findById(id)));
+    public List<IdName<Long, String>> getCategories(@NonNull Long parentId) {
+        return categoryMapper.getCategoryIdNames(parentId);
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public CategoryDto addCategory(CategoryParam categoryParam) {
+    public void addCategory(CategoryParam categoryParam) {
         final Category category = new Category(categoryParam.getParentId(),
                 categoryParam.getTemplateId(),
                 categoryParam.getName(),
@@ -50,11 +50,11 @@ public class CategoryAppService {
                 categoryParam.getIsMenu(),
                 categoryParam.getSequence());
 
-        return converter.convert(repository.save(category));
+        repository.save(category);
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public CategoryDto editCategory(Long id, CategoryParam categoryParam) {
+    public void editCategory(Long id, CategoryParam categoryParam) {
         final Category category = requirePresent(repository.findById(id));
 
         category.describe(categoryParam.getParentId(),
@@ -64,7 +64,7 @@ public class CategoryAppService {
                 categoryParam.getIsMenu(),
                 categoryParam.getSequence());
 
-        return converter.convert(repository.save(category));
+        repository.save(category);
     }
 
     @Transactional(rollbackOn = Exception.class)

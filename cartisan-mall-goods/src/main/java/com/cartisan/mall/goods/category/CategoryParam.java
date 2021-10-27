@@ -12,7 +12,7 @@ public class CategoryParam {
     private Long parentId;
 
     @ApiModelProperty(value = "模板Id")
-    private Long templateId;
+    private Long templateId = 0L;
 
     @ApiModelProperty(value = "名称")
     private String name;

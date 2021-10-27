@@ -8,6 +8,18 @@ export default {
   // name: 'goods',
   meta: { title: '商品管理', icon: 'component' },
   children: [{
+    path: 'spu',
+    // name: 'spu',
+    component: nested,
+    redirect: '/goods/spu/spu-list',
+    meta: { title: '商品', icon: 'nested' },
+    children: [{
+      path: 'spu-list',
+      component: () => import('@/views/goods/spu/Spu'),
+      meta: { title: '商品', breadcrumb: false },
+      hidden: false
+    }]
+  }, {
     path: 'template',
     // name: 'template',
     component: nested,

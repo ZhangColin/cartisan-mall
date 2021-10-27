@@ -1,5 +1,6 @@
 package com.cartisan.mall.goods.template.mapper;
 
+import com.cartisan.dp.IdName;
 import com.cartisan.mall.goods.template.request.TemplateQuery;
 import com.cartisan.mall.goods.template.response.TemplateDto;
 import org.apache.ibatis.annotations.Param;
@@ -23,4 +24,7 @@ public interface TemplateMapper {
             "</where>" +
             "</script>")
     List<TemplateDto> searchTemplates(@Param(value = "query")TemplateQuery query);
+
+    @Select("select id, name from gds_templates")
+    List<IdName<Long, String>> getTemplates();
 }
