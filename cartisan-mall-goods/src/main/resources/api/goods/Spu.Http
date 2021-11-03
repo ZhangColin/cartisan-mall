@@ -17,24 +17,20 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
-  "sn": "",
-  "name": "",
-  "caption": "",
-  "brandId": "",
-  "category1Id": "",
-  "category2Id": "",
-  "category3Id": "",
-  "templateId": "",
+  "sn": "A001",
+  "name": "非常好货 {颜色} {版本}",
+  "caption": "非常好货副标题",
+  "brandId": 1115,
+  "category1Id": 1,
+  "category2Id": 2,
+  "category3Id": 3,
+  "templateId": 42,
   "image": "",
   "images": "",
   "saleService": "",
-  "introduction": "",
-  "specificationItems": "",
-  "parameterItems": "",
-  "isMarketable": "",
-  "enableSpecification": "",
-  "auditStatus": ""
+  "introduction": "非常好货",
+  "specificationItems": "{\"颜色\":[\"黑色\",\"蓝色\"],\"版本\":[\"6GB+64GB\"]}",
+  "parameterItems": ""
 }
 
 ### 编辑SPU
@@ -44,7 +40,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
+
   "sn": "",
   "name": "",
   "caption": "",

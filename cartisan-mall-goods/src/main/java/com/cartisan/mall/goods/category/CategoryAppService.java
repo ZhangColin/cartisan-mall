@@ -22,6 +22,8 @@ public class CategoryAppService {
     private final CategoryRepository repository;
     private final CategoryMapper categoryMapper;
 
+    private final CategoryConverter converter = CategoryConverter.CONVERTER;
+
 
     public CategoryAppService(CategoryRepository repository, CategoryMapper categoryMapper) {
         this.repository = repository;
@@ -39,6 +41,10 @@ public class CategoryAppService {
 
     public List<IdName<Long, String>> getCategories(@NonNull Long parentId) {
         return categoryMapper.getCategoryIdNames(parentId);
+    }
+
+    public CategoryDto getCategory(Long id) {
+        return converter.convert(requirePresent(repository.findById(id)));
     }
 
     @Transactional(rollbackOn = Exception.class)

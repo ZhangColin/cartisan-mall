@@ -4,6 +4,10 @@ export function search(baseUrl, params) {
   return request.get(`${baseUrl}/search`, { params })
 }
 
+export function get(baseUrl, id) {
+  return request.get(`${baseUrl}/${id}`)
+}
+
 export function getAll(baseUrl, params) {
   return request.get(baseUrl, { params })
 }

@@ -57,10 +57,7 @@ public class SpuService {
                 spuParam.getSaleService(),
                 spuParam.getIntroduction(),
                 spuParam.getSpecificationItems(),
-                spuParam.getParameterItems(),
-                spuParam.getIsMarketable(),
-                spuParam.getEnableSpecification(),
-                spuParam.getAuditStatus());
+                spuParam.getParameterItems());
 
         return repository.save(spu);
     }
@@ -82,10 +79,7 @@ public class SpuService {
                 spuParam.getSaleService(),
                 spuParam.getIntroduction(),
                 spuParam.getSpecificationItems(),
-                spuParam.getParameterItems(),
-                spuParam.getIsMarketable(),
-                spuParam.getEnableSpecification(),
-                spuParam.getAuditStatus());
+                spuParam.getParameterItems());
 
         return repository.save(spu);
 

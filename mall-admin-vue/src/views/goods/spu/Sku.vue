@@ -19,16 +19,20 @@
       highlight-current-row
     >
       <el-table-column align="center" label="SKUId" prop="id" />
-      <el-table-column align="center" label="SPUId" prop="spuId" />
-      <el-table-column align="center" label="商品条码" prop="sn" />
+      <el-table-column align="center" label="商品图片" prop="image">
+        <template slot-scope="scope">
+          <el-image
+            style="width: 100px; height: 100px"
+            :src="scope.row.image"
+            fit="contain"
+          />
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column align="center" label="规格" prop="specification" />
       <el-table-column align="center" label="价格（分）" prop="price" />
-      <el-table-column align="center" label="重量（克）" prop="weight" />
       <el-table-column align="center" label="库存数量" prop="quantity" />
       <el-table-column align="center" label="库存预警数量" prop="alertQuantity" />
-      <el-table-column align="center" label="商品图片" prop="image" />
-      <el-table-column align="center" label="商品图片列表" prop="images" />
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
           <el-dropdown split-button @click="handleEdit(scope.$index, scope.row)">
@@ -132,6 +136,8 @@ export default {
     }
   },
   created() {
+    this.queryParam.spuId = this.$route.query.spuId
+    this.fetchData()
   },
   methods: {
   }

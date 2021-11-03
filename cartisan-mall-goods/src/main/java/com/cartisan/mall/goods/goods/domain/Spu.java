@@ -78,7 +78,10 @@ public class Spu extends AbstractEntity implements AggregateRoot {
 
     protected Spu() {}
 
-    public Spu(Long id, String sn, String name, String caption, Long brandId, Long category1Id, Long category2Id, Long category3Id, Long templateId, String image, String images, String saleService, String introduction, String specificationItems, String parameterItems, Boolean isMarketable, Boolean enableSpecification, Integer auditStatus) {
+    public Spu(Long id, String sn, String name, String caption,
+               Long brandId, Long category1Id, Long category2Id, Long category3Id, Long templateId,
+               String image, String images, String saleService, String introduction,
+               String specificationItems, String parameterItems) {
         this.id = id;
         this.sn = sn;
         this.name = name;
@@ -94,12 +97,15 @@ public class Spu extends AbstractEntity implements AggregateRoot {
         this.introduction = introduction;
         this.specificationItems = specificationItems;
         this.parameterItems = parameterItems;
-        this.isMarketable = isMarketable;
-        this.enableSpecification = enableSpecification;
-        this.auditStatus = auditStatus;
+        this.isMarketable = false;
+        this.enableSpecification = true;
+        this.auditStatus = 0;
     }
 
-    public void describe(String sn, String name, String caption, Long brandId, Long category1Id, Long category2Id, Long category3Id, Long templateId, String image, String images, String saleService, String introduction, String specificationItems, String parameterItems, Boolean isMarketable, Boolean enableSpecification, Integer auditStatus) {
+    public void describe(String sn, String name, String caption,
+                         Long brandId, Long category1Id, Long category2Id, Long category3Id, Long templateId,
+                         String image, String images, String saleService, String introduction,
+                         String specificationItems, String parameterItems) {
         this.sn = sn;
         this.name = name;
         this.caption = caption;
@@ -114,8 +120,5 @@ public class Spu extends AbstractEntity implements AggregateRoot {
         this.introduction = introduction;
         this.specificationItems = specificationItems;
         this.parameterItems = parameterItems;
-        this.isMarketable = isMarketable;
-        this.enableSpecification = enableSpecification;
-        this.auditStatus = auditStatus;
     }
 }

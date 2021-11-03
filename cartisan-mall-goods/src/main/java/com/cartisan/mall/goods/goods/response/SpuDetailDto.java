@@ -1,4 +1,4 @@
-package com.cartisan.mall.goods.goods.request;
+package com.cartisan.mall.goods.goods.response;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.Data;
  * @author colin
  */
 @Data
-public class SpuParam {
+public class SpuDetailDto {
     @ApiModelProperty(value = "货号")
     private String sn;
 
@@ -49,5 +49,4 @@ public class SpuParam {
 
     @ApiModelProperty(value = "参数")
     private String parameterItems;
-
 }

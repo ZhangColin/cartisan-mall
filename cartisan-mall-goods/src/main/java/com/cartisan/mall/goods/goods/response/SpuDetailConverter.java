@@ -9,6 +9,6 @@ import org.mapstruct.factory.Mappers;
  * @author colin
  */
 @Mapper
-public interface SpuConverter extends Converter<Spu, SpuDto> {
-    SpuConverter CONVERTER = Mappers.getMapper(SpuConverter.class);
+public interface SpuDetailConverter extends Converter<Spu, SpuDetailDto> {
+    SpuDetailConverter CONVERTER = Mappers.getMapper(SpuDetailConverter.class);
 }

@@ -46,6 +46,12 @@ public class CategoryController {
         return success(service.getCategories(parentId));
     }
 
+    @ApiOperation(value = "获取商品分类")
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryDto> getCategory(@ApiParam(value = "角色Id", required = true) @PathVariable Long id) {
+        return success(service.getCategory(id));
+    }
+
     @ApiOperation(value = "添加商品分类")
     @PostMapping
     public ResponseEntity<?> addCategory(

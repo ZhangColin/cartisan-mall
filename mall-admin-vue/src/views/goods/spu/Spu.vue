@@ -15,7 +15,8 @@
             :label="brand.name"
             :value="brand.id"
           />
-        </el-select></el-col>
+        </el-select>
+      </el-col>
       <el-col :span="6">
         <el-button class="filter-item" type="primary" @click="handleSearch">查询</el-button>
         <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
@@ -73,7 +74,7 @@
           <el-dropdown split-button @click="handleEdit(scope.$index, scope.row)">
             编辑
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
+              <el-dropdown-item @click.native="showSku(scope.$index, scope.row)">SKU</el-dropdown-item>
               <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
               <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
               <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">日志</el-dropdown-item>
@@ -100,13 +101,12 @@
 
 <script>
 import { PaginationMixin } from '@/mixins/pagination-mixin'
-import { CudMixin } from '@/mixins/cud-mixin'
 
-import { getAll } from '@/api/common-api'
+import { add, edit, getAll, remove } from '@/api/common-api'
 
 export default {
   name: 'Spu',
-  mixins: [PaginationMixin, CudMixin],
+  mixins: [PaginationMixin],
   data() {
     return {
       apiBaseUrl: '/goods/spus',
@@ -136,6 +136,55 @@ export default {
     handleCategoryCascaderChange(value) {
       const [category1Id, category2Id, category3Id] = value
       this.queryParam = { ...this.queryParam, category1Id, category2Id, category3Id }
+    },
+    showSku(index, spu) {
+      this.$router.push({ path: `/goods/spu/sku?spuId=${spu.id}` })
+    },
+    handleAdd() {
+      this.$router.push({ path: `/goods/spu/goodsForm` })
+    },
+    handleEdit(index, row) {
+
+    },
+    handleDelete(index, row) {
+      this.$confirm(`是否要删除该${this.title}`, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        remove(this.apiBaseUrl, row.id).then(() => {
+          this.$notify.success({
+            title: '成功',
+            message: '删除成功'
+          })
+          this.fetchData()
+        })
+      }).catch(() => {})
+    },
+    handleConfirm() {
+      this.$refs['entityDataForm'].validate((valid) => {
+        if (valid) {
+          if (this.drawerTitle === `添加${this.title}`) {
+            add(this.apiBaseUrl, this.entityData).then(() => {
+              this.$notify.success({
+                title: '成功',
+                message: '添加成功'
+              })
+              this.drawerVisible = false
+              this.fetchData()
+            }).catch(() => {})
+          } else {
+            edit(this.apiBaseUrl, this.entityData.id, this.entityData).then(() => {
+              this.$notify.success({
+                title: '成功',
+                message: '修改成功'
+              })
+              this.drawerVisible = false
+              this.fetchData()
+            }).catch(() => {})
+          }
+        }
+      })
     }
   }
 }

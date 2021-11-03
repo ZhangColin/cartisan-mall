@@ -18,6 +18,18 @@ export default {
       component: () => import('@/views/goods/spu/Spu'),
       meta: { title: '商品', breadcrumb: false },
       hidden: false
+    }, {
+      path: 'sku',
+      name: 'sku',
+      component: () => import('@/views/goods/spu/Sku'),
+      meta: { title: 'SKU' },
+      hidden: true
+    }, {
+      path: 'goodsForm',
+      name: 'goodsForm',
+      component: () => import('@/views/goods/spu/GoodsForm'),
+      meta: { title: '相册图片' },
+      hidden: true
     }]
   }, {
     path: 'template',
