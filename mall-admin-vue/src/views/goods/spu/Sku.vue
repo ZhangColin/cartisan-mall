@@ -66,28 +66,28 @@
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
 
           <el-form-item label="SPUId" prop="spuId">
-            <el-input v-model="entityData.spuId" />
+            <el-input v-model="entityData.spuId" readonly />
           </el-form-item>
           <el-form-item label="商品条码" prop="sn">
-            <el-input v-model="entityData.sn" />
+            <el-input v-model="entityData.sn" readonly />
           </el-form-item>
           <el-form-item label="名称" prop="name">
-            <el-input v-model="entityData.name" />
+            <el-input v-model="entityData.name" readonly />
           </el-form-item>
           <el-form-item label="规格" prop="specification">
-            <el-input v-model="entityData.specification" />
+            <el-input v-model="entityData.specification" readonly />
           </el-form-item>
           <el-form-item label="价格（分）" prop="price">
-            <el-input v-model="entityData.price" />
+            <el-input-number v-model="entityData.price" />
           </el-form-item>
           <el-form-item label="重量（克）" prop="weight">
-            <el-input v-model="entityData.weight" />
+            <el-input-number v-model="entityData.weight" />
           </el-form-item>
           <el-form-item label="库存数量" prop="quantity">
-            <el-input v-model="entityData.quantity" />
+            <el-input-number v-model="entityData.quantity" />
           </el-form-item>
           <el-form-item label="库存预警数量" prop="alertQuantity">
-            <el-input v-model="entityData.alertQuantity" />
+            <el-input-number v-model="entityData.alertQuantity" />
           </el-form-item>
           <el-form-item label="商品图片" prop="image">
             <el-input v-model="entityData.image" />

@@ -26,9 +26,15 @@ export default {
       hidden: true
     }, {
       path: 'goodsForm',
-      name: 'goodsForm',
+      name: 'goodsForm_add',
       component: () => import('@/views/goods/spu/GoodsForm'),
-      meta: { title: '相册图片' },
+      meta: { title: 'SPU_add' },
+      hidden: true
+    }, {
+      path: 'goodsForm/:spuId',
+      name: 'goodsForm_eidt',
+      component: () => import('@/views/goods/spu/GoodsForm'),
+      meta: { title: 'SPU_edit' },
       hidden: true
     }]
   }, {

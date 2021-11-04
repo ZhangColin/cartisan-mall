@@ -144,7 +144,7 @@ export default {
       this.$router.push({ path: `/goods/spu/goodsForm` })
     },
     handleEdit(index, row) {
-
+      this.$router.push({ path: `/goods/spu/goodsForm/${row.id}` })
     },
     handleDelete(index, row) {
       this.$confirm(`是否要删除该${this.title}`, '提示', {
