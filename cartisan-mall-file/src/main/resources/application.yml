@@ -12,6 +12,7 @@ spring:
     include: web
     active: local
 
+
 cartisan:
   jwt:
     key: cartisan-jwt
@@ -35,5 +36,7 @@ management:
       enabled: true
     health:
       show-details: always
-
+nacos:
+  config:
+    server-addr: localhost:8848
 
