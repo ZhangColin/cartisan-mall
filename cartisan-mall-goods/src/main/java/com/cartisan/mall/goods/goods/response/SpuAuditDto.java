@@ -5,15 +5,13 @@ import lombok.Data;
 
 import java.lang.Long;
 import java.lang.String;
+import java.time.LocalDateTime;
 
 /**
  * @author colin
  */
 @Data
 public class SpuAuditDto {
-    @ApiModelProperty(value = "审核Id")
-    private Long id;
-
     @ApiModelProperty(value = "SPUId")
     private Long spuId;
 
@@ -25,5 +23,8 @@ public class SpuAuditDto {
 
     @ApiModelProperty(value = "审核人员")
     private String auditor;
+
+    @ApiModelProperty(value = "审核时间")
+    private LocalDateTime auditDate;
 
 }

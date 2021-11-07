@@ -92,7 +92,7 @@ public class SpuController {
     @PutMapping("/{id}/approve")
     public ResponseEntity<?> approve(
             @ApiParam(value = "SPUId", required = true) @PathVariable Long id,
-            @ApiParam(value = "SPU信息", required = true) @Validated @RequestBody String feedback) {
+            @ApiParam(value = "SPU信息", required = true) @Validated @RequestParam String feedback) {
         service.approve(id, feedback);
         return success();
     }
@@ -101,7 +101,7 @@ public class SpuController {
     @PutMapping("/{id}/reject")
     public ResponseEntity<?> reject(
             @ApiParam(value = "SPUId", required = true) @PathVariable Long id,
-            @ApiParam(value = "SPU信息", required = true) @Validated @RequestBody String feedback) {
+            @ApiParam(value = "SPU信息", required = true) @Validated @RequestParam String feedback) {
         service.reject(id, feedback);
         return success();
     }

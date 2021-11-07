@@ -75,10 +75,10 @@
             编辑
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item @click.native="showSku(scope.$index, scope.row)">SKU</el-dropdown-item>
+              <el-dropdown-item @click.native="showLog(scope.$index, scope.row)">日志</el-dropdown-item>
+              <el-dropdown-item @click.native="handleAudit(scope.$index, scope.row)">审核</el-dropdown-item>
+              <el-dropdown-item @click.native="showAuditDetail(scope.$index, scope.row)">审核详情</el-dropdown-item>
               <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
-              <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
-              <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">日志</el-dropdown-item>
-              <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">审核详情</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
@@ -96,13 +96,93 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
+    <el-drawer
+      title="商品日志"
+      :visible.sync="drawerLogVisible"
+      :wrapper-closable="false"
+      size="50%"
+    >
+      <div class="drawer__content">
+        <el-table
+          v-loading="loading"
+          :data="logDataSource"
+          row-key="id"
+          class="table-container"
+          element-loading-text="加载中..."
+          stripe
+          border
+          fit
+          highlight-current-row
+        >
+          <el-table-column align="center" label="日志内容" prop="content" />
+          <el-table-column align="center" label="操作人员" prop="operator" />
+          <el-table-column align="center" label="操作时间" prop="operateDate" />
+        </el-table>
+        <div class="drawer__footer">
+          <el-button @click="drawerLogVisible=false">关闭</el-button>
+        </div>
+      </div>
+    </el-drawer>
+    <el-drawer
+      title="商品审核详情"
+      :visible.sync="drawerAuditDetailVisible"
+      :wrapper-closable="false"
+      size="50%"
+    >
+      <div class="drawer__content">
+        <el-table
+          v-loading="loading"
+          :data="auditDataSource"
+          row-key="id"
+          class="table-container"
+          element-loading-text="加载中..."
+          stripe
+          border
+          fit
+          highlight-current-row
+        >
+          <el-table-column align="center" label="审核结果" prop="result" />
+          <el-table-column align="center" label="反馈详情" prop="feedback" />
+          <el-table-column align="center" label="审核人员" prop="auditor" />
+          <el-table-column align="center" label="审核时间" prop="auditDate" />
+        </el-table>
+        <div class="drawer__footer">
+          <el-button @click="drawerAuditDetailVisible=false">关闭</el-button>
+        </div>
+      </div>
+    </el-drawer>
+
+    <el-drawer
+      title="商品审核"
+      :visible.sync="auditVisible"
+      :wrapper-closable="false"
+      size="50%"
+    >
+      <div class="drawer__content">
+        <el-form ref="auditForm" :model="auditData" label-width="120px">
+          <el-form-item label="审核结果" prop="result">
+            <el-radio-group v-model="auditData.result">
+              <el-radio :label="true">审核通过</el-radio>
+              <el-radio :label="false">审核不通过</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="反馈详情" prop="feedback">
+            <el-input v-model="auditData.feedback" />
+          </el-form-item>
+        </el-form>
+        <div class="drawer__footer">
+          <el-button @click="auditVisible=false">取消</el-button>
+          <el-button type="primary" @click="handleAuditConfirm()">确定</el-button>
+        </div>
+      </div>
+    </el-drawer>
   </div>
 </template>
 
 <script>
 import { PaginationMixin } from '@/mixins/pagination-mixin'
-
 import { add, edit, getAll, remove } from '@/api/common-api'
+import { getSpuLogs, getSpuAudits, approve, reject } from '@/api/goods/spu-api'
 
 export default {
   name: 'Spu',
@@ -126,7 +206,15 @@ export default {
         emitPath: true,
         checkStrictly: true
       },
-      brands: []
+      brands: [],
+
+      drawerLogVisible: false,
+      logDataSource: [],
+
+      drawerAuditDetailVisible: false,
+      auditDataSource: [],
+      auditVisible: false,
+      auditData: { spuId: 0, result: false, feedback: '' }
     }
   },
   created() {
@@ -139,6 +227,41 @@ export default {
     },
     showSku(index, spu) {
       this.$router.push({ path: `/goods/spu/sku?spuId=${spu.id}` })
+    },
+    showLog(index, spu) {
+      getSpuLogs(spu.id).then(response => {
+        this.drawerLogVisible = true
+        this.logDataSource = response.data
+      })
+    },
+    handleAudit(index, spu) {
+      this.auditData = { spuId: spu.id, result: false, feedback: '' }
+      this.auditVisible = true
+    },
+    handleAuditConfirm() {
+      if (this.auditData.result) {
+        approve(this.auditData.spuId, this.auditData.feedback).then(_ => {
+          this.auditVisible = false
+          this.$notify.success({
+            title: '成功',
+            message: '审核成功'
+          })
+        })
+      } else {
+        reject(this.auditData.spuId, this.auditData.feedback).then(_ => {
+          this.auditVisible = false
+          this.$notify.success({
+            title: '成功',
+            message: '审核成功'
+          })
+        })
+      }
+    },
+    showAuditDetail(index, spu) {
+      getSpuAudits(spu.id).then(response => {
+        this.drawerAuditDetailVisible = true
+        this.auditDataSource = response.data
+      })
     },
     handleAdd() {
       this.$router.push({ path: `/goods/spu/goodsForm` })
