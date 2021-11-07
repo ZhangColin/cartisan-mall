@@ -1,0 +1,17 @@
+server:
+  port: 8002
+
+spring:
+  config:
+    use-legacy-processing: true
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    config:
+      file-extension: yml
+  application:
+    name: cartisan-mall-order
+  profiles:
+    include: web, mysql
+    active: local
+
