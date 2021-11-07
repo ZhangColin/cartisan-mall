@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  config:
+    use-legacy-processing: true
   servlet:
     multipart:
       max-request-size: 50MB
@@ -11,16 +13,10 @@ spring:
   profiles:
     include: web, mysql
     active: local
+  cloud:
+    nacos:
+      server-addr: localhost:8848
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
-  instance:
-    prefer-ip-address: true
-feign:
-  hystrix:
-    enabled: true
 
 cartisan:
   jwt:

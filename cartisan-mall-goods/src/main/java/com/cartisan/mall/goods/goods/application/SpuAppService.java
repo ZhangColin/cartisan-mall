@@ -2,18 +2,12 @@ package com.cartisan.mall.goods.goods.application;
 
 import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.brand.BrandAppService;
-import com.cartisan.mall.goods.goods.domain.SkuService;
-import com.cartisan.mall.goods.goods.domain.SpecificationsConverter;
-import com.cartisan.mall.goods.goods.domain.Spu;
-import com.cartisan.mall.goods.goods.domain.SpuService;
+import com.cartisan.mall.goods.goods.domain.*;
 import com.cartisan.mall.goods.goods.mapper.SpuMapper;
 import com.cartisan.mall.goods.goods.request.SkuParam;
 import com.cartisan.mall.goods.goods.request.SpuParam;
 import com.cartisan.mall.goods.goods.request.SpuQuery;
-import com.cartisan.mall.goods.goods.response.SpuDetailConverter;
-import com.cartisan.mall.goods.goods.response.SpuDetailDto;
-import com.cartisan.mall.goods.goods.response.SpuDto;
-import com.cartisan.util.SnowflakeIdWorker;
+import com.cartisan.mall.goods.goods.response.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
@@ -31,20 +25,26 @@ import java.util.Set;
  */
 @Service
 public class SpuAppService {
-    private final SnowflakeIdWorker idWorker;
     private final SpuMapper mapper;
     private final SpuService spuService;
     private final SkuService skuService;
+    private final SpuAuditService spuAuditService;
+    private final SpuLogService spuLogService;
     private final BrandAppService brandAppService;
 
     private final SpuDetailConverter converter = SpuDetailConverter.CONVERTER;
+    private final SpuAuditConverter spuAuditConverter = SpuAuditConverter.CONVERTER;
+    private final SpuLogConverter spuLogConverter = SpuLogConverter.CONVERTER;
 
-    public SpuAppService(SnowflakeIdWorker idWorker, SpuMapper mapper,
-                         SpuService spuService, SkuService skuService, BrandAppService brandAppService) {
-        this.idWorker = idWorker;
+    public SpuAppService(SpuMapper mapper,
+                         SpuService spuService, SkuService skuService,
+                         SpuAuditService spuAuditService, SpuLogService spuLogService,
+                         BrandAppService brandAppService) {
         this.mapper = mapper;
         this.spuService = spuService;
         this.skuService = skuService;
+        this.spuAuditService = spuAuditService;
+        this.spuLogService = spuLogService;
         this.brandAppService = brandAppService;
     }
 
@@ -91,11 +91,24 @@ public class SpuAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void audit(Long spuId, Integer status, String message) {
-        spuService.audit(spuId, status, message);
-        if (status == 1) {
-            spuService.put(spuId);
-        }
+    public void approve(Long spuId, String feedback) {
+        spuService.audit(spuId, 1);
+        spuAuditService.addSpuAudit(spuId, "审核通过", feedback, "admin");
+        spuService.put(spuId);
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    public void reject(Long spuId, String feedback) {
+        spuService.audit(spuId, 2);
+        spuAuditService.addSpuAudit(spuId, "审核未通过", feedback, "admin");
+    }
+
+    public List<SpuAuditDto> getSpuAudits(Long spuId) {
+        return spuAuditConverter.convert(spuAuditService.getSpuAudits(spuId));
+    }
+
+    public List<SpuLogDto> getSpuLogs(Long spuId) {
+        return spuLogConverter.convert(spuLogService.getSpuLogs(spuId));
     }
 
     @Transactional(rollbackOn = Exception.class)

@@ -2,6 +2,11 @@ server:
   port: 8005
 
 spring:
+  config:
+    use-legacy-processing: true
+  cloud:
+    nacos:
+      server-addr: localhost:8848
   servlet:
     multipart:
       max-request-size: 10MB

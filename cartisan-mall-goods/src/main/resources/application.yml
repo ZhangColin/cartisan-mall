@@ -2,25 +2,16 @@ server:
   port: 8001
 
 spring:
+  config:
+    use-legacy-processing: true
+  cloud:
+    nacos:
+      server-addr: localhost:8848
   application:
     name: cartisan-mall-goods
   profiles:
     include: web, mysql
     active: local
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: localhost:8848
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
-  instance:
-    prefer-ip-address: true
-feign:
-  hystrix:
-    enabled: true
 
 cartisan:
   jwt:

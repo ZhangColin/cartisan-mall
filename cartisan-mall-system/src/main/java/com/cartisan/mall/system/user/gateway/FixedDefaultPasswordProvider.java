@@ -1,4 +1,4 @@
-package com.cartisan.mall.system.user.gatway;
+package com.cartisan.mall.system.user.gateway;
 
 import com.cartisan.mall.system.user.domain.DefaultPasswordProvider;
 import org.springframework.stereotype.Service;

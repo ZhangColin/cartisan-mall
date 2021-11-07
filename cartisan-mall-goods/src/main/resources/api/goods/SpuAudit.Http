@@ -1,0 +1,45 @@
+### 搜索商品审核详情
+GET http://{{host}}:{{port}}/spuAudits/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取商品审核详情
+GET http://{{host}}:{{port}}/spuAudits/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加商品审核详情
+POST http://{{host}}:{{port}}/spuAudits
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "spuId": "",
+  "result": "",
+  "feedback": "",
+  "auditor": ""
+}
+
+### 编辑商品审核详情
+PUT http://{{host}}:{{port}}/spuAudits/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "spuId": "",
+  "result": "",
+  "feedback": "",
+  "auditor": ""
+}
+
+### 删除商品审核详情
+DELETE http://{{host}}:{{port}}/spuAudits/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

@@ -7,7 +7,7 @@
     <artifactId>cartisan-parent</artifactId>
     <groupId>com.cartisan</groupId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <groupId>com.cartisan.mall</groupId>
@@ -27,7 +27,6 @@
     <dependency>
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-      <version>2021.1</version>
     </dependency>
 
     <dependency>

@@ -1,19 +1,15 @@
 package com.cartisan.mall.goods.goods.domain;
 
-import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.goods.repository.SpuRepository;
 import com.cartisan.mall.goods.goods.request.SpuParam;
-import com.cartisan.mall.goods.goods.request.SpuQuery;
 import com.cartisan.util.SnowflakeIdWorker;
-import lombok.NonNull;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
+import java.util.Map;
 
-import static com.cartisan.repository.ConditionSpecifications.querySpecification;
 import static com.cartisan.util.AssertionUtil.requirePresent;
 
 /**
@@ -23,18 +19,12 @@ import static com.cartisan.util.AssertionUtil.requirePresent;
 public class SpuService {
     private final SpuRepository repository;
     private final SnowflakeIdWorker idWorker;
+    private final SpuLogService spuLogService;
 
-    public SpuService(SpuRepository repository, SnowflakeIdWorker idWorker) {
+    public SpuService(SpuRepository repository, SnowflakeIdWorker idWorker, SpuLogService spuLogService) {
         this.repository = repository;
         this.idWorker = idWorker;
-    }
-
-    public PageResult<Spu> searchSpus(@NonNull SpuQuery spuQuery, @NonNull Pageable pageable) {
-        final Page<Spu> searchResult = repository.findAll(querySpecification(spuQuery),
-                PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
-
-        return new PageResult<>(searchResult.getTotalElements(), searchResult.getTotalPages(),
-                searchResult.getContent());
+        this.spuLogService = spuLogService;
     }
 
     public Spu getSpu(Long id) {
@@ -59,12 +49,18 @@ public class SpuService {
                 spuParam.getSpecificationItems(),
                 spuParam.getParameterItems());
 
+        final Map<String, Object> logData = getLogData(spu);
+
+        logSpuData(spu.getId(), new HashMap<>(), logData);
+
         return repository.save(spu);
     }
 
     @Transactional(rollbackOn = Exception.class)
     public Spu editSpu(Long id, SpuParam spuParam) {
         final Spu spu = requirePresent(repository.findById(id));
+
+        final Map<String, Object> originLogData = getLogData(spu);
 
         spu.describe(spuParam.getSn(),
                 spuParam.getName(),
@@ -81,9 +77,13 @@ public class SpuService {
                 spuParam.getSpecificationItems(),
                 spuParam.getParameterItems());
 
-        return repository.save(spu);
+        repository.save(spu);
 
-        // Todo: Save edit log
+        final Map<String, Object> newLogData = getLogData(spu);
+
+        logSpuData(spu.getId(), originLogData, newLogData);
+
+        return spu;
     }
 
     @Transactional(rollbackOn = Exception.class)
@@ -92,24 +92,28 @@ public class SpuService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void audit(Long spuId, Integer status, String message) {
+    public void audit(Long spuId, Integer status) {
         final Spu spu = requirePresent(repository.findById(spuId));
+        final Map<String, Object> originLogData = getLogData(spu);
 
         spu.setAuditStatus(status);
-
         repository.save(spu);
 
-        // TODO: Sava audit log
+        final Map<String, Object> newLogData = getLogData(spu);
+
+        logSpuData(spu.getId(), originLogData, newLogData);
     }
 
     @Transactional(rollbackOn = Exception.class)
     public void pull(Long spuId) {
         final Spu spu = requirePresent(repository.findById(spuId));
+        final Map<String, Object> originLogData = getLogData(spu);
 
         spu.setIsMarketable(false);
-
         repository.save(spu);
-        // Todo: Save edit log
+
+        final Map<String, Object> newLogData = getLogData(spu);
+        logSpuData(spu.getId(), originLogData, newLogData);
     }
 
     @Transactional(rollbackOn = Exception.class)
@@ -119,9 +123,31 @@ public class SpuService {
         if (spu.getAuditStatus() != 1) {
             throw new RuntimeException("此商品未通过审核。");
         }
-        spu.setIsMarketable(true);
+        final Map<String, Object> originLogData = getLogData(spu);
 
+        spu.setIsMarketable(true);
         repository.save(spu);
-        // Todo: Save edit log
+
+        final Map<String, Object> newLogData = getLogData(spu);
+        logSpuData(spu.getId(), originLogData, newLogData);
+    }
+
+    private Map<String, Object> getLogData(Spu spu) {
+        final HashMap<String, Object> logData = new HashMap<>();
+
+        logData.put("isMarketable", spu.getIsMarketable());
+        logData.put("auditStatus", spu.getAuditStatus());
+
+        return logData;
+    }
+
+    private void logSpuData(Long spuId, Map<String, Object> originData, Map<String, Object> newData) {
+        final Gson gson = new Gson();
+        final HashMap<String, Map<String, Object>> data = new HashMap<>();
+
+        data.put("origin", originData);
+        data.put("new", newData);
+
+        spuLogService.addSpuLog(spuId,  gson.toJson(data), "admin");
     }
 }

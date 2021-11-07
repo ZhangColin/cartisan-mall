@@ -6,6 +6,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PreDestroy;
@@ -17,6 +18,7 @@ import javax.annotation.PreDestroy;
 @MapperScan("com.cartisan.mall.**.mapper")
 @Slf4j
 @EnableDiscoveryClient
+@EnableFeignClients(basePackages = "com.cartisan.mall.system.**.gateway")
 public class SystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(SystemApplication.class, args);

@@ -44,5 +44,35 @@ CREATE TABLE `gds_skus` (
     `images` varchar(1000) DEFAULT '' COMMENT '商品图片列表',
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`) USING BTREE
+    PRIMARY KEY (`id`) USING BTREE,
+    INDEX `index_sku_spu_id`(`spu_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='SKU';
+
+-- 商品日志
+DROP TABLE IF EXISTS `gds_spu_logs`;
+
+CREATE TABLE `gds_spu_logs` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志Id',
+    `spu_id` bigint NULL COMMENT 'SPUId',
+    `content` varchar(1000) DEFAULT '' COMMENT '日志内容',
+    `operator` varchar(32) DEFAULT '' COMMENT '操作人员',
+    `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`) USING BTREE,
+    INDEX `index_spu_log_spu_id`(`spu_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品日志';
+
+-- 商品审核详情
+DROP TABLE IF EXISTS `gds_spu_audits`;
+
+CREATE TABLE `gds_spu_audits` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '审核Id',
+    `spu_id` bigint NULL COMMENT 'SPUId',
+    `result` varchar(16) DEFAULT '' COMMENT '审核结果',
+    `feedback` varchar(256) DEFAULT '' COMMENT '反馈详情',
+    `auditor` varchar(32) DEFAULT '' COMMENT '审核人员',
+    `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`) USING BTREE,
+    INDEX `index_spu_audit_spu_id`(`spu_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品审核详情';
