@@ -56,12 +56,20 @@
       </el-table-column>
       <el-table-column align="center" label="是否上架" prop="isMarketable" width="80">
         <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.isMarketable"
-            :active-value="true"
-            :inactive-value="false"
-            disabled
-          />
+          <el-popconfirm
+            :title="`确定要${(scope.row.isMarketable?'上架':'下架')}[${scope.row.name}]`"
+            confirm-button-text="确定"
+            cancel-button-text="取消"
+            @confirm="handleIsMarketableConfirmChange(scope.$index, scope.row)"
+            @cancel="handleIsMarketableCancelChange(scope.$index, scope.row)"
+          >
+            <el-switch
+              slot="reference"
+              v-model="scope.row.isMarketable"
+              :active-value="true"
+              :inactive-value="false"
+            />
+          </el-popconfirm>
         </template>
       </el-table-column>
       <el-table-column align="center" label="审核状态" prop="auditStatus" width="80">
@@ -182,7 +190,7 @@
 <script>
 import { PaginationMixin } from '@/mixins/pagination-mixin'
 import { add, edit, getAll, remove } from '@/api/common-api'
-import { getSpuLogs, getSpuAudits, approve, reject } from '@/api/goods/spu-api'
+import { getSpuLogs, getSpuAudits, approve, reject, put, pull } from '@/api/goods/spu-api'
 
 export default {
   name: 'Spu',
@@ -262,6 +270,30 @@ export default {
         this.drawerAuditDetailVisible = true
         this.auditDataSource = response.data
       })
+    },
+    handleIsMarketableConfirmChange(index, row) {
+      if (row.isMarketable) {
+        put(row.id).then(() => {
+          this.$notify.success({
+            title: '成功',
+            message: '上架成功'
+          })
+        }).catch(() => {
+          row.isMarketable = !row.isMarketable
+        })
+      } else {
+        pull(row.id).then(() => {
+          this.$notify.success({
+            title: '成功',
+            message: '下架成功'
+          })
+        }).catch(() => {
+          row.isMarketable = !row.isMarketable
+        })
+      }
+    },
+    handleIsMarketableCancelChange(index, row) {
+      row.isMarketable = !row.isMarketable
     },
     handleAdd() {
       this.$router.push({ path: `/goods/spu/goodsForm` })

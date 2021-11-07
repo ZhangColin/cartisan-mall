@@ -19,3 +19,11 @@ export function reject(spuId, feedback) {
   formData.append('feedback', feedback)
   return request.put(`/goods/spus/${spuId}/reject`, formData)
 }
+
+export function put(spuId) {
+  return request.put(`/goods/spus/${spuId}/put`)
+}
+
+export function pull(spuId) {
+  return request.put(`/goods/spus/${spuId}/pull`)
+}

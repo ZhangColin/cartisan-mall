@@ -105,4 +105,20 @@ public class SpuController {
         service.reject(id, feedback);
         return success();
     }
+
+    @ApiOperation(value = "上架")
+    @PutMapping("/{id}/put")
+    public ResponseEntity<?> put(
+            @ApiParam(value = "SPUId", required = true) @PathVariable Long id) {
+        service.put(id);
+        return success();
+    }
+
+    @ApiOperation(value = "下架")
+    @PutMapping("/{id}/pull")
+    public ResponseEntity<?> pull(
+            @ApiParam(value = "SPUId", required = true) @PathVariable Long id) {
+        service.pull(id);
+        return success();
+    }
 }
