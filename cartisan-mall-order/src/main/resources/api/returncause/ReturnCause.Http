@@ -1,0 +1,43 @@
+### 搜索退货原因表
+GET http://{{host}}:{{port}}/returnCauses/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取退货原因表
+GET http://{{host}}:{{port}}/returnCauses/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加退货原因表
+POST http://{{host}}:{{port}}/returnCauses
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "cause": "",
+  "enable": "",
+  "sequence": ""
+}
+
+### 编辑退货原因表
+PUT http://{{host}}:{{port}}/returnCauses/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "cause": "",
+  "enable": "",
+  "sequence": ""
+}
+
+### 删除退货原因表
+DELETE http://{{host}}:{{port}}/returnCauses/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

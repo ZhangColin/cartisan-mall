@@ -1,0 +1,67 @@
+### 搜索退货退款订单
+GET http://{{host}}:{{port}}/returnOrders/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取退货退款订单
+GET http://{{host}}:{{port}}/returnOrders/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加退货退款订单
+POST http://{{host}}:{{port}}/returnOrders
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "orderId": "",
+  "applied": "",
+  "userId": "",
+  "username": "",
+  "contract": "",
+  "contractMobile": "",
+  "type": "",
+  "refundAmount": "",
+  "refundFreight": "",
+  "status": "",
+  "processed": "",
+  "returnCause": "",
+  "evidence": "",
+  "description": "",
+  "remark": ""
+}
+
+### 编辑退货退款订单
+PUT http://{{host}}:{{port}}/returnOrders/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "orderId": "",
+  "applied": "",
+  "userId": "",
+  "username": "",
+  "contract": "",
+  "contractMobile": "",
+  "type": "",
+  "refundAmount": "",
+  "refundFreight": "",
+  "status": "",
+  "processed": "",
+  "returnCause": "",
+  "evidence": "",
+  "description": "",
+  "remark": ""
+}
+
+### 删除退货退款订单
+DELETE http://{{host}}:{{port}}/returnOrders/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

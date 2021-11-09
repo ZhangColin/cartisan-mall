@@ -1,0 +1,55 @@
+### 搜索订单明细
+GET http://{{host}}:{{port}}/orderItems/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取订单明细
+GET http://{{host}}:{{port}}/orderItems/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加订单明细
+POST http://{{host}}:{{port}}/orderItems
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "orderId": "",
+  "spuId": "",
+  "skuId": "",
+  "name": "",
+  "price": "",
+  "quantity": "",
+  "weight": "",
+  "image": "",
+  "isReturn": ""
+}
+
+### 编辑订单明细
+PUT http://{{host}}:{{port}}/orderItems/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "orderId": "",
+  "spuId": "",
+  "skuId": "",
+  "name": "",
+  "price": "",
+  "quantity": "",
+  "weight": "",
+  "image": "",
+  "isReturn": ""
+}
+
+### 删除订单明细
+DELETE http://{{host}}:{{port}}/orderItems/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

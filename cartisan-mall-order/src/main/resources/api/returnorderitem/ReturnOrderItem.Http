@@ -1,0 +1,57 @@
+### 搜索退货退款订单明细
+GET http://{{host}}:{{port}}/returnOrderItems/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取退货退款订单明细
+GET http://{{host}}:{{port}}/returnOrderItems/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加退货退款订单明细
+POST http://{{host}}:{{port}}/returnOrderItems
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "returnOrderId": "",
+  "orderId": "",
+  "orderItemId": "",
+  "spuId": "",
+  "skuId": "",
+  "name": "",
+  "price": "",
+  "quantity": "",
+  "weight": "",
+  "image": ""
+}
+
+### 编辑退货退款订单明细
+PUT http://{{host}}:{{port}}/returnOrderItems/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "returnOrderId": "",
+  "orderId": "",
+  "orderItemId": "",
+  "spuId": "",
+  "skuId": "",
+  "name": "",
+  "price": "",
+  "quantity": "",
+  "weight": "",
+  "image": ""
+}
+
+### 删除退货退款订单明细
+DELETE http://{{host}}:{{port}}/returnOrderItems/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

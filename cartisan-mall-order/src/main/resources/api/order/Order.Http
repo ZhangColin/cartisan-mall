@@ -1,0 +1,78 @@
+### 搜索订单
+GET http://{{host}}:{{port}}/orders/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取订单
+GET http://{{host}}:{{port}}/orders/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加订单
+POST http://{{host}}:{{port}}/orders
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  "totalAmount": "",
+  "discountAmount": "",
+  "freight": "",
+  "actualAmount": "",
+  "payType": "",
+  "placed": "",
+  "paid": "",
+  "delivered": "",
+  "completed": "",
+  "closed": "",
+  "shippingName": "",
+  "shippingCode": "",
+  "username": "",
+  "buyerMessage": "",
+  "buyerRate": "",
+  "receiverContact": "",
+  "receiverMobile": "",
+  "receiverAddress": "",
+  "sourceType": "",
+  "orderStatus": "",
+  "payStatus": ""
+}
+
+### 编辑订单
+PUT http://{{host}}:{{port}}/orders/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+
+  "totalAmount": "",
+  "discountAmount": "",
+  "freight": "",
+  "actualAmount": "",
+  "payType": "",
+  "placed": "",
+  "paid": "",
+  "delivered": "",
+  "completed": "",
+  "closed": "",
+  "shippingName": "",
+  "shippingCode": "",
+  "username": "",
+  "buyerMessage": "",
+  "buyerRate": "",
+  "receiverContact": "",
+  "receiverMobile": "",
+  "receiverAddress": "",
+  "sourceType": "",
+  "orderStatus": "",
+  "payStatus": ""
+}
+
+### 删除订单
+DELETE http://{{host}}:{{port}}/orders/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
