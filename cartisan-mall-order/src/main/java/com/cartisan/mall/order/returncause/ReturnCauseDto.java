@@ -8,6 +8,9 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.lang.Integer;
 
+/**
+ * @author colin
+ */
 @Data
 public class ReturnCauseDto {
     @ApiModelProperty(value = "退货原因Id")

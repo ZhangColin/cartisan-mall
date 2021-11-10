@@ -1,9 +1,7 @@
 <template>
   <div class="app-container">
     <el-row :gutter="24" class="filter-container">
-      <el-col :span="6" />
       <el-col :span="12">
-        <el-button class="filter-item" type="primary" @click="handleSearch">查询</el-button>
         <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
       </el-col>
     </el-row>
@@ -20,7 +18,16 @@
     >
       <el-table-column align="center" label="退货原因Id" prop="id" />
       <el-table-column align="center" label="原因" prop="cause" />
-      <el-table-column align="center" label="是否启用" prop="enable" />
+      <el-table-column align="center" label="是否启用" prop="enable">
+        <template slot-scope="scope">
+          <el-switch
+            v-model="scope.row.enable"
+            :active-value="true"
+            :inactive-value="false"
+            disabled
+          />
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="排序" prop="sequence" />
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
@@ -33,18 +40,6 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      :current-page.sync="page.currentPage"
-      :page-sizes="[5, 10, 20, 50, 100]"
-      :page-size="page.pageSize"
-      :total="page.total"
-      class="pagination-container"
-      background
-      align="right"
-      layout="total, sizes, prev, pager, next, jumper"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
     <el-drawer
       :title="drawerTitle"
       :visible.sync="drawerVisible"
@@ -58,10 +53,14 @@
             <el-input v-model="entityData.cause" />
           </el-form-item>
           <el-form-item label="是否启用" prop="enable">
-            <el-input v-model="entityData.enable" />
+            <el-switch
+              v-model="entityData.enable"
+              :active-value="true"
+              :inactive-value="false"
+            />
           </el-form-item>
           <el-form-item label="排序" prop="sequence">
-            <el-input v-model="entityData.sequence" />
+            <el-input-number v-model="entityData.sequence" />
           </el-form-item>
         </el-form>
         <div class="drawer__footer">
@@ -74,23 +73,22 @@
 </template>
 
 <script>
-import { PaginationMixin } from '@/mixins/pagination-mixin'
 import { CudMixin } from '@/mixins/cud-mixin'
+import { ListMixin } from '@/mixins/list-mixin'
 
 export default {
   name: 'ReturnCause',
-  mixins: [PaginationMixin, CudMixin],
+  mixins: [ListMixin, CudMixin],
   data() {
     return {
-      apiBaseUrl: '/returnCauses',
-
+      apiBaseUrl: '/order/returnCauses',
+      useSearch: false,
       defaultData: {
-
         cause: '',
-        enable: '',
-        sequence: ''
+        enable: true,
+        sequence: 0
       },
-      title: '退货原因表',
+      title: '退货原因',
       rules: {
         name: [
         ]
