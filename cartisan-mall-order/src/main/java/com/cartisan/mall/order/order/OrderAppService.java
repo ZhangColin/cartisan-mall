@@ -1,23 +1,21 @@
 package com.cartisan.mall.order.order;
 
-import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.exception.CartisanException;
+import com.cartisan.util.SnowflakeIdWorker;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.cartisan.util.SnowflakeIdWorker;
-
 import javax.transaction.Transactional;
-import java.util.List;
 
 import static com.cartisan.repository.ConditionSpecifications.querySpecification;
 import static com.cartisan.util.AssertionUtil.requirePresent;
-import static java.util.stream.Collectors.toList;
 
+/**
+ * @author colin
+ */
 @Service
 public class OrderAppService {
     private final OrderRepository repository;

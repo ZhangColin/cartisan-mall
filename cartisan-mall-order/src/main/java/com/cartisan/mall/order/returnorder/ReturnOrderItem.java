@@ -1,4 +1,4 @@
-package com.cartisan.mall.order.orderitem;
+package com.cartisan.mall.order.returnorder;
 
 import com.cartisan.domain.AbstractEntity;
 import com.cartisan.domain.AggregateRoot;
@@ -12,23 +12,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.lang.Long;
-import java.lang.Boolean;
 import java.lang.String;
 import java.lang.Integer;
 
 import static java.util.stream.Collectors.toList;
 
 @Entity
-@Table(name = "ord_order_items")
+@Table(name = "ord_return_order_items")
 @Getter
-public class OrderItem extends AbstractEntity implements AggregateRoot {
+public class ReturnOrderItem extends AbstractEntity implements AggregateRoot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "return_order_id")
+    private Long returnOrderId;
+
     @Column(name = "order_id")
     private Long orderId;
+
+    @Column(name = "order_item_id")
+    private Long orderItemId;
 
     @Column(name = "spu_id")
     private Long spuId;
@@ -51,14 +56,13 @@ public class OrderItem extends AbstractEntity implements AggregateRoot {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "is_return")
-    private Boolean isReturn;
+    protected ReturnOrderItem() {}
 
-    protected OrderItem() {}
+    public ReturnOrderItem(Long returnOrderId, Long orderId, Long orderItemId, Long spuId, Long skuId, String name, Integer price, Integer quantity, Integer weight, String image) {
 
-    public OrderItem(Long orderId, Long spuId, Long skuId, String name, Integer price, Integer quantity, Integer weight, String image, Boolean isReturn) {
-
+        this.returnOrderId = returnOrderId;
         this.orderId = orderId;
+        this.orderItemId = orderItemId;
         this.spuId = spuId;
         this.skuId = skuId;
         this.name = name;
@@ -66,11 +70,12 @@ public class OrderItem extends AbstractEntity implements AggregateRoot {
         this.quantity = quantity;
         this.weight = weight;
         this.image = image;
-        this.isReturn = isReturn;
     }
 
-    public void describe(Long orderId, Long spuId, Long skuId, String name, Integer price, Integer quantity, Integer weight, String image, Boolean isReturn) {
+    public void describe(Long returnOrderId, Long orderId, Long orderItemId, Long spuId, Long skuId, String name, Integer price, Integer quantity, Integer weight, String image) {
+        this.returnOrderId = returnOrderId;
         this.orderId = orderId;
+        this.orderItemId = orderItemId;
         this.spuId = spuId;
         this.skuId = skuId;
         this.name = name;
@@ -78,6 +83,5 @@ public class OrderItem extends AbstractEntity implements AggregateRoot {
         this.quantity = quantity;
         this.weight = weight;
         this.image = image;
-        this.isReturn = isReturn;
     }
 }

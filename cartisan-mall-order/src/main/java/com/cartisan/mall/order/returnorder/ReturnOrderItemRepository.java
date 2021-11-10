@@ -1,8 +1,6 @@
-package com.cartisan.mall.order.returnorderitem;
+package com.cartisan.mall.order.returnorder;
 
 import com.cartisan.repository.BaseRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 public interface ReturnOrderItemRepository extends BaseRepository<ReturnOrderItem, Long> {
 

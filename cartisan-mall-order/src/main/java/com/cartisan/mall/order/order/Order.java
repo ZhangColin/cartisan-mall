@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * @author colin
+ */
 @Entity
 @Table(name = "ord_orders")
 @Getter

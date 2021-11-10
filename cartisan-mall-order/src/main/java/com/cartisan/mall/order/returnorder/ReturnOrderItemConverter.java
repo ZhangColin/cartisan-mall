@@ -1,4 +1,4 @@
-package com.cartisan.mall.order.returnorderitem;
+package com.cartisan.mall.order.returnorder;
 
 import com.cartisan.dto.Converter;
 import org.mapstruct.Mapper;
