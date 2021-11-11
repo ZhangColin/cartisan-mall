@@ -70,7 +70,7 @@ export default {
   mixins: [PaginationMixin],
   data() {
     return {
-      apiBaseUrl: '/orders',
+      apiBaseUrl: '/order/orders',
       activeName: '0',
       title: '订单'
     }

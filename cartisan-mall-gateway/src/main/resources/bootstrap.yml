@@ -13,10 +13,10 @@ spring:
     nacos:
       config:
         file-extension: yml
-    gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]': # 匹配所有请求
-            allowedOrigins: "*" #跨域处理 允许所有的域
-            allowedHeaders: "*"
-            allowedMethods: "*"
+#    gateway:
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]': # 匹配所有请求
+#            allowedOrigins: "*" #跨域处理 允许所有的域
+#            allowedHeaders: "*"
+#            allowedMethods: "*"
