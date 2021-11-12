@@ -13,10 +13,38 @@ spring:
     nacos:
       config:
         file-extension: yml
-#    gateway:
-#      globalcors:
-#        corsConfigurations:
-#          '[/**]': # 匹配所有请求
-#            allowedOrigins: "*" #跨域处理 允许所有的域
-#            allowedHeaders: "*"
-#            allowedMethods: "*"
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      routes:
+        - id: cartisan_mall_goods_route
+          uri: lb://catrisan-mall-goods
+          predicates:
+            - Path=/goods/**
+          filters:
+            - StripPrefix=1
+
+        - id: cartisan_mall_order_route
+          uri: lb://catrisan-mall-order
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+
+        - id: cartisan_mall_system_route
+          uri: lb://cartisan-mall-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+
+        - id: cartisan_mall_file_route
+          uri: lb://catrisan-mall-file
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
