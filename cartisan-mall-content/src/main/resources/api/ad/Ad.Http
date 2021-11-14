@@ -1,0 +1,53 @@
+### 搜索广告
+GET http://{{host}}:{{port}}/ads/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取广告
+GET http://{{host}}:{{port}}/ads/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加广告
+POST http://{{host}}:{{port}}/ads
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "name": "",
+  "position": "",
+  "start": "",
+  "end": "",
+  "status": "",
+  "image": "",
+  "url": "",
+  "remarks": ""
+}
+
+### 编辑广告
+PUT http://{{host}}:{{port}}/ads/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  
+  "name": "",
+  "position": "",
+  "start": "",
+  "end": "",
+  "status": "",
+  "image": "",
+  "url": "",
+  "remarks": ""
+}
+
+### 删除广告
+DELETE http://{{host}}:{{port}}/ads/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}

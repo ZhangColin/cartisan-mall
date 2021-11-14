@@ -1,0 +1,17 @@
+server:
+  port: 8088
+
+spring:
+  config:
+    use-legacy-processing: true
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    config:
+      file-extension: yml
+  application:
+    name: cartisan-mall-portal
+  profiles:
+    include: web
+    active: local
+
