@@ -3,11 +3,11 @@ package com.cartisan.mall.content.ad;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.lang.Long;
 import java.util.Date;
-import java.lang.String;
-import java.lang.Integer;
 
+/**
+ * @author colin
+ */
 @Data
 public class AdDto {
     @ApiModelProperty(value = "主键Id")

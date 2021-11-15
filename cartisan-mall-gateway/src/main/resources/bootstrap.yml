@@ -35,6 +35,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: cartisan-mall-content_route
+          uri: lb://cartisan-mall-content
+          predicates:
+            - Path=/content/**
+          filters:
+            - StripPrefix=1
+
         - id: cartisan_mall_system_route
           uri: lb://cartisan-mall-system
           predicates:

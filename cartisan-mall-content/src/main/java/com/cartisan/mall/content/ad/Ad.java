@@ -2,22 +2,14 @@ package com.cartisan.mall.content.ad;
 
 import com.cartisan.domain.AbstractEntity;
 import com.cartisan.domain.AggregateRoot;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import java.lang.Long;
 import java.util.Date;
-import java.lang.String;
-import java.lang.Integer;
 
-import static java.util.stream.Collectors.toList;
-
+/**
+ * @author colin
+ */
 @Entity
 @Table(name = "cnt_ads")
 @Getter
@@ -51,10 +43,11 @@ public class Ad extends AbstractEntity implements AggregateRoot {
     @Column(name = "remarks")
     private String remarks;
 
-    protected Ad() {}
+    protected Ad() {
+    }
 
     public Ad(String name, String position, Date start, Date end, Integer status, String image, String url, String remarks) {
-        
+
         this.name = name;
         this.position = position;
         this.start = start;

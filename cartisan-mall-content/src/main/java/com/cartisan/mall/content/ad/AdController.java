@@ -1,8 +1,6 @@
 package com.cartisan.mall.content.ad;
 
-import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.exception.CartisanException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,10 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import static com.cartisan.response.ResponseUtil.success;
 
+/**
+ * @author colin
+ */
 @Api(tags = "内容服务：广告")
 @RestController
 @RequestMapping("/ads")
@@ -39,7 +38,7 @@ public class AdController {
 
     @ApiOperation(value = "获取广告")
     @GetMapping("/{id}")
-    public ResponseEntity<AdDto> getAd(@ApiParam(value = "广告Id", required = true) @PathVariable Long id){
+    public ResponseEntity<AdDto> getAd(@ApiParam(value = "广告Id", required = true) @PathVariable Long id) {
         return success(service.getAd(id));
     }
 

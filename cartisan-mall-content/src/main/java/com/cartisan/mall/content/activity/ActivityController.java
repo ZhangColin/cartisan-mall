@@ -1,8 +1,6 @@
 package com.cartisan.mall.content.activity;
 
-import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.PageResult;
-import com.cartisan.exception.CartisanException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,10 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import static com.cartisan.response.ResponseUtil.success;
 
+/**
+ * @author colin
+ */
 @Api(tags = "内容服务：活动")
 @RestController
 @RequestMapping("/activities")
@@ -39,7 +38,7 @@ public class ActivityController {
 
     @ApiOperation(value = "获取活动")
     @GetMapping("/{id}")
-    public ResponseEntity<ActivityDto> getActivity(@ApiParam(value = "活动Id", required = true) @PathVariable Long id){
+    public ResponseEntity<ActivityDto> getActivity(@ApiParam(value = "活动Id", required = true) @PathVariable Long id) {
         return success(service.getActivity(id));
     }
 

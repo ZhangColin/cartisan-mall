@@ -1,8 +1,7 @@
 <template>
   <div class="app-container">
     <el-row :gutter="24" class="filter-container">
-      <el-col :span="6">
-      </el-col>
+      <el-col :span="6" />
       <el-col :span="12">
         <el-button class="filter-item" type="primary" @click="handleSearch">查询</el-button>
         <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
@@ -19,7 +18,7 @@
       fit
       highlight-current-row
     >
-            <el-table-column align="center" label="主键Id" prop="id" />
+      <el-table-column align="center" label="主键Id" prop="id" />
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column align="center" label="广告位置" prop="position" />
       <el-table-column align="center" label="开始时间" prop="start" />
@@ -59,31 +58,31 @@
     >
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
-          
+
           <el-form-item label="名称" prop="name">
-             <el-input v-model="entityData.name" />
-           </el-form-item>
+            <el-input v-model="entityData.name" />
+          </el-form-item>
           <el-form-item label="广告位置" prop="position">
-             <el-input v-model="entityData.position" />
-           </el-form-item>
+            <el-input v-model="entityData.position" />
+          </el-form-item>
           <el-form-item label="开始时间" prop="start">
-             <el-input v-model="entityData.start" />
-           </el-form-item>
+            <el-input v-model="entityData.start" />
+          </el-form-item>
           <el-form-item label="结束时间" prop="end">
-             <el-input v-model="entityData.end" />
-           </el-form-item>
+            <el-input v-model="entityData.end" />
+          </el-form-item>
           <el-form-item label="状态" prop="status">
-             <el-input v-model="entityData.status" />
-           </el-form-item>
+            <el-input v-model="entityData.status" />
+          </el-form-item>
           <el-form-item label="图片" prop="image">
-             <el-input v-model="entityData.image" />
-           </el-form-item>
+            <el-input v-model="entityData.image" />
+          </el-form-item>
           <el-form-item label="跳转链接" prop="url">
-             <el-input v-model="entityData.url" />
-           </el-form-item>
+            <el-input v-model="entityData.url" />
+          </el-form-item>
           <el-form-item label="备注" prop="remarks">
-             <el-input v-model="entityData.remarks" />
-           </el-form-item>
+            <el-input v-model="entityData.remarks" />
+          </el-form-item>
         </el-form>
         <div class="drawer__footer">
           <el-button @click="drawerVisible=false">取消</el-button>
@@ -103,10 +102,10 @@ export default {
   mixins: [PaginationMixin, CudMixin],
   data() {
     return {
-      apiBaseUrl: '/ads',
+      apiBaseUrl: '/content/ads',
 
       defaultData: {
-        
+
         name: '',
         position: '',
         start: '',

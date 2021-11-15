@@ -17,7 +17,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
+
   "name": "",
   "position": "",
   "start": "",
@@ -35,7 +35,7 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  
+
   "name": "",
   "position": "",
   "start": "",

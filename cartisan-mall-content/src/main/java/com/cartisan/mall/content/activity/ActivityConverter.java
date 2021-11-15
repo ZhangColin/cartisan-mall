@@ -4,6 +4,9 @@ import com.cartisan.dto.Converter;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * @author colin
+ */
 @Mapper
 public interface ActivityConverter extends Converter<Activity, ActivityDto> {
     ActivityConverter CONVERTER = Mappers.getMapper(ActivityConverter.class);
