@@ -1,4 +1,4 @@
-package com.cartisan.mall.order;
+package com.cartisan.mall.content;
 
 import com.cartisan.util.SnowflakeIdWorker;
 import lombok.extern.slf4j.Slf4j;

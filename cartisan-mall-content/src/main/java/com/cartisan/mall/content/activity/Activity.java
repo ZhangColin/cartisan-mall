@@ -45,7 +45,7 @@ public class Activity extends AbstractEntity implements AggregateRoot {
     protected Activity() {}
 
     public Activity(String title, Date start, Date end, String content, Integer status) {
-        
+
         this.title = title;
         this.start = start;
         this.end = end;
