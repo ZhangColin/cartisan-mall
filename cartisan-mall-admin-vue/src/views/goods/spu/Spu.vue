@@ -33,7 +33,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="商品Id" prop="id" width="160" />
+      <el-table-column align="center" label="商品ID" prop="id" width="160" />
       <el-table-column align="center" label="商品图片" prop="image" width="140">
         <template slot-scope="scope">
           <el-image

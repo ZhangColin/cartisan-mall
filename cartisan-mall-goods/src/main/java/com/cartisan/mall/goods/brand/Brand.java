@@ -23,11 +23,14 @@ public class Brand extends AbstractEntity implements AggregateRoot {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "image")
-    private String image;
+    @Column(name = "logo")
+    private String logo;
 
-    @Column(name = "letter")
-    private String letter;
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "first_letter")
+    private String firstLetter;
 
     @Column(name = "sequence")
     private Integer sequence;
@@ -40,18 +43,19 @@ public class Brand extends AbstractEntity implements AggregateRoot {
     protected Brand() {
     }
 
-    public Brand(String name, String image, String letter, Integer sequence) {
-
+    public Brand(String name, String logo, String description, String firstLetter, Integer sequence) {
         this.name = name;
-        this.image = image;
-        this.letter = letter;
+        this.logo = logo;
+        this.description = description;
+        this.firstLetter = firstLetter;
         this.sequence = sequence;
     }
 
-    public void describe(String name, String image, String letter, Integer sequence) {
+    public void describe(String name, String logo, String description, String letter, Integer sequence) {
         this.name = name;
-        this.image = image;
-        this.letter = letter;
+        this.logo = logo;
+        this.description = description;
+        this.firstLetter = letter;
         this.sequence = sequence;
     }
 

@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `cnt_ads`;
 
 CREATE TABLE `cnt_ads` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键Id',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '广告ID',
     `name` varchar(64) NULL COMMENT '名称',
     `position` varchar(32) NULL COMMENT '广告位置',
     `start` datetime DEFAULT NULL COMMENT '开始时间',

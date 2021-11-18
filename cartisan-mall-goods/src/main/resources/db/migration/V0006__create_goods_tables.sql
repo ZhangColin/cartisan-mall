@@ -2,15 +2,15 @@
 DROP TABLE IF EXISTS `gds_spus`;
 
 CREATE TABLE `gds_spus` (
-    `id` bigint NOT NULL COMMENT 'SPUId',
+    `id` bigint NOT NULL COMMENT 'SPUID',
     `sn` varchar(60) NOT NULL COMMENT '货号',
     `name` varchar(100) NOT NULL COMMENT '名称',
     `caption` varchar(100) NOT NULL COMMENT '副标题',
-    `brand_id` bigint NULL COMMENT '品牌Id',
-    `category1_id` bigint NULL COMMENT '一级分类Id',
-    `category2_id` bigint NULL COMMENT '二级分类Id',
-    `category3_id` bigint NULL COMMENT '三级分类Id',
-    `template_id` bigint NULL COMMENT '模板Id',
+    `brand_id` bigint NULL COMMENT '品牌ID',
+    `category1_id` bigint NULL COMMENT '一级分类ID',
+    `category2_id` bigint NULL COMMENT '二级分类ID',
+    `category3_id` bigint NULL COMMENT '三级分类ID',
+    `template_id` bigint NULL COMMENT '模板ID',
     `image` varchar(256) DEFAULT '' COMMENT '图片',
     `images` varchar(1000) DEFAULT '' COMMENT '图片列表',
     `sale_service` varchar(50) DEFAULT '' COMMENT '售后服务',
@@ -31,8 +31,8 @@ CREATE TABLE `gds_spus` (
 DROP TABLE IF EXISTS `gds_skus`;
 
 CREATE TABLE `gds_skus` (
-    `id` bigint NOT NULL COMMENT 'SKUId',
-    `spu_id` bigint NULL COMMENT 'SPUId',
+    `id` bigint NOT NULL COMMENT 'SKUID',
+    `spu_id` bigint NULL COMMENT 'SPUID',
     `sn` varchar(60) NOT NULL COMMENT '商品条码',
     `name` varchar(100) NOT NULL COMMENT '名称',
     `specification` varchar(1000) DEFAULT '' COMMENT '规格',
@@ -52,8 +52,8 @@ CREATE TABLE `gds_skus` (
 DROP TABLE IF EXISTS `gds_spu_logs`;
 
 CREATE TABLE `gds_spu_logs` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志Id',
-    `spu_id` bigint NULL COMMENT 'SPUId',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志ID',
+    `spu_id` bigint NULL COMMENT 'SPUID',
     `content` varchar(1000) DEFAULT '' COMMENT '日志内容',
     `operator` varchar(32) DEFAULT '' COMMENT '操作人员',
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -66,8 +66,8 @@ CREATE TABLE `gds_spu_logs` (
 DROP TABLE IF EXISTS `gds_spu_audits`;
 
 CREATE TABLE `gds_spu_audits` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '审核Id',
-    `spu_id` bigint NULL COMMENT 'SPUId',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '审核ID',
+    `spu_id` bigint NULL COMMENT 'SPUID',
     `result` varchar(16) DEFAULT '' COMMENT '审核结果',
     `feedback` varchar(256) DEFAULT '' COMMENT '反馈详情',
     `auditor` varchar(32) DEFAULT '' COMMENT '审核人员',

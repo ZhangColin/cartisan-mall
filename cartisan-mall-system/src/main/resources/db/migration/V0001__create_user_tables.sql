@@ -1,6 +1,6 @@
 -- 用户表
 CREATE TABLE `sys_users` (
-  `id` bigint NOT NULL COMMENT '用户Id',
+  `id` bigint NOT NULL COMMENT '用户ID',
   `username` varchar(32) NOT NULL COMMENT '登录账号',
   `phone` varchar(32) NOT NULL DEFAULT '' COMMENT '电话',
   `email` varchar(64) NOT NULL DEFAULT '' COMMENT '邮箱',

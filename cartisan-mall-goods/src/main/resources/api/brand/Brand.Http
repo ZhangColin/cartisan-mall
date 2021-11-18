@@ -24,8 +24,9 @@ Authorization: {{auth_token}}
 
 {
   "name": "Cartisan",
-  "image": "Cartisan",
-  "letter": "C",
+  "logo": "http://mall.cartisan.com",
+  "firstLetter": "C",
+  "description": "Colin自创品牌",
   "sequence": 10
 }
 
@@ -36,10 +37,11 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "name": "Cartisan1",
-  "image": "Cartisan1",
-  "letter": "C",
-  "sequence": 20
+  "name": "Cartisan",
+  "logo": "http://mall.cartisan.com/logo.png",
+  "firstLetter": "C",
+  "description": "Colin自创知名品牌",
+  "sequence": 10
 }
 
 ### 添加分类

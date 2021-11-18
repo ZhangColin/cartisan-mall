@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `ord_orders`;
 
 CREATE TABLE `ord_orders` (
-    `id` bigint NOT NULL COMMENT '订单Id',
+    `id` bigint NOT NULL COMMENT '订单ID',
     `total_amount` int NOT NULL COMMENT '总金额',
     `discount_amount` int NOT NULL COMMENT '优惠金额',
     `freight` int NOT NULL COMMENT '运费',
@@ -35,10 +35,10 @@ CREATE TABLE `ord_orders` (
 DROP TABLE IF EXISTS `ord_order_items`;
 
 CREATE TABLE `ord_order_items` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单明细Id',
-    `order_id` bigint NULL COMMENT '订单Id',
-    `spu_id` bigint NULL COMMENT 'SPUId',
-    `sku_id` bigint NULL COMMENT 'SKUId',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单明细ID',
+    `order_id` bigint NULL COMMENT '订单ID',
+    `spu_id` bigint NULL COMMENT 'SPUID',
+    `sku_id` bigint NULL COMMENT 'SKUID',
     `name` varchar(100) NOT NULL COMMENT '商品名称',
     `price` int NOT NULL COMMENT '单价（分）',
     `quantity` int NOT NULL COMMENT '数量',
@@ -55,8 +55,8 @@ CREATE TABLE `ord_order_items` (
 -- DROP TABLE IF EXISTS `ord_order_logs`;
 --
 -- CREATE TABLE `ord_order_logs` (
---     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志Id',
---     `order_id` bigint NULL COMMENT '订单Id',
+--     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志ID',
+--     `order_id` bigint NULL COMMENT '订单ID',
 --     `order_status` tinyint NOT NULL DEFAULT 1 COMMENT '订单状态',
 --     `pay_status` tinyint NOT NULL DEFAULT 1 COMMENT '支付状态',
 --     `operator` varchar(32) DEFAULT '' COMMENT '操作人',

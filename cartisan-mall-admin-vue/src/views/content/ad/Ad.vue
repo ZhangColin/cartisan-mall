@@ -18,7 +18,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="主键Id" prop="id" />
+      <el-table-column align="center" label="ID" prop="id" />
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column align="center" label="广告位置" prop="position" />
       <el-table-column align="center" label="开始时间" prop="start" />

@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `gds_albums`;
 
 CREATE TABLE `gds_albums` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '相册Id',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '相册ID',
     `title` varchar(100) NOT NULL COMMENT '标题',
     `cover_image` varchar(256) DEFAULT '' COMMENT '封面',
     `image_items` text NULL COMMENT '图片列表',

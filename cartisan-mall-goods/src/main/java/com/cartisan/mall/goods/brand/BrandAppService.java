@@ -50,8 +50,9 @@ public class BrandAppService {
     @Transactional(rollbackOn = Exception.class)
     public BrandDto addBrand(BrandParam brandParam) {
         final Brand brand = new Brand(brandParam.getName(),
-                brandParam.getImage(),
-                brandParam.getLetter(),
+                brandParam.getLogo(),
+                brandParam.getDescription(),
+                brandParam.getFirstLetter(),
                 brandParam.getSequence());
 
         return converter.convert(repository.save(brand));
@@ -62,8 +63,9 @@ public class BrandAppService {
         final Brand brand = requirePresent(repository.findById(id));
 
         brand.describe(brandParam.getName(),
-                brandParam.getImage(),
-                brandParam.getLetter(),
+                brandParam.getLogo(),
+                brandParam.getDescription(),
+                brandParam.getFirstLetter(),
                 brandParam.getSequence());
 
         return converter.convert(repository.save(brand));

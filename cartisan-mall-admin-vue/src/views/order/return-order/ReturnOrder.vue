@@ -18,10 +18,10 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="订单Id" prop="id" />
-      <el-table-column align="center" label="订单Id" prop="orderId" />
+      <el-table-column align="center" label="订单ID" prop="id" />
+      <el-table-column align="center" label="订单ID" prop="orderId" />
       <el-table-column align="center" label="申请时间" prop="applied" />
-      <el-table-column align="center" label="用户Id" prop="userId" />
+      <el-table-column align="center" label="用户ID" prop="userId" />
       <el-table-column align="center" label="用户名称" prop="username" />
       <el-table-column align="center" label="联系人" prop="contract" />
       <el-table-column align="center" label="联系人手机" prop="contractMobile" />
@@ -66,13 +66,13 @@
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
 
-          <el-form-item label="订单Id" prop="orderId">
+          <el-form-item label="订单ID" prop="orderId">
             <el-input v-model="entityData.orderId" />
           </el-form-item>
           <el-form-item label="申请时间" prop="applied">
             <el-input v-model="entityData.applied" />
           </el-form-item>
-          <el-form-item label="用户Id" prop="userId">
+          <el-form-item label="用户ID" prop="userId">
             <el-input v-model="entityData.userId" />
           </el-form-item>
           <el-form-item label="用户名称" prop="username">

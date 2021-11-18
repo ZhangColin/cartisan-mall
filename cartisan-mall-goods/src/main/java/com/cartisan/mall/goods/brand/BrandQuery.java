@@ -14,6 +14,6 @@ public class BrandQuery {
     private String name;
 
     @ApiModelProperty(value = "品牌的首字母")
-    @Condition(propName = "letter", type = Condition.Type.EQUAL)
-    private String letter;
+    @Condition(propName = "firstLetter", type = Condition.Type.EQUAL)
+    private String firstLetter;
 }

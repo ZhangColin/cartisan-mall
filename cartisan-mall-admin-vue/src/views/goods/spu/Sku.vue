@@ -18,7 +18,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="SKUId" prop="id" />
+      <el-table-column align="center" label="SKUID" prop="id" />
       <el-table-column align="center" label="商品图片" prop="image">
         <template slot-scope="scope">
           <el-image
@@ -65,7 +65,7 @@
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
 
-          <el-form-item label="SPUId" prop="spuId">
+          <el-form-item label="SPUID" prop="spuId">
             <el-input v-model="entityData.spuId" readonly />
           </el-form-item>
           <el-form-item label="商品条码" prop="sn">

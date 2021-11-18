@@ -1,6 +1,6 @@
 -- 组织机构表
 CREATE TABLE `sys_organizations` (
-  `id` bigint NOT NULL COMMENT '组织Id',
+  `id` bigint NOT NULL COMMENT '组织ID',
   `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '父机构ID',
   `name` varchar(32) NOT NULL COMMENT '机构/组织名称',
   `type` tinyint NOT NULL DEFAULT 1 COMMENT '机构类型',
@@ -18,9 +18,9 @@ CREATE TABLE `sys_organizations` (
 
 -- 用户组织机构关联表
 CREATE TABLE `sys_user_organizations` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键Id',
-  `user_id` bigint NULL COMMENT '用户Id',
-  `organization_id` bigint NULL COMMENT '组织Id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` bigint NULL COMMENT '用户ID',
+  `organization_id` bigint NULL COMMENT '组织ID',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_organization_user_id_organization_id`(`user_id`, `organization_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户组织机构关联表';

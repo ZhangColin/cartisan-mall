@@ -25,7 +25,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="订单Id" prop="id" />
+      <el-table-column align="center" label="订单ID" prop="id" />
       <el-table-column align="center" label="下单时间" prop="placed" />
       <el-table-column align="center" label="用户名称" prop="username" />
       <el-table-column align="center" label="总金额" prop="totalAmount" />

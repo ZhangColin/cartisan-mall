@@ -18,9 +18,9 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="订单明细Id" prop="id" />
-      <el-table-column align="center" label="退货退款订单Id" prop="returnOrderId" />
-      <el-table-column align="center" label="订单Id" prop="orderId" />
+      <el-table-column align="center" label="订单明细ID" prop="id" />
+      <el-table-column align="center" label="退货退款订单ID" prop="returnOrderId" />
+      <el-table-column align="center" label="订单ID" prop="orderId" />
       <el-table-column align="center" label="订单明细Id" prop="orderItemId" />
       <el-table-column align="center" label="SPUId" prop="spuId" />
       <el-table-column align="center" label="SKUId" prop="skuId" />

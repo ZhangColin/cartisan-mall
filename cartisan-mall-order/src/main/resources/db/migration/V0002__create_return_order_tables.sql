@@ -2,10 +2,10 @@
 DROP TABLE IF EXISTS `ord_return_orders`;
 
 CREATE TABLE `ord_return_orders` (
-    `id` bigint NOT NULL COMMENT '订单Id',
-    `order_id` bigint NULL COMMENT '订单Id',
+    `id` bigint NOT NULL COMMENT '订单ID',
+    `order_id` bigint NULL COMMENT '订单ID',
     `applied` datetime DEFAULT NULL COMMENT '申请时间',
-    `user_id` bigint NULL COMMENT '用户Id',
+    `user_id` bigint NULL COMMENT '用户ID',
     `username` varchar(32) NOT NULL COMMENT '用户名称',
     `contract` varchar(32) NOT NULL COMMENT '联系人',
     `contract_mobile` varchar(16) NOT NULL COMMENT '联系人手机',
@@ -29,12 +29,12 @@ CREATE TABLE `ord_return_orders` (
 DROP TABLE IF EXISTS `ord_return_order_items`;
 
 CREATE TABLE `ord_return_order_items` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单明细Id',
-    `return_order_id` bigint NULL COMMENT '退货退款订单Id',
-    `order_id` bigint NULL COMMENT '订单Id',
-    `order_item_id` bigint NULL COMMENT '订单明细Id',
-    `spu_id` bigint NULL COMMENT 'SPUId',
-    `sku_id` bigint NULL COMMENT 'SKUId',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单明细ID',
+    `return_order_id` bigint NULL COMMENT '退货退款订单ID',
+    `order_id` bigint NULL COMMENT '订单ID',
+    `order_item_id` bigint NULL COMMENT '订单明细ID',
+    `spu_id` bigint NULL COMMENT 'SPUID',
+    `sku_id` bigint NULL COMMENT 'SKUID',
     `name` varchar(100) NOT NULL COMMENT '商品名称',
     `price` int NOT NULL COMMENT '单价（分）',
     `quantity` int NOT NULL COMMENT '数量',
@@ -50,7 +50,7 @@ CREATE TABLE `ord_return_order_items` (
 DROP TABLE IF EXISTS `ord_return_causes`;
 
 CREATE TABLE `ord_return_causes` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '退货原因Id',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '退货原因ID',
     `cause` varchar(100) NOT NULL COMMENT '原因',
     `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否启用',
     `sequence` int NOT NULL DEFAULT 0 COMMENT '排序',

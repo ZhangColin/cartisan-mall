@@ -20,7 +20,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="模板Id" prop="id" />
+      <el-table-column align="center" label="模板ID" prop="id" />
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column align="center" label="规格数量" prop="specifications" />
       <el-table-column align="center" label="参数数量" prop="parameters" />

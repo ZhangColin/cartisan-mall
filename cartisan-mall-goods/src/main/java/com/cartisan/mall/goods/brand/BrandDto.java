@@ -15,10 +15,13 @@ public class BrandDto {
     private String name;
 
     @ApiModelProperty(value = "品牌图片地址")
-    private String image;
+    private String logo;
+
+    @ApiModelProperty(value = "品牌描述")
+    private String description;
 
     @ApiModelProperty(value = "品牌的首字母")
-    private String letter;
+    private String firstLetter;
 
     @ApiModelProperty(value = "排序")
     private Integer sequence;

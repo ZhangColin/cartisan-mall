@@ -16,7 +16,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="退货原因Id" prop="id" />
+      <el-table-column align="center" label="退货原因ID" prop="id" />
       <el-table-column align="center" label="原因" prop="cause" />
       <el-table-column align="center" label="是否启用" prop="enable">
         <template slot-scope="scope">

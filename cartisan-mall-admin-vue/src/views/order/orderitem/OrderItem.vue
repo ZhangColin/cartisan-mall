@@ -18,10 +18,10 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="订单明细Id" prop="id" />
-      <el-table-column align="center" label="订单Id" prop="orderId" />
-      <el-table-column align="center" label="SPUId" prop="spuId" />
-      <el-table-column align="center" label="SKUId" prop="skuId" />
+      <el-table-column align="center" label="订单明细ID" prop="id" />
+      <el-table-column align="center" label="订单ID" prop="orderID" />
+      <el-table-column align="center" label="SPUID" prop="spuId" />
+      <el-table-column align="center" label="SKUID" prop="skuId" />
       <el-table-column align="center" label="商品名称" prop="name" />
       <el-table-column align="center" label="单价（分）" prop="price" />
       <el-table-column align="center" label="数量" prop="quantity" />
@@ -60,10 +60,10 @@
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
 
-          <el-form-item label="订单Id" prop="orderId">
+          <el-form-item label="订单ID" prop="orderId">
             <el-input v-model="entityData.orderId" />
           </el-form-item>
-          <el-form-item label="SPUId" prop="spuId">
+          <el-form-item label="SPUID" prop="spuId">
             <el-input v-model="entityData.spuId" />
           </el-form-item>
           <el-form-item label="SKUId" prop="skuId">

@@ -1,6 +1,6 @@
 -- 角色表
 CREATE TABLE `sys_roles` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色Id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
   `name` varchar(32) NOT NULL COMMENT '角色名称',
   `status` tinyint NOT NULL DEFAULT 1 COMMENT '状态(0：禁用  1：启用 ）',
   `sort` int NOT NULL DEFAULT 0 COMMENT '排序',
@@ -14,15 +14,15 @@ CREATE TABLE `sys_roles` (
 -- 用户角色关联表
 CREATE TABLE `sys_user_roles` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` bigint NULL COMMENT '用户Id',
-  `role_id` bigint NULL COMMENT '角色Id',
+  `user_id` bigint NULL COMMENT '用户ID',
+  `role_id` bigint NULL COMMENT '角色ID',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_role_user_id_role_id`(`user_id`, `role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联表';
 
 -- 菜单表
 CREATE TABLE `sys_menus` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单Id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
   `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '上级菜单',
   `title` varchar(64) NOT NULL COMMENT '菜单名称',
   `name` varchar(32) NOT NULL COMMENT '前端名称',
@@ -40,15 +40,15 @@ CREATE TABLE `sys_menus` (
 -- 角色菜单关联表
 CREATE TABLE `sys_role_menus` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `role_id` bigint NULL COMMENT '角色Id',
-  `menu_id` bigint NULL COMMENT '权限Id',
+  `role_id` bigint NULL COMMENT '角色ID',
+  `menu_id` bigint NULL COMMENT '权限ID',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_role_menu_role_id_menu_id`(`role_id`, `menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色菜单关联表';
 
 -- 资源分类表
 CREATE TABLE `sys_resource_categories` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '资源分类Id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '资源分类ID',
   `name` varchar(32) NOT NULL COMMENT '资源分类名称',
   `sort` int NOT NULL DEFAULT 0 COMMENT '排序',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -59,8 +59,8 @@ CREATE TABLE `sys_resource_categories` (
 
 -- 资源表
 CREATE TABLE `sys_resources` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '资源Id',
-  `category_id` bigint NULL COMMENT '资源分类Id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '资源ID',
+  `category_id` bigint NULL COMMENT '资源分类ID',
   `name` varchar(32) NOT NULL COMMENT '资源名称',
   `code` varchar(128) NOT NULL DEFAULT '' COMMENT '权限编码',
   `url` varchar(128) NOT NULL DEFAULT '' COMMENT '资源Url',
@@ -75,8 +75,8 @@ CREATE TABLE `sys_resources` (
 -- 角色资源关联表
 CREATE TABLE `sys_role_resources` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `role_id` bigint NULL COMMENT '角色Id',
-  `resource_id` bigint NULL COMMENT '权限Id',
+  `role_id` bigint NULL COMMENT '角色ID',
+  `resource_id` bigint NULL COMMENT '权限ID',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_role_resource_role_id_resource_id`(`role_id`, `resource_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色资源关联表';
