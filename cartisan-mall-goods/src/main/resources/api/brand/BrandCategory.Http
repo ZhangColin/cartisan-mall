@@ -1,17 +1,11 @@
-### 搜索品牌
-GET http://{{host}}:{{port}}/brands/search?name=TC&letter=H&page=0&size=10
+### 获取品牌的所有分类关联
+GET http://{{host}}:{{port}}/brandCategories/brand/1115
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
-### 获取所有品牌
-GET http://{{host}}:{{port}}/brands
-Accept: application/json
-Content-Type: application/json;charset=UTF-8
-Authorization: {{auth_token}}
-
-### 获取品牌
-GET http://{{host}}:{{port}}/brands/1115
+### 获取分类的所有品牌关联
+GET http://{{host}}:{{port}}/brandCategories/category/3
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -43,6 +37,18 @@ Authorization: {{auth_token}}
   "description": "Colin自创知名品牌",
   "sequence": 10
 }
+
+### 添加分类
+PUT http://{{host}}:{{port}}/brands/1115/addCategory?categoryId=3
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 移除分类
+PUT http://{{host}}:{{port}}/brands/1115/removeCategory?categoryId=3
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
 
 ### 删除品牌
 DELETE http://{{host}}:{{port}}/brands/325401

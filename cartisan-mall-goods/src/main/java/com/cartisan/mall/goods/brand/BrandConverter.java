@@ -1,6 +1,7 @@
 package com.cartisan.mall.goods.brand;
 
 import com.cartisan.dto.Converter;
+import com.cartisan.mall.goods.brand.response.BrandDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

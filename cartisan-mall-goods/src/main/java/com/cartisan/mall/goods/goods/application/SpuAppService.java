@@ -1,7 +1,7 @@
 package com.cartisan.mall.goods.goods.application;
 
 import com.cartisan.dto.PageResult;
-import com.cartisan.mall.goods.brand.BrandAppService;
+import com.cartisan.mall.goods.brand.application.BrandAppService;
 import com.cartisan.mall.goods.goods.domain.*;
 import com.cartisan.mall.goods.goods.mapper.SpuMapper;
 import com.cartisan.mall.goods.goods.request.SkuParam;
@@ -140,7 +140,7 @@ public class SpuAppService {
     }
 
     private void saveBrandCategory(Spu spu) {
-        brandAppService.addCategory(spu.getBrandId(), spu.getCategory3Id());
+//        brandAppService.addCategory(spu.getBrandId(), spu.getCategory3Id());
     }
 
     private void saveSkus(Spu spu) {

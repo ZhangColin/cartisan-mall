@@ -1,4 +1,4 @@
-package com.cartisan.mall.goods.brand;
+package com.cartisan.mall.goods.brand.request;
 
 import com.cartisan.repository.Condition;
 import io.swagger.annotations.ApiModelProperty;

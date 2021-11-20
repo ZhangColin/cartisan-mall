@@ -1,7 +1,11 @@
-package com.cartisan.mall.goods.brand;
+package com.cartisan.mall.goods.brand.controller;
 
 import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
+import com.cartisan.mall.goods.brand.application.BrandAppService;
+import com.cartisan.mall.goods.brand.request.BrandParam;
+import com.cartisan.mall.goods.brand.request.BrandQuery;
+import com.cartisan.mall.goods.brand.response.BrandDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -65,22 +69,6 @@ public class BrandController {
             @ApiParam(value = "品牌Id", required = true) @PathVariable Long id,
             @ApiParam(value = "品牌信息", required = true) @Validated @RequestBody BrandParam brandParam) {
         return success(service.editBrand(id, brandParam));
-    }
-
-    @ApiOperation(value = "添加分类")
-    @PutMapping("/{id}/addCategory")
-    public ResponseEntity<BrandDto> addCategory(
-            @ApiParam(value = "品牌Id", required = true) @PathVariable Long id,
-            @ApiParam(value = "分类Id", required = true) @Validated @RequestParam Long categoryId) {
-        return success(service.addCategory(id, categoryId));
-    }
-
-    @ApiOperation(value = "移除分类")
-    @PutMapping("/{id}/removeCategory")
-    public ResponseEntity<BrandDto> removeCategory(
-            @ApiParam(value = "品牌Id", required = true) @PathVariable Long id,
-            @ApiParam(value = "分类Id", required = true) @Validated @RequestParam Long categoryId) {
-        return success(service.removeCategory(id, categoryId));
     }
 
     @ApiOperation(value = "删除品牌")

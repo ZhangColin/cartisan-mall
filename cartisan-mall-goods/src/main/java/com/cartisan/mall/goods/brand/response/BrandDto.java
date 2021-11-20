@@ -1,4 +1,4 @@
-package com.cartisan.mall.goods.brand;
+package com.cartisan.mall.goods.brand.response;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

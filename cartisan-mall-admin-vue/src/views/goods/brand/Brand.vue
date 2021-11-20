@@ -41,7 +41,7 @@
           <el-dropdown split-button @click="handleEdit(scope.$index, scope.row)">
             编辑
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="handleCategory(scope.$index, scope.row)">关联分类</el-dropdown-item>
+              <el-dropdown-item @click.native="handleCategoryRelation(scope.row)">关联分类</el-dropdown-item>
               <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -90,6 +90,7 @@
         </div>
       </div>
     </el-drawer>
+    <BrandCategory ref="brandCategory" />
   </div>
 </template>
 
@@ -98,10 +99,11 @@ import { PaginationMixin } from '@/mixins/pagination-mixin'
 import { CudMixin } from '@/mixins/cud-mixin'
 
 import SingleImage from '@/components/Upload/SingleImage2'
+import BrandCategory from '@/views/goods/brand/BrandCategory'
 
 export default {
   name: 'Brand',
-  components: { SingleImage },
+  components: { SingleImage, BrandCategory },
   mixins: [PaginationMixin, CudMixin],
   data() {
     return {
@@ -148,8 +150,8 @@ export default {
   created() {
   },
   methods: {
-    handleCategory() {
-      // this.entityData.logo = res.url
+    handleCategoryRelation(brand) {
+      this.$refs.brandCategory.show(brand.id)
     }
   }
 }

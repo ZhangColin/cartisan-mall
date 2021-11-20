@@ -1,7 +1,13 @@
-package com.cartisan.mall.goods.brand;
+package com.cartisan.mall.goods.brand.application;
 
 import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
+import com.cartisan.mall.goods.brand.Brand;
+import com.cartisan.mall.goods.brand.BrandRepository;
+import com.cartisan.mall.goods.brand.request.BrandParam;
+import com.cartisan.mall.goods.brand.request.BrandQuery;
+import com.cartisan.mall.goods.brand.BrandConverter;
+import com.cartisan.mall.goods.brand.response.BrandDto;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -67,24 +73,6 @@ public class BrandAppService {
                 brandParam.getDescription(),
                 brandParam.getFirstLetter(),
                 brandParam.getSequence());
-
-        return converter.convert(repository.save(brand));
-    }
-
-    @Transactional(rollbackOn = Exception.class)
-    public BrandDto addCategory(Long id, Long categoryId) {
-        final Brand brand = requirePresent(repository.findById(id));
-
-        brand.addCategory(categoryId);
-
-        return converter.convert(repository.save(brand));
-    }
-
-    @Transactional(rollbackOn = Exception.class)
-    public BrandDto removeCategory(Long id, Long categoryId) {
-        final Brand brand = requirePresent(repository.findById(id));
-
-        brand.removeCategory(categoryId);
 
         return converter.convert(repository.save(brand));
     }
