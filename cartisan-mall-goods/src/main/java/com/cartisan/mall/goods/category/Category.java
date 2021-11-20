@@ -21,9 +21,6 @@ public class Category extends AbstractEntity implements AggregateRoot {
     @Column(name = "parent_id")
     private Long parentId;
 
-    @Column(name = "template_id")
-    private Long templateId;
-
     @Column(name = "name")
     private String name;
 
@@ -38,22 +35,23 @@ public class Category extends AbstractEntity implements AggregateRoot {
 
     protected Category() {}
 
-    public Category(Long parentId, Long templateId, String name, Boolean isShow, Boolean isMenu, Integer sequence) {
-
+    public Category(Long parentId, String name, Boolean isShow, Boolean isMenu) {
         this.parentId = parentId;
-        this.templateId = templateId;
         this.name = name;
         this.isShow = isShow;
         this.isMenu = isMenu;
-        this.sequence = sequence;
+
+        this.sequence = 0;
     }
 
-    public void describe(Long parentId, Long templateId, String name, Boolean isShow, Boolean isMenu, Integer sequence) {
-        this.parentId = parentId;
-        this.templateId = templateId;
+    public void describe(String name, Boolean isShow, Boolean isMenu) {
         this.name = name;
         this.isShow = isShow;
         this.isMenu = isMenu;
+    }
+
+    public void move(Long parentId, Integer sequence) {
+        this.parentId = parentId;
         this.sequence = sequence;
     }
 }

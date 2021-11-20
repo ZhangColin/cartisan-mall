@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS `gds_categories`;
 CREATE TABLE `gds_categories` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '分类ID',
     `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '上级分类ID',
-    `template_id` bigint NOT NULL DEFAULT 0 COMMENT '模板ID',
     `name` varchar(64) NOT NULL COMMENT '名称',
     `is_show` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否显示',
     `is_menu` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否导航',

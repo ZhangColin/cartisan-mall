@@ -16,6 +16,7 @@ export const CudMixin = {
       this.entityData = Object.assign({}, this.defaultData)
       this.drawerTitle = `添加${this.title}`
       this.drawerVisible = true
+      this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
     },
     handleEdit(index, row) {
       this.dataProcessBeforeEdit(row)
@@ -23,6 +24,7 @@ export const CudMixin = {
 
       this.drawerTitle = `编辑${this.title}`
       this.drawerVisible = true
+      this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
     },
     dataProcessBeforeEdit(data) {},
     handleDelete(index, row) {

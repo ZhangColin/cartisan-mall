@@ -8,8 +8,8 @@
         <el-input v-model="queryParam.firstLetter" maxlength="1" class="filter-item" placeholder="请输入首字母" clearable />
       </el-form-item>
       <el-form-item>
-        <el-button class="filter-item" type="primary" @click="handleSearch">查询</el-button>
-        <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
+        <el-button type="primary" @click="handleSearch">查询</el-button>
+        <el-button type="primary" @click="handleAdd">新增</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -68,7 +68,6 @@
     >
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
-
           <el-form-item label="品牌名" prop="name">
             <el-input v-model="entityData.name" />
           </el-form-item>
@@ -151,9 +150,6 @@ export default {
   methods: {
     handleCategory() {
       // this.entityData.logo = res.url
-    },
-    handleUploadSuccess(res, file) {
-      this.entityData.logo = res.url
     }
   }
 }

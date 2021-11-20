@@ -1,13 +1,10 @@
 package com.cartisan.mall.goods.category;
 
-import com.cartisan.dp.IdName;
-import com.cartisan.dto.PageResult;
+import com.cartisan.dto.TreeNode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,19 +28,10 @@ public class CategoryController {
         this.service = service;
     }
 
-    @ApiOperation(value = "搜索商品分类")
-    @GetMapping("/search")
-    public ResponseEntity<PageResult<CategoryDto>> searchCategories(
-            @ApiParam(value = "上级分类", defaultValue = "0") @RequestParam(defaultValue = "0") Long parentId,
-            @PageableDefault Pageable pageable) {
-        return success(service.searchCategories(parentId, pageable));
-    }
-
-    @ApiOperation(value = "不分页获取商品分类（用于分类显示、选择）")
-    @GetMapping
-    public ResponseEntity<List<IdName<Long, String>>> getCategories(
-            @ApiParam(value = "上级分类", defaultValue = "0") @RequestParam(defaultValue = "0") Long parentId) {
-        return success(service.getCategories(parentId));
+    @ApiOperation(value = "获取分类树")
+    @GetMapping("/tree")
+    public ResponseEntity<List<TreeNode>> getCategoryTree() {
+        return success(service.getCategoryTree());
     }
 
     @ApiOperation(value = "获取商品分类")
@@ -57,6 +45,14 @@ public class CategoryController {
     public ResponseEntity<?> addCategory(
             @ApiParam(value = "商品分类信息", required = true) @Validated @RequestBody CategoryParam categoryParam) {
         service.addCategory(categoryParam);
+        return success();
+    }
+
+    @ApiOperation(value = "移动商品分类")
+    @PostMapping("/moveCategories")
+    public ResponseEntity<?> moveCategories(
+            @ApiParam(value = "商品分类位置信息", required = true) @Validated @RequestBody List<MoveCategoryCommand> commands) {
+        service.moveCategories(commands);
         return success();
     }
 

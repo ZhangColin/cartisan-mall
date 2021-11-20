@@ -3,11 +3,6 @@ package com.cartisan.mall.goods.category;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.lang.Long;
-import java.lang.Boolean;
-import java.lang.String;
-import java.lang.Integer;
-
 /**
  * @author colin
  */
@@ -27,14 +22,5 @@ public class CategoryDto {
 
     @ApiModelProperty(value = "是否导航")
     private Boolean isMenu;
-
-    @ApiModelProperty(value = "模板Id")
-    private Long templateId;
-
-    @ApiModelProperty(value = "模板名称")
-    private String templateName;
-
-    @ApiModelProperty(value = "排序")
-    private Integer sequence;
 
 }

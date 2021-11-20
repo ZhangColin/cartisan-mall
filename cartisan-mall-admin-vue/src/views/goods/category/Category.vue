@@ -1,89 +1,34 @@
 <template>
   <div class="app-container">
-    <el-row :gutter="24" class="filter-container">
-      <el-col :span="12">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item v-for="(pc, index) in parentCategoryStack" :key="pc.id">
-            <a v-if="(index+1)<parentCategoryStack.length" @click="handleShowSubCategories(pc, index+1)">{{ pc.name }}</a>
-            <span v-else>{{ pc.name }}</span>
-          </el-breadcrumb-item>
-        </el-breadcrumb>
-      </el-col>
-      <el-col :span="12" align="right">
-        <el-button class="filter-item" type="primary" @click="handleAdd">新增</el-button>
-      </el-col>
-    </el-row>
-    <el-table
-      v-loading="loading"
-      :data="dataSource"
-      row-key="id"
-      class="table-container"
-      element-loading-text="加载中..."
-      stripe
-      border
-      fit
-      highlight-current-row
+    <el-form :inline="true">
+      <el-form-item>
+        <el-switch v-model="draggable" active-text="开启拖拽" inactive-text="关闭拖拽" />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="handleAdd">新增</el-button>
+      </el-form-item>
+    </el-form>
+    <el-tree
+      :data="categoryTreeData"
+      :props="defaultProps"
+      :expand-on-click-node="false"
+      :default-expanded-keys="expandedKeys"
+      node-key="id"
+      :draggable="draggable"
+      :allow-drop="allowDrop"
+      @node-drop="handleDrop"
+      @node-expand="handleExpand"
+      @node-collapse="handleCollapse"
     >
-      <el-table-column align="center" label="分类ID" prop="id" width="60" />
-      <el-table-column align="center" label="名称" prop="name">
-        <template slot-scope="scope">
-          <el-button v-if="parentCategoryStack.length<3" type="text" @click="handleShowSubCategories(scope.row, parentCategoryStack.length)">{{ scope.row.name }}</el-button>
-          <span v-if="parentCategoryStack.length===3">{{ scope.row.name }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="级别" width="60">
-        <template>
-          <span>{{ parentCategoryStack.length }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="商品数量" />
-      <el-table-column align="center" label="数量单位" />
-      <el-table-column align="center" label="是否显示" prop="isShow">
-        <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.isShow"
-            :active-value="true"
-            :inactive-value="false"
-            disabled
-          />
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="是否导航" prop="isMenu">
-        <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.isMenu"
-            :active-value="true"
-            :inactive-value="false"
-            disabled
-          />
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="模板" prop="templateName" />
-      <el-table-column align="center" label="排序" prop="sequence" width="60" />
-      <el-table-column align="center" label="操作" width="120">
-        <template slot-scope="scope">
-          <el-dropdown split-button @click="handleEdit(scope.$index, scope.row)">
-            编辑
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>转移商品</el-dropdown-item>
-              <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-pagination
-      :current-page.sync="page.currentPage"
-      :page-sizes="[5, 10, 20]"
-      :page-size="page.pageSize"
-      :total="page.total"
-      class="pagination-container"
-      background
-      align="right"
-      layout="total, sizes, prev, pager, next, jumper"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+      <span slot-scope="{node, data}">
+        <span class="el-tree-node__label">{{ node.label }}</span>
+        <span style="padding-left: 20px;">
+          <el-button v-if="node.level <= 2" type="text" size="mini" @click="addSubCategory(data)">添加子类</el-button>
+          <el-button type="text" size="mini" @click="handleEdit(data)">编辑</el-button>
+          <el-button v-if="node.childNodes.length===0" type="text" size="mini" @click="handleDelete(data)">删除</el-button>
+        </span>
+      </span>
+    </el-tree>
     <el-drawer
       :title="drawerTitle"
       :visible.sync="drawerVisible"
@@ -92,10 +37,6 @@
     >
       <div class="drawer__content">
         <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
-
-          <el-form-item label="上级分类" prop="parentId">
-            <el-input readonly :value="parentCategoryStack[parentCategoryStack.length-1].name" />
-          </el-form-item>
           <el-form-item label="名称" prop="name">
             <el-input v-model="entityData.name" />
           </el-form-item>
@@ -113,19 +54,6 @@
               :inactive-value="false"
             />
           </el-form-item>
-          <el-form-item label="模板" prop="templateId">
-            <el-select v-model="entityData.templateId" placeholder="请选择" style="width: 100%">
-              <el-option
-                v-for="template in templates"
-                :key="template.id"
-                :label="template.name"
-                :value="template.id"
-              />
-            </el-select>
-          </el-form-item>
-          <el-form-item label="排序" prop="sequence">
-            <el-input-number v-model="entityData.sequence" />
-          </el-form-item>
         </el-form>
         <div class="drawer__footer">
           <el-button @click="drawerVisible=false">取消</el-button>
@@ -137,47 +65,143 @@
 </template>
 
 <script>
-import { PaginationMixin } from '@/mixins/pagination-mixin'
-import { CudMixin } from '@/mixins/cud-mixin'
-import { getAll } from '@/api/common-api'
+
+import { getCategoryTree, moveCategories } from '@/api/goods/category-api'
+import { add, edit, get, remove } from '@/api/common-api'
 
 export default {
   name: 'Category',
-  mixins: [PaginationMixin, CudMixin],
   data() {
     return {
       apiBaseUrl: '/goods/categories',
-      parentCategoryStack: [{ id: 0, name: '顶级分类' }],
+      draggable: false,
+      categoryTreeData: [],
+      defaultProps: {
+        label: 'name'
+      },
+      expandedKeys: [],
+      drawerVisible: false,
+      drawerTitle: '',
       defaultData: {
         parentId: 0,
-        templateId: '',
         name: '',
         isShow: true,
-        isMenu: false,
-        sequence: 0
+        isMenu: false
       },
+      entityData: {},
       title: '商品分类',
       rules: {
-        name: [{ required: true, message: '请输入商品分类名称', trigger: 'blur' }],
-        templateId: [{ required: true, message: '请选择模板', trigger: 'blur' }]
-      },
-      templates: []
+        name: [{ required: true, message: '请输入商品分类名称', trigger: 'blur' }]
+      }
     }
   },
   created() {
-    getAll('/goods/templates').then(response => { this.templates = response.data })
+    this.fetchData()
   },
   methods: {
-    handleShowSubCategories(category, categoryLevel) {
-      this.page.currentPage = 1
-      this.queryParam.parentId = category.id
-      if (this.parentCategoryStack.length === categoryLevel) {
-        this.parentCategoryStack = [...this.parentCategoryStack, { id: category.id, name: category.name }]
+    fetchData() {
+      getCategoryTree().then(response => { this.categoryTreeData = response.data })
+    },
+    handleAdd() {
+      this.entityData = Object.assign({}, this.defaultData)
+      this.drawerTitle = `添加${this.title}`
+      this.drawerVisible = true
+      this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
+    },
+    addSubCategory(data) {
+      this.entityData = Object.assign({}, this.defaultData, { parentId: data.id })
+      this.drawerTitle = `添加${this.title}`
+      this.drawerVisible = true
+      this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
+    },
+    handleEdit(data) {
+      get(this.apiBaseUrl, data.id).then(response => {
+        this.entityData = Object.assign({}, response.data)
+        this.drawerTitle = `编辑${this.title}`
+        this.drawerVisible = true
+        this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
+      })
+    },
+    handleDelete(data) {
+      this.$confirm(`是否要删除该${this.title}`, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        remove(this.apiBaseUrl, data.id).then(() => {
+          this.$notify.success({
+            title: '成功',
+            message: '删除成功'
+          })
+          this.fetchData()
+        })
+      }).catch(() => {})
+    },
+    handleConfirm() {
+      this.$refs['entityDataForm'].validate((valid) => {
+        if (valid) {
+          if (this.drawerTitle === `添加${this.title}`) {
+            add(this.apiBaseUrl, this.entityData).then(() => {
+              this.$notify.success({
+                title: '成功',
+                message: '添加成功'
+              })
+              this.drawerVisible = false
+              if (this.entityData.parentId !== 0) {
+                this.expandedKeys = Array.from(new Set([...this.expandedKeys, this.entityData.parentId]).keys())
+              }
+              this.fetchData()
+            }).catch(() => {})
+          } else {
+            edit(this.apiBaseUrl, this.entityData.id, this.entityData).then(() => {
+              this.$notify.success({
+                title: '成功',
+                message: '修改成功'
+              })
+              this.drawerVisible = false
+              this.fetchData()
+            }).catch(() => {})
+          }
+        }
+      })
+    },
+    allowDrop(draggingNode, dropNode, type) {
+      const deep = this.countNodeLevel(draggingNode)
+      if (type === 'inner') {
+        return deep + dropNode.level <= 3
       } else {
-        this.parentCategoryStack = this.parentCategoryStack.slice(0, categoryLevel)
+        return deep + dropNode.parent.level <= 3
       }
-      this.defaultData.parentId = this.parentCategoryStack[this.parentCategoryStack.length - 1].id
-      this.fetchData()
+    },
+    countNodeLevel(node) {
+      const childLevels = (node.childNodes || []).map(node => this.countNodeLevel(node))
+      return Math.max(...childLevels, 0) + 1
+    },
+    handleDrop(draggingNode, dropNode, dropType, ev) {
+      let parentId = 0
+      let siblings = null
+      if (dropType === 'before' || dropType === 'after') {
+        parentId = dropNode.data.parentId
+        siblings = dropNode.parent.childNodes
+      } else {
+        parentId = dropNode.data.id
+        siblings = dropNode.childNodes
+      }
+      moveCategories(siblings.map((node, index) => ({ id: node.data.id, parentId, sequence: index }))).then(_ => {
+        if (parentId !== 0) {
+          this.expandedKeys = Array.from(new Set([...this.expandedKeys, parentId]).keys())
+        }
+        this.fetchData()
+      })
+    },
+    handleExpand(data) {
+      this.expandedKeys = [...new Set([...this.expandedKeys, data.id])]
+    },
+    handleCollapse(data) {
+      const index = this.expandedKeys.indexOf(data.id)
+      if (index > -1) {
+        this.expandedKeys.splice(index, 1)
+      }
     }
   }
 }
