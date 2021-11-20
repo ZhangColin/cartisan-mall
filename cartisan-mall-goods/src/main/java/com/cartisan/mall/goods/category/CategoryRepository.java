@@ -6,5 +6,5 @@ import com.cartisan.repository.BaseRepository;
  * @author colin
  */
 public interface CategoryRepository extends BaseRepository<Category, Long> {
-
+    Boolean existsByParentId(Long parentId);
 }

@@ -1,6 +1,8 @@
 package com.cartisan.mall.goods.category;
 
+import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.TreeNode;
+import com.cartisan.exception.CartisanException;
 import com.cartisan.mall.goods.category.mapper.CategoryMapper;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +71,10 @@ public class CategoryAppService {
 
     @Transactional(rollbackOn = Exception.class)
     public void removeCategory(long id) {
+        if (repository.existsByParentId(id)) {
+            throw new CartisanException(CodeMessage.VALIDATE_ERROR.fillArgs("分类下存在子分类，不能删除。"));
+        }
+
         repository.deleteById(id);
     }
 }

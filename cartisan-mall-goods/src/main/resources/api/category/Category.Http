@@ -1,11 +1,11 @@
-### 搜索商品分类
-GET http://{{host}}:{{port}}/categories/search?page=0&size=10
+### 获取分类树
+GET http://{{host}}:{{port}}/categories/tree
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
-### 不分页获取商品分类（用于分类显示、选择）
-GET http://{{host}}:{{port}}/categories?parentId=0
+### 获取商品分类）
+GET http://{{host}}:{{port}}/categories/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -17,12 +17,10 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "parentId": "7",
-  "templateId": "42",
-  "name": "教育音像1",
-  "isShow": true,
-  "isMenu": false,
-  "sequence": 1
+  "parentId": 0,
+  "name": "宠物",
+  "isShow": false,
+  "isMenu": false
 }
 
 ### 编辑商品分类
@@ -32,13 +30,28 @@ Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
 {
-  "parentId": "7",
-  "templateId": "42",
-  "name": "教育音像",
-  "isShow": true,
-  "isMenu": false,
-  "sequence": 1
+  "parentId": 0,
+  "name": "图书、音像、电子书刊111",
+  "isShow": false,
+  "isMenu": false
 }
+
+### 移动商品分类
+POST http://{{host}}:{{port}}/categories/moveCategories
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+[{
+  "id": 3,
+  "parentId": 2,
+  "sequence": 0
+}, {
+  "id": 4,
+  "parentId": 2,
+  "sequence": 1
+}]
+
 
 ### 删除商品分类
 DELETE http://{{host}}:{{port}}/categories/1183
