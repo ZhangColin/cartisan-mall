@@ -29,48 +29,21 @@
         </span>
       </span>
     </el-tree>
-    <el-drawer
-      :title="drawerTitle"
-      :visible.sync="drawerVisible"
-      :wrapper-closable="false"
-      size="50%"
-    >
-      <div class="drawer__content">
-        <el-form ref="entityDataForm" :model="entityData" :rules="rules" label-width="120px">
-          <el-form-item label="名称" prop="name">
-            <el-input v-model="entityData.name" />
-          </el-form-item>
-          <el-form-item label="是否显示" prop="isShow">
-            <el-switch
-              v-model="entityData.isShow"
-              :active-value="true"
-              :inactive-value="false"
-            />
-          </el-form-item>
-          <el-form-item label="是否导航" prop="isMenu">
-            <el-switch
-              v-model="entityData.isMenu"
-              :active-value="true"
-              :inactive-value="false"
-            />
-          </el-form-item>
-        </el-form>
-        <div class="drawer__footer">
-          <el-button @click="drawerVisible=false">取消</el-button>
-          <el-button type="primary" @click="handleConfirm()">确定</el-button>
-        </div>
-      </div>
-    </el-drawer>
+    <CategoryForm ref="categoryForm" @addSuccess="fetchData" @editSuccess="fetchData" />
   </div>
 </template>
 
 <script>
 
 import { getCategoryTree, moveCategories } from '@/api/goods/category-api'
-import { add, edit, get, remove } from '@/api/common-api'
+import { DeleteMixin } from '@/mixins/delete-mixin'
+import { get } from '@/api/common-api'
+import CategoryForm from '@/views/goods/category/CategoryForm'
 
 export default {
   name: 'Category',
+  components: { CategoryForm },
+  mixins: [DeleteMixin],
   data() {
     return {
       apiBaseUrl: '/goods/categories',
@@ -80,19 +53,8 @@ export default {
         label: 'name'
       },
       expandedKeys: [],
-      drawerVisible: false,
-      drawerTitle: '',
-      defaultData: {
-        parentId: 0,
-        name: '',
-        isShow: true,
-        isMenu: false
-      },
-      entityData: {},
-      title: '商品分类',
-      rules: {
-        name: [{ required: true, message: '请输入商品分类名称', trigger: 'blur' }]
-      }
+
+      title: '商品分类'
     }
   },
   created() {
@@ -103,66 +65,15 @@ export default {
       getCategoryTree().then(response => { this.categoryTreeData = response.data })
     },
     handleAdd() {
-      this.entityData = Object.assign({}, this.defaultData)
-      this.drawerTitle = `添加${this.title}`
-      this.drawerVisible = true
-      this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
+      this.$refs.categoryForm.addByParent(0)
     },
     addSubCategory(data) {
-      this.entityData = Object.assign({}, this.defaultData, { parentId: data.id })
-      this.drawerTitle = `添加${this.title}`
-      this.drawerVisible = true
-      this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
+      this.recordExpandedKeys(data.id)
+      this.$refs.categoryForm.addByParent(data.id)
     },
     handleEdit(data) {
       get(this.apiBaseUrl, data.id).then(response => {
-        this.entityData = Object.assign({}, response.data)
-        this.drawerTitle = `编辑${this.title}`
-        this.drawerVisible = true
-        this.$nextTick(_ => this.$refs['entityDataForm'].clearValidate())
-      })
-    },
-    handleDelete(data) {
-      this.$confirm(`是否要删除该${this.title}`, '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        remove(this.apiBaseUrl, data.id).then(() => {
-          this.$notify.success({
-            title: '成功',
-            message: '删除成功'
-          })
-          this.fetchData()
-        })
-      }).catch(() => {})
-    },
-    handleConfirm() {
-      this.$refs['entityDataForm'].validate((valid) => {
-        if (valid) {
-          if (this.drawerTitle === `添加${this.title}`) {
-            add(this.apiBaseUrl, this.entityData).then(() => {
-              this.$notify.success({
-                title: '成功',
-                message: '添加成功'
-              })
-              this.drawerVisible = false
-              if (this.entityData.parentId !== 0) {
-                this.expandedKeys = Array.from(new Set([...this.expandedKeys, this.entityData.parentId]).keys())
-              }
-              this.fetchData()
-            }).catch(() => {})
-          } else {
-            edit(this.apiBaseUrl, this.entityData.id, this.entityData).then(() => {
-              this.$notify.success({
-                title: '成功',
-                message: '修改成功'
-              })
-              this.drawerVisible = false
-              this.fetchData()
-            }).catch(() => {})
-          }
-        }
+        this.$refs.categoryForm.edit(response.data)
       })
     },
     allowDrop(draggingNode, dropNode, type) {
@@ -189,21 +100,23 @@ export default {
       }
       moveCategories(siblings.map((node, index) => ({ id: node.data.id, parentId, sequence: index }))).then(_ => {
         if (parentId !== 0) {
-          this.expandedKeys = Array.from(new Set([...this.expandedKeys, parentId]).keys())
+          this.recordExpandedKeys(parentId)
         }
         this.fetchData()
       })
     },
     handleExpand(data) {
-      this.expandedKeys = [...new Set([...this.expandedKeys, data.id])]
+      this.recordExpandedKeys(data.id)
     },
     handleCollapse(data) {
       const index = this.expandedKeys.indexOf(data.id)
       if (index > -1) {
         this.expandedKeys.splice(index, 1)
       }
+    },
+    recordExpandedKeys(id) {
+      this.expandedKeys = [...new Set([...this.expandedKeys, id])]
     }
   }
 }
 </script>
-

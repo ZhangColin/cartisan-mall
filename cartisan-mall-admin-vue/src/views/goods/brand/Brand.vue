@@ -2,10 +2,10 @@
   <div class="app-container">
     <el-form :inline="true" @keyup.enter.native="handleSearch">
       <el-form-item>
-        <el-input v-model="queryParam.name" class="filter-item" placeholder="请输入名称" clearable />
+        <el-input v-model="queryParam.name" placeholder="请输入名称" clearable />
       </el-form-item>
       <el-form-item>
-        <el-input v-model="queryParam.firstLetter" maxlength="1" class="filter-item" placeholder="请输入首字母" clearable />
+        <el-input v-model="queryParam.firstLetter" maxlength="1" placeholder="请输入首字母" clearable />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handleSearch">查询</el-button>
@@ -67,15 +67,15 @@
 
 <script>
 import { PaginationMixin } from '@/mixins/pagination-mixin'
+import { DeleteMixin } from '@/mixins/delete-mixin'
 
 import BrandCategory from '@/views/goods/brand/BrandCategory'
 import BrandForm from '@/views/goods/brand/BrandForm'
-import { remove } from '@/api/common-api'
 
 export default {
   name: 'Brand',
   components: { BrandCategory, BrandForm },
-  mixins: [PaginationMixin],
+  mixins: [PaginationMixin, DeleteMixin],
   data() {
     return {
       apiBaseUrl: '/goods/brands'
@@ -92,21 +92,6 @@ export default {
     },
     handleCategoryRelation(brand) {
       this.$refs.brandCategory.show(brand.id)
-    },
-    handleDelete(row) {
-      this.$confirm(`是否要删除该品牌`, '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        remove(this.apiBaseUrl, row.id).then(() => {
-          this.$notify.success({
-            title: '成功',
-            message: '删除成功'
-          })
-          this.fetchData()
-        })
-      }).catch(() => {})
     }
   }
 }
