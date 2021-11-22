@@ -24,30 +24,20 @@ public class Category extends AbstractEntity implements AggregateRoot {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "is_show")
-    private Boolean isShow;
-
-    @Column(name = "is_menu")
-    private Boolean isMenu;
-
     @Column(name = "sequence")
     private Integer sequence;
 
     protected Category() {}
 
-    public Category(Long parentId, String name, Boolean isShow, Boolean isMenu) {
+    public Category(Long parentId, String name) {
         this.parentId = parentId;
         this.name = name;
-        this.isShow = isShow;
-        this.isMenu = isMenu;
 
         this.sequence = 0;
     }
 
-    public void describe(String name, Boolean isShow, Boolean isMenu) {
+    public void describe(String name) {
         this.name = name;
-        this.isShow = isShow;
-        this.isMenu = isMenu;
     }
 
     public void move(Long parentId, Integer sequence) {

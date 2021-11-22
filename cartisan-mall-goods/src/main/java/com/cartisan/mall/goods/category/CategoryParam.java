@@ -19,10 +19,4 @@ public class CategoryParam {
     @ApiModelProperty(value = "名称")
     @NotBlank(message = "分类名称不能为空")
     private String name;
-
-    @ApiModelProperty(value = "是否显示")
-    private Boolean isShow;
-
-    @ApiModelProperty(value = "是否导航")
-    private Boolean isMenu;
 }

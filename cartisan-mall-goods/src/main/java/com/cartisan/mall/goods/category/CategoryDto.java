@@ -17,10 +17,4 @@ public class CategoryDto {
     @ApiModelProperty(value = "名称")
     private String name;
 
-    @ApiModelProperty(value = "是否显示")
-    private Boolean isShow;
-
-    @ApiModelProperty(value = "是否导航")
-    private Boolean isMenu;
-
 }

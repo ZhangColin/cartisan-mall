@@ -38,11 +38,7 @@ public class CategoryAppService {
 
     @Transactional(rollbackOn = Exception.class)
     public void addCategory(CategoryParam categoryParam) {
-        final Category category = new Category(
-                categoryParam.getParentId(),
-                categoryParam.getName(),
-                categoryParam.getIsShow(),
-                categoryParam.getIsMenu());
+        final Category category = new Category(categoryParam.getParentId(), categoryParam.getName());
 
         repository.save(category);
     }
@@ -51,10 +47,7 @@ public class CategoryAppService {
     public void editCategory(Long id, CategoryParam categoryParam) {
         final Category category = requirePresent(repository.findById(id));
 
-        category.describe(
-                categoryParam.getName(),
-                categoryParam.getIsShow(),
-                categoryParam.getIsMenu());
+        category.describe(categoryParam.getName());
 
         repository.save(category);
     }
