@@ -24,7 +24,7 @@ CREATE TABLE `gds_attributes` (
     `type` tinyint NOT NULL DEFAULT 1 COMMENT '属性类型[0:销售属性，1:基本属性]',
     `need_search` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否需要检索',
     `multiple_value` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否多值',
-    `value_options` varchar(255) NOT NULL DEFAULT '' COMMENT '可选值列表',
+    `value_options` varchar(255) NOT DEFAULT '' COMMENT '可选值列表',
     `enable` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否启用',
     `quick_show` bit(1) NOT NULL DEFAULT b'0' COMMENT '快速展示',
     `sequence` int NOT NULL DEFAULT 0 COMMENT '排序',

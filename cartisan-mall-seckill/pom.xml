@@ -7,11 +7,11 @@
     <artifactId>cartisan-parent</artifactId>
     <groupId>com.cartisan</groupId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
-  <groupId>com.cartisan</groupId>
-  <artifactId>cartisan-mall-system</artifactId>
+  <groupId>com.cartisan.mall</groupId>
+  <artifactId>cartisan-mall-seckill</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -25,24 +25,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.cartisan</groupId>
-      <artifactId>cartisan-security</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
-    </dependency>
-
-    <!--客户端负载均衡loadbalancer-->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
     </dependency>
@@ -50,6 +32,11 @@
     <dependency>
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-bootstrap</artifactId>
     </dependency>
 
     <dependency>
@@ -73,6 +60,11 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-pool2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
     </dependency>
 
     <dependency>

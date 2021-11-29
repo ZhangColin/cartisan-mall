@@ -1,0 +1,17 @@
+server:
+  port: 8006
+
+spring:
+  config:
+    use-legacy-processing: true
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    config:
+      file-extension: yml
+  application:
+    name: cartisan-mall-payment
+  profiles:
+    include: web, mysql
+    active: local
+
