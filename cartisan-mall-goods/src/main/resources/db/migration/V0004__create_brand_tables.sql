@@ -6,7 +6,7 @@ CREATE TABLE `gds_brands` (
     `name` varchar(64) NOT NULL COMMENT '名称',
     `logo` varchar(256) DEFAULT '' COMMENT 'Logo地址',
     `description` longtext COMMENT '描述',
-    `first_letter` char(1) DEFAULT '' COMMENT '首字母',
+    `first_letter` char(1) NOT NULL COMMENT '首字母',
     `sequence` int NOT NULL DEFAULT 0 COMMENT '排序',
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

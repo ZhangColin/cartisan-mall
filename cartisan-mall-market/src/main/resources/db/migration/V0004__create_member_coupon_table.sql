@@ -1,4 +1,4 @@
--- 用户优惠券表
+-- 用户的优惠券表
 DROP TABLE IF EXISTS `mkt_member_coupons`;
 
 CREATE TABLE `mkt_member_coupons` (
@@ -16,5 +16,6 @@ CREATE TABLE `mkt_member_coupons` (
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `active` bit(1) NOT NULL DEFAULT b'1',
     `deleted` bit(1) NOT NULL DEFAULT b'0',
-    PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='优惠券';
+    PRIMARY KEY (`id`) USING BTREE,
+    INDEX `index_member_coupon_member_id_coupon_id`(`member_id`, `coupon_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户的优惠券';
