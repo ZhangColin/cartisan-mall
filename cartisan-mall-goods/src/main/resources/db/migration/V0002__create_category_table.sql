@@ -5,6 +5,7 @@ CREATE TABLE `gds_categories` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '分类ID',
     `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '上级分类ID',
     `name` varchar(64) NOT NULL COMMENT '名称',
+    `icon` varchar(256) DEFAULT '' COMMENT '图标',
     `sequence` int NOT NULL DEFAULT 0 COMMENT '排序',
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

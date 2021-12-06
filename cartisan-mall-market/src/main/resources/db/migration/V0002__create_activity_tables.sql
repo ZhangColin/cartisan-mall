@@ -19,13 +19,14 @@ CREATE TABLE `mkt_activities` (
 
 
 -- 活动商品表
-DROP TABLE IF EXISTS `mkt_activity_spus`;
+DROP TABLE IF EXISTS `mkt_activity_products`;
 
-CREATE TABLE `mkt_activity_spus` (
+CREATE TABLE `mkt_activity_products` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `activity_id` bigint NOT NULL COMMENT '活动ID',
-    `spu_id` bigint NOT NULL COMMENT 'SPUID',
+    `product_id` bigint NOT NULL COMMENT '商品ID',
+    `sku_id` bigint NOT NULL DEFAULT 0 COMMENT 'SKUID',
     `sequence` int NOT NULL DEFAULT 0 COMMENT '排序',
     PRIMARY KEY (`id`) USING BTREE,
-    INDEX `index_activity_spu_activity_id`(`activity_id`) USING BTREE
+    INDEX `index_activity_product_activity_id`(`activity_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='活动商品';

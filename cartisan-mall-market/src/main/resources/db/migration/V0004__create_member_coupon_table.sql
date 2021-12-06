@@ -5,7 +5,7 @@ CREATE TABLE `mkt_member_coupons` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `coupon_id` bigint NOT NULL COMMENT '优惠券ID',
     `member_id` bigint NOT NULL COMMENT '会员ID',
-    `nick_name` varchar(64) NOT NULL COMMENT '会员昵称',
+    `nickname` varchar(64) NOT NULL COMMENT '会员昵称',
     `get_type` tinyint NOT NULL DEFAULT 1 COMMENT '获取方式[0:后台赠送,1:主动领取]',
     `use_status` tinyint NOT NULL DEFAULT 0 COMMENT '使用状态[0:未使用,1:已使用,2:已过期]',
     `received` datetime NOT NULL COMMENT '领取时间',

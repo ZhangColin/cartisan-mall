@@ -1,7 +1,7 @@
 -- 商品成长设置表
-DROP TABLE IF EXISTS `mkt_spu_bounds`;
+DROP TABLE IF EXISTS `mkt_product_bounds`;
 
-CREATE TABLE `mkt_member_prices` (
+CREATE TABLE `mkt_product_bounds` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `sku_id` bigint NOT NULL COMMENT '商品ID',
     `grow_bounds` int NOT NULL COMMENT '成长值',

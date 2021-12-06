@@ -10,7 +10,7 @@ CREATE TABLE `mkt_ads` (
     `status` tinyint NOT NULL DEFAULT 1 COMMENT '状态',
     `image` varchar(256) DEFAULT '' COMMENT '图片',
     `url` varchar(256) DEFAULT '' COMMENT '跳转链接',
-    `remarks` varchar(256) DEFAULT '' COMMENT '备注',
+    `note` varchar(256) DEFAULT '' COMMENT '备注',
     `sequence` int NOT NULL DEFAULT 0 COMMENT '排序',
     `click_count` int NOT NULL DEFAULT 0 COMMENT '点击数',
     `publisher_id` bigint NOT NULL COMMENT '发布者',
