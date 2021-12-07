@@ -3,10 +3,10 @@ package com.cartisan.mall.goods.brand.application;
 import com.cartisan.dp.IdName;
 import com.cartisan.dto.PageResult;
 import com.cartisan.mall.goods.brand.Brand;
+import com.cartisan.mall.goods.brand.BrandConverter;
 import com.cartisan.mall.goods.brand.BrandRepository;
 import com.cartisan.mall.goods.brand.request.BrandParam;
 import com.cartisan.mall.goods.brand.request.BrandQuery;
-import com.cartisan.mall.goods.brand.BrandConverter;
 import com.cartisan.mall.goods.brand.response.BrandDto;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
@@ -49,13 +49,14 @@ public class BrandAppService {
                 .map(brand -> new IdName<>(brand.getId(), brand.getName())).collect(toList());
     }
 
-    public BrandDto getBrand(Long id) {
+    public BrandDto getBrand(@NonNull Long id) {
         return converter.convert(requirePresent(repository.findById(id)));
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public BrandDto addBrand(BrandParam brandParam) {
-        final Brand brand = new Brand(brandParam.getName(),
+    public BrandDto addBrand(@NonNull BrandParam brandParam) {
+        final Brand brand = new Brand(
+                brandParam.getName(),
                 brandParam.getLogo(),
                 brandParam.getDescription(),
                 brandParam.getFirstLetter(),
@@ -65,10 +66,11 @@ public class BrandAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public BrandDto editBrand(Long id, BrandParam brandParam) {
+    public BrandDto editBrand(@NonNull Long id, @NonNull BrandParam brandParam) {
         final Brand brand = requirePresent(repository.findById(id));
 
-        brand.describe(brandParam.getName(),
+        brand.describe(
+                brandParam.getName(),
                 brandParam.getLogo(),
                 brandParam.getDescription(),
                 brandParam.getFirstLetter(),
@@ -78,7 +80,7 @@ public class BrandAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void removeBrand(long id) {
+    public void removeBrand(@NonNull Long id) {
         repository.deleteById(id);
     }
 }

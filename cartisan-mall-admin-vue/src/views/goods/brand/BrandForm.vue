@@ -53,7 +53,10 @@ export default {
         sequence: 0
       },
       rules: {
-        name: [{ required: true, message: '品牌名称不能为空', trigger: 'blur' }],
+        name: [
+          { required: true, message: '名称不能为空', trigger: 'blur' },
+          { max: 64, message: '名称最大长度不能超过64', trigger: 'blur' }
+        ],
         logo: [{ required: true, message: '品牌Logo地址不能为空', trigger: 'blur' }],
         firstLetter: [
           { required: true, message: '品牌的首字母不能为空', trigger: 'blur' },

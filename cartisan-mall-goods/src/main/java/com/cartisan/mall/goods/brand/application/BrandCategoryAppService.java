@@ -7,6 +7,7 @@ import com.cartisan.mall.goods.brand.request.BuildBrandCategoryRelationCommand;
 import com.cartisan.mall.goods.brand.request.CancelBrandCategoryRelationCommand;
 import com.cartisan.mall.goods.brand.response.BrandCategoryDto;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,6 +19,7 @@ import static com.cartisan.util.AssertionUtil.requirePresent;
  * @author colin
  */
 @Service
+@Slf4j
 public class BrandCategoryAppService {
     private final BrandRepository repository;
     private final BrandCategoryMapper brandCategoryMapper;
@@ -36,7 +38,7 @@ public class BrandCategoryAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void buildRelation(BuildBrandCategoryRelationCommand command) {
+    public void buildRelation(@NonNull BuildBrandCategoryRelationCommand command) {
         final Brand brand = requirePresent(repository.findById(command.getBrandId()));
 
         brand.addCategory(command.getCategoryId());
@@ -45,7 +47,7 @@ public class BrandCategoryAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void cancelRelation(CancelBrandCategoryRelationCommand command) {
+    public void cancelRelation(@NonNull CancelBrandCategoryRelationCommand command) {
         final Brand brand = requirePresent(repository.findById(command.getBrandId()));
 
         brand.removeCategory(command.getCategoryId());

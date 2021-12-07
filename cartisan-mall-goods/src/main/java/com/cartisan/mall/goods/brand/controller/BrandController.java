@@ -39,7 +39,7 @@ public class BrandController {
     @GetMapping("/search")
     public ResponseEntity<PageResult<BrandDto>> searchBrands(
             @ApiParam(value = "查询参数") BrandQuery brandQuery,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(page = 0, size = 10) Pageable pageable) {
         return success(service.searchBrands(brandQuery, pageable));
     }
 
