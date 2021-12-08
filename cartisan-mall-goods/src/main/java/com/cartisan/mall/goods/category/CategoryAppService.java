@@ -4,6 +4,8 @@ import com.cartisan.constant.CodeMessage;
 import com.cartisan.dto.TreeNode;
 import com.cartisan.exception.CartisanException;
 import com.cartisan.mall.goods.category.mapper.CategoryMapper;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,6 +18,7 @@ import static com.cartisan.util.AssertionUtil.requirePresent;
  * @author colin
  */
 @Service
+@Slf4j
 public class CategoryAppService {
     private final CategoryRepository repository;
     private final CategoryMapper categoryMapper;
@@ -32,28 +35,31 @@ public class CategoryAppService {
         return buildTree(categoryMapper.getCategoryTree());
     }
 
-    public CategoryDto getCategory(Long id) {
+    public CategoryDto getCategory(@NonNull Long id) {
         return converter.convert(requirePresent(repository.findById(id)));
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void addCategory(CategoryParam categoryParam) {
-        final Category category = new Category(categoryParam.getParentId(), categoryParam.getName());
+    public void addCategory(@NonNull CategoryParam categoryParam) {
+        final Category category = new Category(
+                categoryParam.getParentId(),
+                categoryParam.getName(),
+                categoryParam.getIcon());
 
         repository.save(category);
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void editCategory(Long id, CategoryParam categoryParam) {
+    public void editCategory(@NonNull Long id, @NonNull CategoryParam categoryParam) {
         final Category category = requirePresent(repository.findById(id));
 
-        category.describe(categoryParam.getName());
+        category.describe(categoryParam.getName(), categoryParam.getIcon());
 
         repository.save(category);
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void moveCategories(List<MoveCategoryCommand> commands) {
+    public void moveCategories(@NonNull List<MoveCategoryCommand> commands) {
         commands.forEach(command->{
             final Category category = requirePresent(repository.findById(command.getId()));
             category.move(command.getParentId(), command.getSequence());
@@ -63,7 +69,7 @@ public class CategoryAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void removeCategory(long id) {
+    public void removeCategory(@NonNull Long id) {
         if (repository.existsByParentId(id)) {
             throw new CartisanException(CodeMessage.VALIDATE_ERROR.fillArgs("分类下存在子分类，不能删除。"));
         }

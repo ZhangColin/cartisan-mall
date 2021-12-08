@@ -4,7 +4,7 @@ Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
 
-### 获取商品分类）
+### 获取商品分类
 GET http://{{host}}:{{port}}/categories/1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
@@ -19,8 +19,7 @@ Authorization: {{auth_token}}
 {
   "parentId": 0,
   "name": "宠物",
-  "isShow": false,
-  "isMenu": false
+  "icon": ""
 }
 
 ### 编辑商品分类
@@ -32,8 +31,7 @@ Authorization: {{auth_token}}
 {
   "parentId": 0,
   "name": "图书、音像、电子书刊111",
-  "isShow": false,
-  "isMenu": false
+  "icon": ""
 }
 
 ### 移动商品分类

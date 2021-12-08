@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     imageUrl() {
-      return this.value
+      return this.value || ''
     }
   },
   methods: {

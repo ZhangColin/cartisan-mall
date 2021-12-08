@@ -36,7 +36,7 @@ public class CategoryController {
 
     @ApiOperation(value = "获取商品分类")
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDto> getCategory(@ApiParam(value = "角色Id", required = true) @PathVariable Long id) {
+    public ResponseEntity<CategoryDto> getCategory(@ApiParam(value = "商品分类Id", required = true) @PathVariable Long id) {
         return success(service.getCategory(id));
     }
 

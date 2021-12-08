@@ -14,6 +14,9 @@ public class CategoryDto {
     @ApiModelProperty(value = "上级分类Id")
     private Long parentId;
 
+    @ApiModelProperty(value = "图标")
+    private String icon;
+
     @ApiModelProperty(value = "名称")
     private String name;
 
