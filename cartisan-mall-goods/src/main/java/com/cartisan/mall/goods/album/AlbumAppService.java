@@ -1,6 +1,8 @@
 package com.cartisan.mall.goods.album;
 
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +15,7 @@ import static com.cartisan.util.AssertionUtil.requirePresent;
  * @author colin
  */
 @Service
+@Slf4j
 public class AlbumAppService {
     private final AlbumRepository repository;
 
@@ -23,37 +26,45 @@ public class AlbumAppService {
     }
 
     public List<AlbumDto> searchAlbums(@NonNull AlbumQuery albumQuery) {
-        return converter.convert(repository.findAll(querySpecification(albumQuery)));
+        return converter.convert(repository.findAll(querySpecification(albumQuery), Sort.by(Sort.Direction.ASC, "sequence")));
     }
 
-    public AlbumDto getAlbum(Long id) {
+    public AlbumDto getAlbum(@NonNull Long id) {
         return converter.convert(requirePresent(repository.findById(id)));
     }
 
-    public List<String> getAlbumImages(Long id) {
+    public List<String> getAlbumImages(@NonNull Long id) {
         return requirePresent(repository.findById(id)).getImageItems();
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public AlbumDto addAlbum(AlbumParam albumParam) {
-        final Album album = new Album(albumParam.getTitle(),
-                albumParam.getCoverImage());
+    public AlbumDto addAlbum(@NonNull AlbumParam albumParam) {
+        final Album album = new Album(
+                albumParam.getTitle(),
+                albumParam.getCoverImage(),
+                albumParam.getDescription(),
+                albumParam.getSequence()
+        );
 
         return converter.convert(repository.save(album));
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public AlbumDto editAlbum(Long id, AlbumParam albumParam) {
+    public AlbumDto editAlbum(@NonNull Long id, @NonNull AlbumParam albumParam) {
         final Album album = requirePresent(repository.findById(id));
 
-        album.describe(albumParam.getTitle(),
-                albumParam.getCoverImage());
+        album.describe(
+                albumParam.getTitle(),
+                albumParam.getCoverImage(),
+                albumParam.getDescription(),
+                albumParam.getSequence()
+        );
 
         return converter.convert(repository.save(album));
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void addAlbumImage(Long id, String imageUrl) {
+    public void addAlbumImage(@NonNull Long id, @NonNull String imageUrl) {
         final Album album = requirePresent(repository.findById(id));
 
         album.addImage(imageUrl);
@@ -62,7 +73,7 @@ public class AlbumAppService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public void removeAlbumImage(Long id, String imageUrl) {
+    public void removeAlbumImage(@NonNull Long id, @NonNull String imageUrl) {
         final Album album = requirePresent(repository.findById(id));
 
         album.removeImage(imageUrl);
@@ -72,7 +83,7 @@ public class AlbumAppService {
 
 
     @Transactional(rollbackOn = Exception.class)
-    public void removeAlbum(long id) {
+    public void removeAlbum(@NonNull Long id) {
         repository.deleteById(id);
     }
 }

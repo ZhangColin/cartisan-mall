@@ -38,7 +38,7 @@
       <el-table-column align="center" label="排序" prop="sequence" />
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
-          <el-dropdown split-button @click="handleEdit( scope.row)">
+          <el-dropdown split-button @click="handleEdit(scope.row)">
             编辑
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item @click.native="handleCategoryRelation(scope.row)">关联分类</el-dropdown-item>

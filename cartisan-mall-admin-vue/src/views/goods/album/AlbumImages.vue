@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <el-upload
+      ref="albumUpload"
       action="http://localhost:7001/file/upload"
       list-type="picture-card"
       :on-success="handleUploadSuccess"
@@ -30,7 +31,7 @@
           <span
             v-if="!disabled"
             class="el-upload-list__item-delete"
-            @click="handleRemove(file)"
+            @click="handleRemove(file, $event)"
           >
             <i class="el-icon-delete" />
           </span>
@@ -63,7 +64,7 @@ export default {
   created() {
     this.$route.meta.title = this.$route.query.albumTitle
     getAlbumImages(this.$route.query.albumId).then(response => {
-      this.fileList = response.data.map(url => ({ url }))
+      this.fileList = response.data.map(url => ({ url, name: url }))
     })
   },
   methods: {
@@ -72,8 +73,8 @@ export default {
       })
     },
     handleRemove(file) {
-      removeAlbumImage(this.$route.query.albumId, file.url).then(() => {
-        this.fileList.splice(this.fileList.indexOf(file), 1)
+      removeAlbumImage(this.$route.query.albumId, file.response ? file.response.url : file.url).then(() => {
+        this.$refs.albumUpload.handleRemove(file)
       })
     },
     handlePictureCardPreview(file) {

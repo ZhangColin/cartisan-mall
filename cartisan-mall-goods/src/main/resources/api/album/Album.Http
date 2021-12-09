@@ -1,5 +1,5 @@
 ### 搜索相册
-GET http://{{host}}:{{port}}/albums/search?page=0&size=10
+GET http://{{host}}:{{port}}/albums/search?title=华
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}
@@ -24,7 +24,9 @@ Authorization: {{auth_token}}
 
 {
   "title": "生鲜",
-  "coverImage": ""
+  "coverImage": "",
+  "description": "",
+  "sequence": 0
 }
 
 ### 编辑相册
@@ -35,7 +37,9 @@ Authorization: {{auth_token}}
 
 {
   "title": "",
-  "coverImage": ""
+  "coverImage": "",
+  "description": "",
+  "sequence": 0
 }
 
 ### 添加相册图片

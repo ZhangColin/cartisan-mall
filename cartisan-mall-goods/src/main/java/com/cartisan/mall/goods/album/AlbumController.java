@@ -1,12 +1,9 @@
 package com.cartisan.mall.goods.album;
 
-import com.cartisan.dto.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +66,7 @@ public class AlbumController {
     @PutMapping("/{id}/addImage")
     public ResponseEntity<?> addAlbumImage(
             @ApiParam(value = "相册Id", required = true) @PathVariable Long id,
-            @ApiParam(value = "相册信息", required = true) @NotBlank @RequestParam String imageUrl) {
+            @ApiParam(value = "相册信息", required = true) @Validated @NotBlank @RequestParam String imageUrl) {
         service.addAlbumImage(id, imageUrl);
         return success();
     }
@@ -78,7 +75,7 @@ public class AlbumController {
     @PutMapping("/{id}/removeImage")
     public ResponseEntity<?> removeAlbumImage(
             @ApiParam(value = "相册Id", required = true) @PathVariable Long id,
-            @ApiParam(value = "相册信息", required = true) @NotBlank @RequestParam String imageUrl) {
+            @ApiParam(value = "相册信息", required = true) @Validated @NotBlank @RequestParam String imageUrl) {
         service.removeAlbumImage(id, imageUrl);
         return success();
     }

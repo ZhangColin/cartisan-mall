@@ -8,7 +8,7 @@ import lombok.Data;
  */
 @Data
 public class AlbumDto {
-    @ApiModelProperty(value = "相册Id")
+    @ApiModelProperty(value = "相册ID")
     private Long id;
 
     @ApiModelProperty(value = "标题")
@@ -16,5 +16,11 @@ public class AlbumDto {
 
     @ApiModelProperty(value = "封面")
     private String coverImage;
+
+    @ApiModelProperty(value = "描述")
+    private String description;
+
+    @ApiModelProperty(value = "排序")
+    private Integer sequence;
 
 }

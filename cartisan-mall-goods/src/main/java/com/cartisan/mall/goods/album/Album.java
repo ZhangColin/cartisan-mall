@@ -30,17 +30,27 @@ public class Album extends AbstractEntity implements AggregateRoot {
     @Convert(converter = ImageItemsConverter.class)
     private List<String> imageItems = new ArrayList<>();
 
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "sequence")
+    private Integer sequence;
+
     protected Album() {
     }
 
-    public Album(String title, String coverImage) {
+    public Album(String title, String coverImage, String description, Integer sequence) {
         this.title = title;
         this.coverImage = coverImage;
+        this.description = description;
+        this.sequence = sequence;
     }
 
-    public void describe(String title, String coverImage) {
+    public void describe(String title, String coverImage, String description, Integer sequence) {
         this.title = title;
         this.coverImage = coverImage;
+        this.description = description;
+        this.sequence = sequence;
     }
 
     public void addImage(String imageUrl) {
