@@ -1,0 +1,47 @@
+### 搜索商品规格
+GET http://{{host}}:{{port}}/specifications/search?page=0&size=10
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 获取商品规格
+GET http://{{host}}:{{port}}/specifications/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+### 添加商品规格
+POST http://{{host}}:{{port}}/specifications
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  "categoryId": 0,
+  "name": "",
+  "valueOptions": "",
+  "manualAdd": false,
+  "enable": true,
+  "sequence": 0
+}
+
+### 编辑商品规格
+PUT http://{{host}}:{{port}}/specifications/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
+
+{
+  "categoryId": 0,
+  "name": "",
+  "valueOptions": "",
+  "manualAdd": false,
+  "enable": true,
+  "sequence": 0
+}
+
+### 删除商品规格
+DELETE http://{{host}}:{{port}}/specifications/1
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+Authorization: {{auth_token}}
