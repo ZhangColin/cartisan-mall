@@ -78,7 +78,8 @@ export default {
   mixins: [PaginationMixin, DeleteMixin],
   data() {
     return {
-      apiBaseUrl: '/goods/brands'
+      apiBaseUrl: '/goods/brands',
+      title: '品牌'
     }
   },
   created() {

@@ -1,5 +1,5 @@
 ### 搜索商品规格
-GET http://{{host}}:{{port}}/specifications/search?page=0&size=10
+GET http://{{host}}:{{port}}/specifications/search?categoryId=1
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 Authorization: {{auth_token}}

@@ -8,36 +8,6 @@ export default {
   // name: 'goods',
   meta: { title: '商品管理', icon: 'component' },
   children: [{
-    path: 'spu',
-    // name: 'spu',
-    component: nested,
-    redirect: '/goods/spu/spu-list',
-    meta: { title: '商品', icon: 'nested' },
-    children: [{
-      path: 'spu-list',
-      component: () => import('@/views/goods/spu/Spu'),
-      meta: { title: '商品', breadcrumb: false },
-      hidden: false
-    }, {
-      path: 'sku',
-      name: 'sku',
-      component: () => import('@/views/goods/spu/Sku'),
-      meta: { title: 'SKU' },
-      hidden: true
-    }, {
-      path: 'goodsForm',
-      name: 'goodsForm_add',
-      component: () => import('@/views/goods/spu/GoodsForm'),
-      meta: { title: 'SPU_add' },
-      hidden: true
-    }, {
-      path: 'goodsForm/:spuId',
-      name: 'goodsForm_eidt',
-      component: () => import('@/views/goods/spu/GoodsForm'),
-      meta: { title: 'SPU_edit' },
-      hidden: true
-    }]
-  }, {
     path: 'category',
     // name: 'category',
     component: () => import('@/views/goods/category/Category'),
@@ -47,6 +17,11 @@ export default {
     // name: 'specification',
     component: () => import('@/views/goods/specification/Specification'),
     meta: { title: '商品规格', icon: 'nested' }
+  }, {
+    path: 'attribute',
+    // name: 'attribute',
+    component: () => import('@/views/goods/attribute/Attribute'),
+    meta: { title: '商品属性', icon: 'nested' }
   }, {
     path: 'brand',
     // name: 'brand',

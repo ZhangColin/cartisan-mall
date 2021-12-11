@@ -80,6 +80,7 @@ export default {
   data() {
     return {
       apiBaseUrl: '/goods/specifications',
+      title: '商品规格',
       queryParam: {},
       dataSource: [],
       loading: false
@@ -94,9 +95,6 @@ export default {
         this.dataSource = response.data
         this.loading = false
       })
-    },
-    handleSearch() {
-      this.fetchData()
     },
     handleAdd() {
       this.$refs.specificationForm.addByCategoryId(this.queryParam.categoryId)
